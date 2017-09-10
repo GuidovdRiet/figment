@@ -1,0 +1,9 @@
+mixin ideaForm(idea = {})
+    form(action='../ideas/add' method="POST")
+        label(for="title") Title
+        input(type="text" name="title")
+        label(for="author") Author
+        input(type="text" name="author")
+        label(for="body") Idea
+        textarea(name="body")
+        input(type="submit" value="Save")
