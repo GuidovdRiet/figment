@@ -25,7 +25,7 @@ exports.catchErrors = (fn) => {
   
   /*
     MongoDB Validation Error Handler
-  
+    
     Detect if there are mongodb validation errors that we can nicely show via flash messages
   */
   

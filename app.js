@@ -20,10 +20,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session Middleware
 app.use(session({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
 }))
+
+// TODO: is this really necessary? ..
+app.use(flash());
 
 // Express Messages Middleware
 app.use(require('connect-flash')());
@@ -32,12 +35,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-// Express Validator Middleware
-app.use(expressValidator())
-
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Express Validator Middleware
+app.use(expressValidator())
 
 // Handle the routes
 app.use('/', routes)
