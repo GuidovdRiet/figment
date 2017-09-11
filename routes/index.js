@@ -10,6 +10,7 @@ router.post('/ideas/add', catchErrors(ideaController.createIdea));
 router.post('/ideas/add/:id', catchErrors(ideaController.updateIdea));
 router.get('/ideas/:id', catchErrors(ideaController.getIdea));
 router.get('/idea/:id/edit', catchErrors(ideaController.editIdea));
+router.get('/idea/:id/delete', catchErrors(ideaController.deleteIdea));
 
 
 module.exports = router;

@@ -33,3 +33,8 @@ exports.updateIdea = async (req, res) => {
     }).exec(); // exec forces to run the query
     res.redirect(`/idea/${idea._id}/edit`);
 }
+
+exports.deleteIdea = async (req, res) => {
+    const idea = await Idea.findOneAndRemove({ _id: req.params.id });
+    res.redirect('/');
+}
