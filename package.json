@@ -20,7 +20,11 @@
   "homepage": "https://github.com/GuidovdRiet/figment#readme",
   "dependencies": {
     "body-parser": "^1.18.0",
+    "connect-flash": "^0.1.1",
     "express": "^4.15.4",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.15.5",
+    "express-validator": "^4.1.1",
     "mongoose": "^4.10.8",
     "pug": "^2.0.0-rc.4"
   },

@@ -17,6 +17,7 @@ exports.getIdea = async (req, res) => {
 
 exports.createIdea = async (req, res) => {
     const idea = await (new Idea(req.body)).save();
+    req.flash('success', 'Article Created!')
     res.redirect('/');
 }
 
@@ -31,10 +32,12 @@ exports.updateIdea = async (req, res) => {
         new: true, // returns new idea not the old one
         runValidator: true // runs validators again to check of required feels are filled in
     }).exec(); // exec forces to run the query
+    req.flash('success', 'Idea Updated');    
     res.redirect(`/idea/${idea._id}/edit`);
 }
 
 exports.deleteIdea = async (req, res) => {
     const idea = await Idea.findOneAndRemove({ _id: req.params.id });
+    req.flash('success', 'Idea deleted');
     res.redirect('/');
 }

@@ -1,9 +1,12 @@
 const express = require('express');
 const path = require('path');
 const routes = require('./routes/index');
+const session = require('express-session');
+const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const errorHandlers = require('./handlers/errorHandlers');
+const expressValidator = require('express-validator');
 
 // Init app
 const app = express();
@@ -14,6 +17,23 @@ app.set('view engine', 'pug');
 
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Express Session Middleware
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}))
+
+// Express Messages Middleware
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
+// Express Validator Middleware
+app.use(expressValidator())
 
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.urlencoded({ extended: false }));

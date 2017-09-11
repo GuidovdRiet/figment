@@ -3,6 +3,9 @@ extends layout
 block content
     h1 Home page
     ul
+        li 
+            a(href="/ideas/add") add idea!
+    ul
         each idea in ideas
             li 
                 a(href=`/ideas/${idea._id}`)= idea.title

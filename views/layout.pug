@@ -5,6 +5,7 @@ html
         link(rel="stylesheet", href="/dist/style.bundle.css")
 
     body
+        != messages('message', locals)
         block content
 
         block scripts
