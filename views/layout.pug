@@ -2,9 +2,10 @@ doctype html
 html
     head
         title= title
-        //- link(rel="stylesheet", href="../public/dist/style.css")
+        link(rel="stylesheet", href="/dist/style.bundle.css")
 
     body
         block content
 
-        script(src='/dist/app.bundle.js')
+        block scripts
+            script(src='/dist/app.bundle.js')

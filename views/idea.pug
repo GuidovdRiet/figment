@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1= idea.title
+    h2= idea.author
+    p= idea.body
+
+    a(href=`/idea/${idea._id}/edit`) Edit
