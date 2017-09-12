@@ -13,6 +13,13 @@ const ideaSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-})
+},
+    {
+        timestamps: {
+            'createdAt': 'createdAt',
+            'updatedAt': 'updatedAt'
+        }
+    }
+)
 
 const Article = module.exports = mongoose.model('Idea', ideaSchema);

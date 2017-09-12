@@ -5,7 +5,12 @@ html
         link(rel="stylesheet", href="/dist/style.bundle.css")
 
     body
-        != messages('message', locals)
+        .messages 
+            if locals.messages
+                each type in Object.keys(messages)
+                    each message in messages[type]
+                        .alert #{message}
+                        
         block content
 
         block scripts

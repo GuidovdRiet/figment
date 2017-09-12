@@ -39,7 +39,7 @@ exports.catchErrors = (fn) => {
   
   
   /*
-    Development Error Hanlder
+    Development Error Handlder
   
     In development we show good error messages so if we hit a syntax error or any other previously un-handled error, we can show good info on what happened
   */

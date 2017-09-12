@@ -2,9 +2,11 @@ const express = require('express');
 const path = require('path');
 const routes = require('./routes/index');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const errorHandlers = require('./handlers/errorHandlers');
 const expressValidator = require('express-validator');
 
@@ -18,6 +20,12 @@ app.set('view engine', 'pug');
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Express Validator Middleware
+app.use(expressValidator())
+
+// populates req.cookies with any cookies that came along with the request
+app.use(cookieParser());
+
 // Express Session Middleware
 app.use(session({
   secret: process.env.SECRET,
@@ -25,8 +33,9 @@ app.use(session({
   saveUninitialized: false
 }))
 
-// TODO: is this really necessary? ..
-app.use(flash());
+// // Passport JS is what we use to handle our logins
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Express Messages Middleware
 app.use(require('connect-flash')());
@@ -35,12 +44,18 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Use flash for flash messaging
+app.use(flash());
+
+// global variables
+app.use(function(req, res, next) {
+  res.locals.messages = req.flash();
+  next();
+});
+
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-// Express Validator Middleware
-app.use(expressValidator())
 
 // Handle the routes
 app.use('/', routes)
