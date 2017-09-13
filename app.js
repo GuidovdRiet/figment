@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const errorHandlers = require('./handlers/errorHandlers');
 const expressValidator = require('express-validator');
+require('./handlers/passport');
 
 // Init app
 const app = express();
@@ -50,6 +51,8 @@ app.use(flash());
 // global variables
 app.use(function(req, res, next) {
   res.locals.messages = req.flash();
+  res.locals.helpers = require('./helpers');
+  res.locals.user = req.user || null;
   next();
 });
 

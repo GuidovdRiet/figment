@@ -3,15 +3,28 @@ html
     head
         title= title
         link(rel="stylesheet", href="/dist/style.bundle.css")
+        link(href='https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:300,300i,700', rel='stylesheet')
 
     body
-        .messages 
-            if locals.messages
-                each type in Object.keys(messages)
-                    each message in messages[type]
-                        .alert #{message}
-                        
-        block content
+        .wrapper
+            .nav
+                img(src="images/figment-logo.svg", alt="Figment")
+                a(href="#") Home
+                a(href="#") Ideas
+                a(href="#") Artical
+                a(href="#") Inspiration
+                if user
+                    a(href="/logout") Logout
+                else 
+                    a(href="/login") Login
 
-        block scripts
-            script(src='/dist/app.bundle.js')
+            .messages 
+                if locals.messages
+                    each type in Object.keys(messages)
+                        each message in messages[type]
+                            .alert #{message}
+                            
+            block content
+
+            block scripts
+                script(src='/dist/app.bundle.js')

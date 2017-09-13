@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise;
 const md5 = require('md5');
 const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
-const passportLocalMongoose = require('password-local-mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -21,7 +21,11 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+// Passport-Local Mongoose will add a username, hash and salt field to store the username, the hashed password and the salt value.
+// usernameField = Email to login 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
+
+// Make errors pretty when value is not unique 
 userSchema.plugin(mongodbErrorHandler);
 
 module.exports = mongoose.model('User', userSchema);

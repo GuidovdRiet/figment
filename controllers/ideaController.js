@@ -32,7 +32,7 @@ exports.updateIdea = async (req, res) => {
         new: true, // returns new idea not the old one
         runValidator: true // runs validators again to check of required feels are filled in
     }).exec(); // exec forces to run the query
-    req.flash('success', 'Idea Updated');    
+    req.flash('success', 'Idea Updated');
     res.redirect(`/idea/${idea._id}/edit`);
 }
 
