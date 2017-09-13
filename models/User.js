@@ -21,6 +21,12 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+// Generate a field in db instead of save in db
+userSchema.virtual('gravatar').get(function() {
+    const hash = md5(this.email);
+    return `https://gravatar.com/avatar/${hash}?s=200`;
+});
+
 // Passport-Local Mongoose will add a username, hash and salt field to store the username, the hashed password and the salt value.
 // usernameField = Email to login 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });

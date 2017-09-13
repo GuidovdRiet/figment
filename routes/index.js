@@ -10,7 +10,7 @@ router.get('/', catchErrors(ideaController.homePage));
 
 // IDEAS
 // -- create --
-router.get('/ideas/add', ideaController.addIdea);
+router.get('/ideas/add', authController.checkIfLoggedIn, ideaController.addIdea);
 router.post('/ideas/add', catchErrors(ideaController.createIdea));
 router.post('/ideas/add/:id', catchErrors(ideaController.updateIdea));
 
