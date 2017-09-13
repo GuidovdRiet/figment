@@ -24,7 +24,10 @@ router.get('/idea/:id/edit', catchErrors(ideaController.editIdea));
 router.get('/idea/:id/delete', catchErrors(ideaController.deleteIdea));
 
 
-// USERS
+// USER
+router.get('/account', userController.account);
+router.post('/account', catchErrors(userController.updateAccount));
+
 // -- login --
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
@@ -39,8 +42,6 @@ router.post('/register',
 
 // -- logout --
 router.get('/logout', authController.logout);
-
-
 
 
 

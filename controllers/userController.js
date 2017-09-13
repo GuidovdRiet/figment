@@ -4,11 +4,11 @@ const promisify = require('es6-promisify');
 
 exports.loginForm = (req, res) => {
     res.render('login', {title: 'Login'});
-}
+};
 
 exports.registerForm = (req, res) => {
     res.render('register', {title: 'Register'});
-}
+};
 
 exports.validateRegister = (req, res, next) => {
     req.sanitizeBody('name'); // Remove script tags and special characters
@@ -31,11 +31,36 @@ exports.validateRegister = (req, res, next) => {
         return;
     } 
     next();
-}
+};
 
 exports.register = async (req, res, next) => {
     const user = new User({ email: req.body.email, name: req.body.name });
     const registerWithPromise = promisify(User.register, User); // .register comes from the model module passportLocalMongoos, .register is the method that hashes the password in the db
     await registerWithPromise(user, req.body.password);
     next(); // pass to authController.login
-}
+};
+
+exports.account = (req, res) => {
+    res.render('account', { title: 'Edit Your Accont '});
+};
+
+exports.account = (req, res) => {
+    res.render('account', { title: 'Edit Account' });
+};
+
+exports.updateAccount = async (req, res) => {
+    const updates = {
+        name: req.body.name,
+        email: req.body.email
+    };
+
+    const user = await User.findOneAndUpdate(
+        { _id: req.user._id }, // take the _id from the request instead of the user for safety
+        { $set: updates },
+        { new: true, runValidators: true, context: 'query' }
+    );
+
+    req.flash('success', 'Updated account');
+    res.redirect('back');
+};
+
