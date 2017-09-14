@@ -41,3 +41,7 @@ exports.deleteIdea = async (req, res) => {
     req.flash('success', 'Idea deleted');
     res.redirect('/');
 }
+
+exports.inspiration = (req, res) => {
+    res.render('inspiration', { title: 'Inspiration' });
+} 

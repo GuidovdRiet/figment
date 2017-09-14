@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     border-top: 5px solid $brand;
     background: #F3F5F9;
@@ -7,6 +11,24 @@ body {
     width: 1000px;
     max-width: 90%;
     margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    margin-top: 6em;
+    // background: green;
+    .user_container {
+        // background: blue;
+        flex: 1.2;
+    }
+    .idea_container {
+        // background: red;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        flex: 3;
+        margin-left: 4em;
+    }
 }
 
 

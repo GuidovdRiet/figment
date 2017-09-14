@@ -8,17 +8,19 @@ html
     body
         .wrapper
             .nav
-                img(src="images/figment-logo.svg", alt="Figment")
+                a(href="/")
+                    img(src="images/figment-logo.svg", alt="Figment").logo
                 a(href="/") Home
                 a(href="/") Ideas
                 a(href="/") Artical
-                a(href="/") Inspiration
-                if user
-                    a(href="/logout") Logout
-                    a(href="/account")
-                        img(src=user.gravatar) 
-                else 
-                    a(href="/login") Login
+                a(href="/inspiration") Inspiration
+                
+            if user
+                a(href="/account").account
+                    img(src=user.gravatar).gravatar
+            else 
+                a(href="/login") Login
+
 
             .messages 
                 if locals.messages

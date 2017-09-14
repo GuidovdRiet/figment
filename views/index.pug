@@ -1,8 +1,15 @@
 extends layout
 
+include mixins/_userCard
+include mixins/_ideaCard
+
 block content
-    ul 
-        each idea in ideas
-            a(href=`ideas/${idea._id}`)
-                li
-                    h2= idea.title
+
+    .content
+        .user_container
+            +userCard()
+
+        .idea_container
+            each idea in ideas
+                +ideaCard(idea)
+            

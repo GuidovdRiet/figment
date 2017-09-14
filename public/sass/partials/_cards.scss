@@ -1,0 +1,37 @@
+.user_card, .idea_card {
+    background-color: #fff;
+    border-radius: 1.7em;
+    box-shadow: $shadow;
+}
+
+
+.user_card {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    padding-top: 2em;
+    .avatar {
+        width: 65%;
+    }
+    .user_data {
+        display: flex;
+        width: 100%;
+        margin-top: 4em;
+        border-top: 1px solid $secondary;
+        .thinkers, .ideas {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            padding: 1em;
+        }
+        .thinkers {
+            border-right: 1px solid $secondary;
+        }
+    }
+}
+
+.idea_card {
+    padding: 2em;
+    margin-bottom: 2em;
+}

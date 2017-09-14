@@ -43,6 +43,9 @@ router.post('/register',
 // -- logout --
 router.get('/logout', authController.logout);
 
+// INSPIRATION
+router.get('/inspiration', ideaController.inspiration);
+
 
 
 module.exports = router;

@@ -3,7 +3,31 @@ html {
 }
 
 body {
-    font-size: 1.5rem;
     color: $light_grey;
+    font-size: 1.45rem;
+    font-weight: 300;
     font-family: 'Source Sans Pro', sans-serif; 
+}
+
+p {
+    margin: 0;
+}
+
+.subtitle {
+    font-style: italic;
+    color: $light_grey;
+}
+
+h2 {
+    color: $dark_grey;
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    margin: .8em 0 .35em 0;
+}
+
+h3 {
+    color: $dark_grey;
+    font-size: 1.6em;
+    font-weight: 700;
+    margin: .2em 0;
 }

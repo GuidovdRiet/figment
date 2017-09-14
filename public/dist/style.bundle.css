@@ -415,9 +415,32 @@ html {
   font-size: 10px; }
 
 body {
-  font-size: 1.5rem;
-  color: #B8BABC;
+  color: #DBDDE0;
+  font-size: 1.45rem;
+  font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif; }
+
+p {
+  margin: 0; }
+
+.subtitle {
+  font-style: italic;
+  color: #DBDDE0; }
+
+h2 {
+  color: #4a4a4c;
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  margin: .8em 0 .35em 0; }
+
+h3 {
+  color: #4a4a4c;
+  font-size: 1.6em;
+  font-weight: 700;
+  margin: .2em 0; }
+
+* {
+  box-sizing: border-box; }
 
 body {
   border-top: 5px solid #E6474A;
@@ -428,13 +451,62 @@ body {
   max-width: 90%;
   margin: 0 auto; }
 
+.content {
+  display: flex;
+  margin-top: 6em; }
+  .content .user_container {
+    flex: 1.2; }
+  .content .idea_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 3;
+    margin-left: 4em; }
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 8rem; }
-  .nav img {
-    width: 20%; }
+  .nav .logo {
+    width: 150px; }
   .nav a {
     text-decoration: none;
-    color: #B8BABC; }
+    color: #DBDDE0; }
+
+.user_card, .idea_card {
+  background-color: #fff;
+  border-radius: 1.7em;
+  box-shadow: 0px 6px 25px -10px rgba(0, 0, 0, 0.1); }
+
+.user_card {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  padding-top: 2em; }
+  .user_card .avatar {
+    width: 65%; }
+  .user_card .user_data {
+    display: flex;
+    width: 100%;
+    margin-top: 4em;
+    border-top: 1px solid #F3F5F9; }
+    .user_card .user_data .thinkers, .user_card .user_data .ideas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding: 1em; }
+    .user_card .user_data .thinkers {
+      border-right: 1px solid #F3F5F9; }
+
+.idea_card {
+  padding: 2em;
+  margin-bottom: 2em; }
+
+.account {
+  position: absolute;
+  top: 1.2rem;
+  right: 1rem; }
+  .account .gravatar {
+    width: 45px; }
