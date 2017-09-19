@@ -1,0 +1,16 @@
+{
+    "extends": "airbnb-base",
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "import/newline-after-import": 0,
+        "comma-dangle": 0,
+        "semi": 0,
+        "keyword-spacing": 0,
+        "no-trailing-spaces": 0,
+        "no-underscore-dangle": 0
+    }
+}

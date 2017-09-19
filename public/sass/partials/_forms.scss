@@ -1,0 +1,25 @@
+form {
+    flex-direction: column;
+    display: flex;
+    input[type="email"], input[type="text"], input[type="password"] {
+        border: 1px solid $secondary;
+        border-radius: .6em;
+        font-family: 'Source Sans Pro', sans-serif;
+        color: $light_grey;
+        margin-top: .4em;
+        padding: .6em 2em;
+    }
+    input[type="password"] {
+        margin-bottom: 1.2em;
+    }
+    input[type="submit"] {
+        border: none;
+        border-radius: .7em;
+        padding: 1em 0em;
+        background: $brand;
+        color: white;
+    }
+    label {
+        margin-top: 1em;
+    }
+}

@@ -4,6 +4,12 @@ include mixins/_loginForm
 include mixins/_forgotPassword
 
 block content
-    h1= title
-    +loginForm()
-    +forgotPassword()
+    .login_container
+        img(src="/images/figment-icon.svg", alt="Figment").logo
+        .card
+            .login_card    
+                h1= title
+                +loginForm()
+                a(href="/register") Register
+                a(href="/forgot-password") Forgot password
+                //- +forgotPassword()

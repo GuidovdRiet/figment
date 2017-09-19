@@ -3,12 +3,17 @@
     justify-content: space-between;  
     align-items: center;
     margin-top: 8rem;
+    padding-right: 1.3em;
     .logo {
         width: 150px;
+        margin-right: 5.7em;
     }
     a {
-        text-decoration: none;
-        color: $light_grey;
+        color: white;
+        letter-spacing: .1px;
+        &:active {
+            color: $brand;
+        }
     }
 }
 

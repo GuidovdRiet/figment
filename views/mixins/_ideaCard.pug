@@ -1,6 +1,10 @@
 mixin ideaCard(idea)
     .card
         .idea_card
-            h2= idea.title
-            h3= idea.author
+            a(href=`/ideas/${idea._id}`)
+                h2= idea.title
+            hr
+            .image(style=`background-image: url('uploads/${idea.photo}')`)
             p= idea.body
+            .icon_container
+                != helpers.icon('plus')

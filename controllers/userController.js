@@ -1,19 +1,36 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User'); // this is possible cause I import the model at start.js
 const promisify = require('es6-promisify');
+const multer = require('multer');
+const jimp = require('jimp');
+const uuid = require('uuid');
+const multerOptions = {
+    storage: multer.memoryStorage(),
+    fileFilter(req, file, cb) { // fileFilter: function(req, file, next) {}
+        const isPhoto = file.mimetype.startsWith('image/'); // check if it is an image coming in
+        if(isPhoto) {
+            cb(null, true); // continue file uploading without errors
+        } else {
+            cb({ message: 'That filetype isn\'t allowed' }, false); // don't continue the process 
+        }
+    }
+}
 
 exports.loginForm = (req, res) => {
-    res.render('login', {title: 'Login'});
+    if (req.user) {
+        res.redirect('/');
+    }
+    res.render('login', { title: 'Login' });
 };
 
 exports.registerForm = (req, res) => {
-    res.render('register', {title: 'Register'});
+    res.render('register', { title: 'Register' });
 };
 
 exports.validateRegister = (req, res, next) => {
     req.sanitizeBody('name'); // Remove script tags and special characters
-    req.checkBody('name', "You must supply a name").notEmpty();
-    req.checkBody('email', "That Email is not valid").isEmail();
+    req.checkBody('name', 'You must supply a name').notEmpty();
+    req.checkBody('email', 'That Email is not valid').isEmail();
     req.sanitizeBody('email').normalizeEmail({ // Set how to convert the users emailadress
         remove_dots: false,
         remove_extension: false,
@@ -33,15 +50,40 @@ exports.validateRegister = (req, res, next) => {
     next();
 };
 
+exports.upload = multer(multerOptions).single('photo');
+
+exports.resize = async (req, res, next) => {
+    if (!req.file) {
+        next();
+        return;
+    }
+    // Take the filename and give a unique identifier 
+    const fileType = req.file.mimetype.split('/')[1];
+    req.body.photo = `${uuid.v4()}.${fileType}`;
+    // Resize photo
+    const photo = await jimp.read(req.file.buffer);
+    await photo.resize(400, jimp.AUTO);
+    // Save photo to folder
+    await photo.write(`./public/uploads/${req.body.photo}`);
+    next();
+}
+
 exports.register = async (req, res, next) => {
-    const user = new User({ email: req.body.email, name: req.body.name });
-    const registerWithPromise = promisify(User.register, User); // .register comes from the model module passportLocalMongoos, .register is the method that hashes the password in the db
+    const user = new User({ 
+        email: req.body.email, 
+        name: req.body.name, 
+        photo: req.body.photo, 
+        about: req.body.about 
+    });
+    // .register comes from the model module passportLocalMongoos, 
+    // .register is the method that hashes the password in the db
+    const registerWithPromise = promisify(User.register, User); 
     await registerWithPromise(user, req.body.password);
     next(); // pass to authController.login
 };
 
 exports.account = (req, res) => {
-    res.render('account', { title: 'Edit Your Accont '});
+    res.render('account', { title: 'Edit Your Accont ' });
 };
 
 exports.account = (req, res) => {
@@ -54,7 +96,7 @@ exports.updateAccount = async (req, res) => {
         email: req.body.email
     };
 
-    const user = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
         { _id: req.user._id }, // take the _id from the request instead of the user for safety
         { $set: updates },
         { new: true, runValidators: true, context: 'query' }

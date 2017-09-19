@@ -4,7 +4,6 @@ const routes = require('./routes/index');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const errorHandlers = require('./handlers/errorHandlers');

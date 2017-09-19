@@ -16,13 +16,21 @@ p {
 .subtitle {
     font-style: italic;
     color: $light_grey;
+    text-align: center;    
 }
+
+a {
+    text-decoration: none;
+}
+
 
 h2 {
     color: $dark_grey;
     font-size: 2.5rem;
     font-family: 'Playfair Display', serif;
+    font-weight: lighter;
     margin: .8em 0 .35em 0;
+    text-decoration: none;
 }
 
 h3 {

@@ -7,19 +7,18 @@ html
 
     body
         .wrapper
-            .nav
-                a(href="/")
-                    img(src="images/figment-logo.svg", alt="Figment").logo
-                a(href="/") Home
-                a(href="/") Ideas
-                a(href="/") Artical
-                a(href="/inspiration") Inspiration
-                
-            if user
+            if user        
+                .nav
+                    a(href="/")
+                        img(src="/images/figment-logo.svg", alt="Figment").logo
+                    a(href="/") Home
+                    a(href="/") Ideas
+                    a(href="/") Artical
+                    a(href="/inspiration") Inspiration
+                                       
                 a(href="/account").account
-                    img(src=user.gravatar).gravatar
-            else 
-                a(href="/login") Login
+                    .avatar.nav_avatar(style=`background-image: url('/uploads/${user.photo}')`)
+
 
 
             .messages 

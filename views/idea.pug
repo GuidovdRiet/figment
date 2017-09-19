@@ -1,8 +1,9 @@
 extends layout
 
 block content
+    pre= helpers.dump(idea)
     h1= idea.title
-    h2= idea.author
+    h2= idea.author.name
     p= idea.body
 
     a(href=`/idea/${idea._id}/edit`) Edit

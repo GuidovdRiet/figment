@@ -1,9 +1,11 @@
 mixin ideaForm(idea = {})
-    form(action=`/ideas/add/${idea._id || ''}` method="POST")
+    form(action=`/ideas/add/${idea._id || ''}` method="POST" enctype="multipart/form-data")
         label(for="title") Title
         input(type="text" name="title" value=idea.title)
-        label(for="author") Author
-        input(type="text" name="author" value=idea.author)
+        label(for="photo") Photo
+            input(type="file" name="photo" accept="image/gif, image/png, image/jpeg")
+            if idea.photo
+                img(src=`/uploads/${idea.photo}`, alt=idea.name width=300)
         label(for="body") Idea
         textarea(name="body")= idea.body
         input(type="submit" value="Save")
