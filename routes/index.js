@@ -15,9 +15,9 @@ router.get(
 
 // IDEAS
 // -- create --
-router.get('/ideas/add', authController.checkIfLoggedIn, ideaController.addIdea);
+router.get('/idea/add', authController.checkIfLoggedIn, ideaController.addIdea);
 router.post(
-    '/ideas/add',
+    '/idea/add',
     authController.checkIfLoggedIn,
     ideaController.upload,
     catchErrors(ideaController.resize),
@@ -25,14 +25,14 @@ router.post(
 );
 
 router.post(
-    '/ideas/add/:id', 
+    '/idea/add/:id', 
     ideaController.upload,
     catchErrors(ideaController.resize),
     catchErrors(ideaController.updateIdea)
 );
 
 // -- read -- 
-router.get('/ideas/:id', catchErrors(ideaController.getIdea));
+router.get('/idea/:id', catchErrors(ideaController.getIdea));
 
 // -- update -- 
 router.get('/idea/:id/edit', catchErrors(ideaController.editIdea));
@@ -61,9 +61,6 @@ router.post(
 
 // -- logout --
 router.get('/logout', authController.logout);
-
-// INSPIRATION
-router.get('/inspiration', ideaController.inspiration);
 
 
 module.exports = router;

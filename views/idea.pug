@@ -2,9 +2,11 @@ extends layout
 
 block content
     pre= helpers.dump(idea)
+    pre= helpers.dump(user)
     h1= idea.title
     h2= idea.author.name
     p= idea.body
 
-    a(href=`/idea/${idea._id}/edit`) Edit
-    a(href=`/idea/${idea._id}/delete/`) Delete
+    if user && idea.author._id.equals(user._id)
+        a(href=`/idea/${idea._id}/edit`) Edit
+        a(href=`/idea/${idea._id}/delete/`) Delete

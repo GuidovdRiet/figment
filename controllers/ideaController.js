@@ -55,10 +55,19 @@ exports.createIdea = async (req, res) => {
     await (new Idea(req.body)).save();
     req.flash('success', 'Article Created!')
     res.redirect('/');
+    return true;
+}
+
+const confirmUser = (req, res, idea, user) => {
+    if (!idea.author.equals(user._id)) {
+        req.flash('warning', 'You need to be the author of the idea');
+        res.redirect('back');
+    }
 }
 
 exports.editIdea = async (req, res) => {
     const idea = await Idea.findOne({ _id: req.params.id });
+    confirmUser(req, res, idea, req.user);
     res.render('edit_idea', { title: `Edit ${idea.title}`, idea });
 }
 
@@ -73,11 +82,7 @@ exports.updateIdea = async (req, res) => {
 }
 
 exports.deleteIdea = async (req, res) => {
-    await Idea.findOneAndRemove({ _id: req.params.id });
+    await Idea.findOneAndRemove({ _id: req.params.id });    
     req.flash('success', 'Idea deleted');
     res.redirect('/');
 }
-
-exports.inspiration = (req, res) => {
-    res.render('inspiration', { title: 'Inspiration' });
-} 

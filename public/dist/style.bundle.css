@@ -570,11 +570,13 @@ body {
 form {
   flex-direction: column;
   display: flex; }
+  form label {
+    color: #BBBBBD; }
   form input[type="email"], form input[type="text"], form input[type="password"] {
     border: 1px solid #F3F5F9;
     border-radius: .6em;
     font-family: 'Source Sans Pro', sans-serif;
-    color: #DBDDE0;
+    color: #BBBBBD;
     margin-top: .4em;
     padding: .6em 2em; }
   form input[type="password"] {
