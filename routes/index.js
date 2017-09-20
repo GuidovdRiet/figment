@@ -6,7 +6,7 @@ const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 
-// Routes
+// INDEX
 router.get(
     '/', 
     authController.checkIfLoggedIn,
@@ -15,7 +15,12 @@ router.get(
 
 // IDEAS
 // -- create --
-router.get('/idea/add', authController.checkIfLoggedIn, ideaController.addIdea);
+router.get(
+    '/idea/add', 
+    authController.checkIfLoggedIn, 
+    ideaController.addIdea
+);
+
 router.post(
     '/idea/add',
     authController.checkIfLoggedIn,
@@ -26,6 +31,7 @@ router.post(
 
 router.post(
     '/idea/add/:id', 
+    ideaController.ensureThisUser,
     ideaController.upload,
     catchErrors(ideaController.resize),
     catchErrors(ideaController.updateIdea)
@@ -35,10 +41,10 @@ router.post(
 router.get('/idea/:id', catchErrors(ideaController.getIdea));
 
 // -- update -- 
-router.get('/idea/:id/edit', catchErrors(ideaController.editIdea));
+router.get('/idea/:id/edit', ideaController.ensureThisUser, catchErrors(ideaController.editIdea));
 
 // -- delete -- 
-router.get('/idea/:id/delete', catchErrors(ideaController.deleteIdea));
+router.get('/idea/:id/delete', ideaController.ensureThisUser, catchErrors(ideaController.deleteIdea));
 
 // USER
 router.get('/account', userController.account);

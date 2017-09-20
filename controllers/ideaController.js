@@ -58,16 +58,19 @@ exports.createIdea = async (req, res) => {
     return true;
 }
 
-const confirmUser = (req, res, idea, user) => {
-    if (!idea.author.equals(user._id)) {
-        req.flash('warning', 'You need to be the author of the idea');
-        res.redirect('back');
-    }
+exports.ensureThisUser = async (req, res, next) => {
+    const idea = await Idea.findOne({
+        _id: req.params.id
+    });
+
+    if(idea.author.equals(req.user._id)) return next();
+
+    req.flash('error', 'You are not allowed to access this page!')
+    return res.redirect('back');
 }
 
 exports.editIdea = async (req, res) => {
     const idea = await Idea.findOne({ _id: req.params.id });
-    confirmUser(req, res, idea, req.user);
     res.render('edit_idea', { title: `Edit ${idea.title}`, idea });
 }
 
@@ -82,6 +85,7 @@ exports.updateIdea = async (req, res) => {
 }
 
 exports.deleteIdea = async (req, res) => {
+    await Idea.findOne({ _id: req.params.id });
     await Idea.findOneAndRemove({ _id: req.params.id });    
     req.flash('success', 'Idea deleted');
     res.redirect('/');
