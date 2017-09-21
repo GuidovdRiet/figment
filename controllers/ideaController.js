@@ -17,9 +17,10 @@ const multerOptions = {
 
 exports.homePage = async (req, res) => {
     const ideas = await Idea.find();
-    res.render('index', {
-        title: 'Figment', ideas
-    });    
+    // check how many ideas the user has published 
+    const userIdeas = ideas.filter(idea => idea.author.equals(req.user._id));
+    const ideaAmount = userIdeas.length;
+    res.render('index', { title: 'Figment', userIdeasTotal: ideaAmount, ideas });    
 }
 
 exports.addIdea = (req, res) => {
