@@ -1,5 +1,5 @@
 mixin ideaForm(idea = {})
-    form(action=`/idea/add/${idea._id || ''}` method="POST" enctype="multipart/form-data")
+    form(action=`/ideas/add/${idea._id || ''}` method="POST" enctype="multipart/form-data")
         label(for="title") Title
         input(type="text" name="title" value=idea.title)
         label(for="photo") Photo

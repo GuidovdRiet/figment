@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+    img(src=`/uploads/${user.photo}`, alt='user avatar')
+    h1= user.name
+    p= user.email
+    if user.level >= 10 
+        p admin
+    else
+        p user 
+
+    a(href=`/admin/${user._id}/edit`) Edit
+    a(href=`/admin/${user._id}/delete`) Delete

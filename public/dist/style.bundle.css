@@ -601,3 +601,13 @@ form {
   .login_container img {
     width: 5%;
     margin-bottom: 2em; }
+
+table {
+  margin-top: 5em; }
+  table td {
+    border: 1px solid #FA6969;
+    text-align: center;
+    padding: 1em; }
+  table a {
+    text-decoration: none;
+    color: #DBDDE0; }

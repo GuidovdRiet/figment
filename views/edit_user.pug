@@ -1,0 +1,22 @@
+extends layout
+
+block content 
+    img(src=`/uploads/${user.photo}`, alt="User photo")
+    form(action=`/admin/${user._id}/edit` method='POST')
+        label(for='name') name
+        input(type='text' name='name' value=user.name)
+        label(for='email') email
+        input(type='email' name='email' value=user.email)
+        //- label(for='level')
+        //- input(type='number' name='level' value=user.level)
+        if user.level === 10
+            select(name="level")
+                option(value="0") User
+                option(value="10" selected) Admin
+        else
+            select(name="level")
+                option(value="0" selected) User
+                option(value="10") Admin
+        input(type='submit' value='Save')
+
+        

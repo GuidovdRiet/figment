@@ -3,6 +3,8 @@ const router = express.Router();
 const ideaController = require('../controllers/ideaController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const adminController = require('../controllers/adminController');
+const userMiddleware = require('../middleware/userMiddleware');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 
@@ -16,13 +18,13 @@ router.get(
 // IDEAS
 // -- create --
 router.get(
-    '/idea/add', 
+    '/ideas/add', 
     authController.checkIfLoggedIn, 
     ideaController.addIdea
 );
 
 router.post(
-    '/idea/add',
+    '/ideas/add',
     authController.checkIfLoggedIn,
     ideaController.upload,
     catchErrors(ideaController.resize),
@@ -31,20 +33,20 @@ router.post(
 
 router.post(
     '/idea/add/:id', 
-    ideaController.ensureThisUser,
+    userMiddleware.confirmUser,
     ideaController.upload,
     catchErrors(ideaController.resize),
     catchErrors(ideaController.updateIdea)
 );
 
 // -- read -- 
-router.get('/idea/:id', catchErrors(ideaController.getIdea));
+router.get('/ideas/:id', catchErrors(ideaController.getIdea));
 
 // -- update -- 
-router.get('/idea/:id/edit', ideaController.ensureThisUser, catchErrors(ideaController.editIdea));
+router.get('/idea/:id/edit', userMiddleware.confirmUser, catchErrors(ideaController.editIdea));
 
 // -- delete -- 
-router.get('/idea/:id/delete', ideaController.ensureThisUser, catchErrors(ideaController.deleteIdea));
+router.get('/idea/:id/delete', userMiddleware.confirmUser, catchErrors(ideaController.deleteIdea));
 
 // USER
 router.get('/account', userController.account);
@@ -67,6 +69,20 @@ router.post(
 
 // -- logout --
 router.get('/logout', authController.logout);
+
+// ADMIN
+// -- dashboard --
+router.get('/admin', userMiddleware.confirmAdmin, catchErrors(adminController.dashboard));
+
+// read 
+router.get('/admin/:id', catchErrors(adminController.getUser));
+
+// update 
+router.get('/admin/:id/edit', catchErrors(adminController.editUser));
+router.post('/admin/:id/edit', catchErrors(adminController.updateUser));
+
+// delete
+router.get('/admin/:id/delete', userMiddleware.checkIfCurrentUser, catchErrors(adminController.deleteUser));
 
 
 module.exports = router;

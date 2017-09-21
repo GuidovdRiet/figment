@@ -1,7 +1,7 @@
 mixin ideaCard(idea)
     .card
         .idea_card
-            a(href=`/idea/${idea._id}`)
+            a(href=`/ideas/${idea._id}`)
                 h2= idea.title
             hr
             .image(style=`background-image: url('uploads/${idea.photo}')`)

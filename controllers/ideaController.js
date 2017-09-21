@@ -58,17 +58,6 @@ exports.createIdea = async (req, res) => {
     return true;
 }
 
-exports.ensureThisUser = async (req, res, next) => {
-    const idea = await Idea.findOne({
-        _id: req.params.id
-    });
-
-    if(idea.author.equals(req.user._id)) return next();
-
-    req.flash('error', 'You are not allowed to access this page!')
-    return res.redirect('back');
-}
-
 exports.editIdea = async (req, res) => {
     const idea = await Idea.findOne({ _id: req.params.id });
     res.render('edit_idea', { title: `Edit ${idea.title}`, idea });
@@ -76,8 +65,8 @@ exports.editIdea = async (req, res) => {
 
 exports.updateIdea = async (req, res) => {
     const idea = await Idea.findOneAndUpdate({ _id: req.params.id }, req.body, {
-        new: true, // returns new idea not the old one
-        runValidator: true // runs validators again to check of required feels are filled in
+        new: true, 
+        runValidator: true 
     }).exec(); // exec forces to run the query
 
     req.flash('success', 'Idea Updated');

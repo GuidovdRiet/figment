@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
         required: 'Please supply a name',
         trim: true
     },
+    level: {
+        type: Number,
+        default: 0
+    },
     about: {
         type: String,
         required: 'Please tell something about yourself'
