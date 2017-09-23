@@ -25,4 +25,10 @@ const ideaSchema = new mongoose.Schema(
     }
 )
 
+ideaSchema.index({
+    title: 'text',
+    author: 'text',
+    body: 'text'
+})
+
 module.exports = mongoose.model('Idea', ideaSchema);

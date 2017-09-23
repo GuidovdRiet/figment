@@ -10,7 +10,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 
 // INDEX
 router.get(
-    '/', 
+    '/',
     authController.checkIfLoggedIn,
     catchErrors(ideaController.homePage)
 );
@@ -18,8 +18,8 @@ router.get(
 // IDEAS
 // -- create --
 router.get(
-    '/ideas/add', 
-    authController.checkIfLoggedIn, 
+    '/ideas/add',
+    authController.checkIfLoggedIn,
     ideaController.addIdea
 );
 
@@ -32,7 +32,7 @@ router.post(
 );
 
 router.post(
-    '/idea/add/:id', 
+    '/ideas/add/:id',
     userMiddleware.confirmUser,
     ideaController.upload,
     catchErrors(ideaController.resize),
@@ -40,13 +40,24 @@ router.post(
 );
 
 // -- read -- 
-router.get('/ideas/:id', catchErrors(ideaController.getIdea));
+router.get(
+    '/ideas/:id',
+    catchErrors(ideaController.getIdea)
+);
 
 // -- update -- 
-router.get('/idea/:id/edit', userMiddleware.confirmUser, catchErrors(ideaController.editIdea));
+router.get(
+    '/idea/:id/edit',
+    userMiddleware.confirmUser,
+    catchErrors(ideaController.editIdea)
+);
 
 // -- delete -- 
-router.get('/idea/:id/delete', userMiddleware.confirmUser, catchErrors(ideaController.deleteIdea));
+router.get(
+    '/idea/:id/delete',
+    userMiddleware.confirmUser,
+    catchErrors(ideaController.deleteIdea)
+);
 
 // USER
 router.get('/account', userController.account);
@@ -59,7 +70,7 @@ router.post('/login', authController.login);
 // -- register --
 router.get('/register', userController.registerForm);
 router.post(
-    '/register', 
+    '/register',
     ideaController.upload,
     catchErrors(ideaController.resize),
     userController.validateRegister, // validate the registration data
@@ -84,5 +95,7 @@ router.post('/admin/:id/edit', catchErrors(adminController.updateUser));
 // delete
 router.get('/admin/:id/delete', userMiddleware.checkIfCurrentUser, catchErrors(adminController.deleteUser));
 
+// API
+router.get('/api/search', catchErrors(ideaController.searchIdeas))
 
 module.exports = router;

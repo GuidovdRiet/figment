@@ -9,18 +9,19 @@ html
         .wrapper
             if user        
                 .nav
-                    a(href="/")
-                        img(src="/images/figment-logo.svg", alt="Figment").logo
-                    a(href="/") Home
-                    a(href="/") Ideas
-                    a(href="/") Artical
-                    a(href="/inspiration") Inspiration
-                                       
-                a(href="/account").account
-                    .avatar.nav_avatar(style=`background-image: url('/uploads/${user.photo}')`)
-
-                a(href="/ideas/add").icon
-                    img(src='/images/icons/add_idea.svg' alt='add idea')
+                    .nav_up
+                        a(href="/").logo_container
+                            img(src="/images/figment-logo.svg", alt="Figment")
+                        .functions
+                            img(src="/images/icons/search.svg", alt="Search").icon
+                            a(href="/account").account
+                                .avatar.nav_avatar(style=`background-image: url('/uploads/${user.photo}')`)
+                    .nav_low
+                        .nav_container
+                            a(href="/") Home
+                            a(href="/") Ideas
+                            a(href="/") Artical
+                            a(href="/inspiration") Inspiration
 
 
             .messages 

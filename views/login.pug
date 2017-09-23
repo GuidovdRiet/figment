@@ -7,9 +7,11 @@ block content
     .login_container
         img(src="/images/figment-icon.svg", alt="Figment").logo
         .card
-            .login_card    
-                h1= title
-                +loginForm()
-                a(href="/register") Register
-                a(href="/forgot-password") Forgot password
-                //- +forgotPassword()
+            .login_card
+                .login_content_container 
+                    h1= title
+                    +loginForm()
+                    .login_info
+                        a(href="/register") Register
+                        a(href="/forgot-password") Forgot password
+                    //- +forgotPassword()

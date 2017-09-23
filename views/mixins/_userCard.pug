@@ -2,7 +2,7 @@ mixin userCard(user = {})
     if user
         .card
             .user_card
-                .avatar(style=`background-image: url('uploads/${user.photo}')`)
+                .avatar(style=`background-image: url('/uploads/${user.photo}')`)
                 h2= user.name
                 p.subtitle= user.about
 

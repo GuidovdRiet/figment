@@ -1,19 +1,54 @@
 .nav {
-    display: flex;
-    justify-content: space-between;  
-    align-items: center;
-    margin-top: 8rem;
-    padding-right: 1.3em;
-    .logo {
-        width: 150px;
-        margin-right: 5.7em;
+    .nav_up {
+        background: $brand;
+        margin-top: 2em;
+        padding: .7em 2em;
+        border-top-left-radius: 1.7em;
+        border-top-right-radius: 1.7em;
+        display: flex;
+        justify-content: space-between;
+        .logo_container {
+            width: 125px;
+            margin-right: 5.7em;
+        }
+        .functions {
+            display: flex;
+            width: 6em;
+            align-items: center;
+            justify-content: space-between;
+            .icon {
+                width: 59%;
+                padding-right: 2em;
+            }
+            .nav_avatar {
+                background-repeat: no-repeat;
+                background-position: 50%;
+                border-radius: 50%;
+                background-size: 160%;
+                width: 40px;
+                height: 40px;
+                border: 2px solid white;
+            }
+        }
     }
-    a {
-        color: white;
-        letter-spacing: .1px;
-        &:active {
-            color: $brand;
+    .nav_low {
+        background: white;
+        padding: 1.2em 2em;
+        display: flex;
+        justify-content: center;
+        border-bottom-left-radius: 1.7em;
+        border-bottom-right-radius: 1.7em;
+        .nav_container {
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            a {
+                color: $secondary_grey;
+                letter-spacing: .1px;
+                &:active {
+                    color: $brand;
+                }
+            }
         }
     }
 }
-

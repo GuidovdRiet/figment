@@ -16,7 +16,7 @@ const multerOptions = {
 }
 
 exports.homePage = async (req, res) => {
-    const ideas = await Idea.find();
+    const ideas = await Idea.find().populate('author', ['name', 'about', 'photo']);
     // check how many ideas the user has published 
     const userIdeas = ideas.filter(idea => idea.author.equals(req.user._id));
     const ideaAmount = userIdeas.length;

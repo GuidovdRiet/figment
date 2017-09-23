@@ -1,10 +1,15 @@
 mixin ideaCard(idea)
     .card
         .idea_card
-            a(href=`/ideas/${idea._id}`)
-                h2= idea.title
-            hr
-            .image(style=`background-image: url('uploads/${idea.photo}')`)
-            p= idea.body
+            .image(style=`background-image: linear-gradient(rgba(40, 40, 41, 0.85), rgba(40, 40, 41, 0.85)), url('uploads/${idea.photo}')`)
+                .user_info            
+                    .avatar(style=`background-image: url('/uploads/${idea.author.photo}')`)
+                    .user_info_text_container
+                        h2= idea.author.name
+                        p.subtitle= idea.author.about
+            .text_container
+                a(href=`/ideas/${idea._id}`)
+                    h1= idea.title
+                p= idea.body
             .icon_container
-                != helpers.icon('plus')
+                != helpers.icon('add_idea')
