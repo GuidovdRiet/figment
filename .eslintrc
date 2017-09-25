@@ -11,6 +11,7 @@
         "semi": 0,
         "keyword-spacing": 0,
         "no-trailing-spaces": 0,
-        "no-underscore-dangle": 0
+        "no-underscore-dangle": 0,
+        "func-names": 0
     }
 }

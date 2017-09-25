@@ -6,8 +6,12 @@ html
         link(href='https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:300,300i,700', rel='stylesheet')
 
     body
+        .search
+            input(type="text" name="search" placeholder="search..")
+            .search_results
+
         .wrapper
-            if user        
+            if user     
                 .nav
                     .nav_up
                         a(href="/").logo_container
@@ -22,8 +26,7 @@ html
                             a(href="/") Ideas
                             a(href="/") Artical
                             a(href="/inspiration") Inspiration
-
-
+                
             .messages 
                 if locals.messages
                     each type in Object.keys(messages)

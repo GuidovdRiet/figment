@@ -21,17 +21,17 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Validator Middleware
-app.use(expressValidator())
+app.use(expressValidator());
 
 // populates req.cookies with any cookies that came along with the request
 app.use(cookieParser());
 
 // Express Session Middleware
 app.use(session({
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: false
-}))
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
 
 // // Passport JS is what we use to handle our logins
 app.use(passport.initialize());
@@ -39,20 +39,20 @@ app.use(passport.session());
 
 // Express Messages Middleware
 app.use(require('connect-flash')());
-app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
+app.use((req, res, next) => {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
 });
 
 // Use flash for flash messaging
 app.use(flash());
 
 // global variables
-app.use(function(req, res, next) {
-  res.locals.messages = req.flash();
-  res.locals.helpers = require('./helpers');
-  res.locals.user = req.user || null;
-  next();
+app.use((req, res, next) => {
+    res.locals.messages = req.flash();
+    res.locals.helpers = require('./helpers');
+    res.locals.user = req.user || null;
+    next();
 });
 
 // Takes the raw requests and turns them into usable properties on req.body
@@ -60,7 +60,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Handle the routes
-app.use('/', routes)
+app.use('/', routes);
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
@@ -70,8 +70,8 @@ app.use(errorHandlers.flashValidationErrors);
 
 // Otherwise this was a really bad error we didn't expect! Shoot eh
 if (app.get('env') === 'development') {
-  /* Development Error Handler - Prints stack trace */
-  app.use(errorHandlers.developmentErrors);
+    /* Development Error Handler - Prints stack trace */
+    app.use(errorHandlers.developmentErrors);
 }
 
 // production error handler

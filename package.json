@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/GuidovdRiet/figment#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.18.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
@@ -38,6 +39,9 @@
     "validator": "^8.2.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
     "concurrently": "^3.5.0",
     "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
