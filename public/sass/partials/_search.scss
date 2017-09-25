@@ -25,13 +25,23 @@
     }
     .search_results {
         flex-direction: column;
+        width: 40em;
         a {
+            strong {
+                font-size: 2em;
+            }
             text-decoration: none;
             border: 2px solid $border;
             color: $secondary_grey;
             margin-bottom: 1em;
             padding: 1em;
-            font-size: 2em;
+            &:hover {
+                box-shadow: $shadow;                
+            }
+        }
+        p {
+            font-size: 1em;
+            margin-top: 1em;
         }
     }
 }

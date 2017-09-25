@@ -487,8 +487,7 @@ body {
   display: flex;
   justify-content: space-between; }
   .nav .nav_up .logo_container {
-    width: 125px;
-    margin-right: 5.7em; }
+    width: 125px; }
   .nav .nav_up .functions {
     display: flex;
     width: 6em;
@@ -722,11 +721,18 @@ table {
     .search input[type="text"]:focus {
       outline-width: 0; }
   .search .search_results {
-    flex-direction: column; }
+    flex-direction: column;
+    width: 40em; }
     .search .search_results a {
       text-decoration: none;
       border: 2px solid #F9F9F9;
       color: #C6C7C9;
       margin-bottom: 1em;
-      padding: 1em;
-      font-size: 2em; }
+      padding: 1em; }
+      .search .search_results a strong {
+        font-size: 2em; }
+      .search .search_results a:hover {
+        box-shadow: 0px 6px 25px -10px rgba(0, 0, 0, 0.1); }
+    .search .search_results p {
+      font-size: 1em;
+      margin-top: 1em; }

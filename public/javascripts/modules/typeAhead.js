@@ -16,7 +16,9 @@ const closeSearch = (search) => {
 
 searchIcon.addEventListener('click', () => {
     const search = document.querySelector('.search');
+    const input = document.querySelector('input[name="search"]');
     search.style.display = 'flex';
+    input.focus();
     closeSearch(search);
 });
 
@@ -25,6 +27,7 @@ const searchResultsHtml = ideas =>
         .map(idea => `
             <a href="/ideas/${idea._id}/">
                 <strong>&#8594 ${idea.title}</strong>
+                <p>${idea.body.split(' ').slice(0, 25).join(' ')}</p>
             </a>
         `)
         .join('');
