@@ -1,14 +1,33 @@
 const axios = require('axios');
+const searchIcon = document.querySelector('.search_icon');
 
-function searchResultsHtml(ideas) {
-    return ideas
+const closeSearch = (search) => {
+    const paramSearch = search;
+    const exitIcon = document.querySelector('.exit_icon');
+    exitIcon.addEventListener('click', () => {
+        paramSearch.style.display = 'none';
+    });
+    window.addEventListener('keydown', (e) => {
+        if (e.keyCode === 27) {
+            paramSearch.style.display = 'none';
+        }
+    });
+};
+
+searchIcon.addEventListener('click', () => {
+    const search = document.querySelector('.search');
+    search.style.display = 'flex';
+    closeSearch(search);
+});
+
+const searchResultsHtml = ideas =>
+    ideas
         .map(idea => `
             <a href="/ideas/${idea._id}/">
-                <strong>${idea.title}</strong>
+                <strong>&#8594 ${idea.title}</strong>
             </a>
         `)
-        .join();
-}
+        .join('');
 
 function typeAhead(search) {
     if (!search) return;
@@ -24,7 +43,7 @@ function typeAhead(search) {
         }
 
         // show the search results
-        searchResults.style.display = 'block';
+        searchResults.style.display = 'flex';
 
         axios
             .get(`/api/search?q=${this.value}`)

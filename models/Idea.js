@@ -7,8 +7,8 @@ const ideaSchema = new mongoose.Schema(
             required: 'You have to enter a title'
         },
         author: {
-            type: mongoose.Schema.ObjectId,
             ref: 'User',
+            type: mongoose.Schema.ObjectId,
             required: 'You must supply an author'
         },
         body: {

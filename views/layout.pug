@@ -7,7 +7,8 @@ html
 
     body
         .search
-            input(type="text" name="search" placeholder="search..")
+            img(src="/images/icons/cross.svg", alt="exit").exit_icon
+            input(type="text" name="search" placeholder="Search Figment..")
             .search_results
 
         .wrapper
@@ -17,7 +18,7 @@ html
                         a(href="/").logo_container
                             img(src="/images/figment-logo.svg", alt="Figment")
                         .functions
-                            img(src="/images/icons/search.svg", alt="Search").icon
+                            img(src="/images/icons/search.svg", alt="Search").search_icon
                             a(href="/account").account
                                 .avatar.nav_avatar(style=`background-image: url('/uploads/${user.photo}')`)
                     .nav_low
