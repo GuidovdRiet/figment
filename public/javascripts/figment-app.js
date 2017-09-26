@@ -1,8 +1,16 @@
 import typeAhead from './modules/typeAhead';
+import readingList from './modules/readingList';
+
 require('../sass/app.scss');
 
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+// Search Type ahead
+const search = document.querySelector('.search');
+typeAhead(search);
 
+// Add ideas to reading list
+const addToReadingListButtons = [
+    ...document.querySelectorAll('.readinglist_form')
+];
 
-typeAhead($('.search'));
+addToReadingListButtons.map(addToReadingListButton =>
+    addToReadingListButton.addEventListener('submit', readingList));

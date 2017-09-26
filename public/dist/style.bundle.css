@@ -598,8 +598,21 @@ body {
     justify-content: flex-end;
     height: 3.8em;
     margin: 0 -2em -.8em 0; }
-    .idea_card .icon_container svg {
-      width: 4em; }
+    .idea_card .icon_container button {
+      background: transparent;
+      border: none; }
+      .idea_card .icon_container button:active, .idea_card .icon_container button:focus {
+        outline: 0;
+        box-shadow: 0; }
+    .idea_card .icon_container .add_to_reading_list {
+      width: 4em;
+      height: 4em;
+      border-radius: 100%;
+      background-color: #FC5C5E; }
+    .idea_card .icon_container .add_to_reading_list_active {
+      background-image: url("/images/icons/add_idea_plus.svg"); }
+    .idea_card .icon_container .add_to_reading_list_remove {
+      background-image: url("/images/icons/remove_idea.svg"); }
 
 .login_card {
   height: 35em;
@@ -740,18 +753,19 @@ table {
 .reading_list {
   position: fixed;
   right: 0em;
-  bottom: 0em;
-  width: 4%;
-  height: 4.3em;
+  bottom: 0;
+  width: 3.7em;
+  height: 3.7em;
   background: #FC5C5E;
   padding: 1em;
-  border-top-left-radius: 1.7em; }
+  border-top-left-radius: 1.7em;
+  border-bottom-left-radius: .2em; }
   .reading_list p {
     color: #FC5C5E;
     font-size: 1.2em;
     font-weight: bold;
     background: white;
-    margin: -1.2em -1em 0 -1.4em;
+    margin: -1.2em 0em 0 -1.2em;
     border: 2px solid #FC5C5E;
     text-align: center;
     width: 1.6em;

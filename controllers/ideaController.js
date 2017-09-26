@@ -110,12 +110,12 @@ exports.searchIdeas = async (req, res) => {
     res.json(ideas);
 };
 
-exports.likeIdea = async (req, res) => {
-    const likes = req.user.likes.map(obj => obj.toString());
-    const operator = likes.includes(req.params.id) ? '$pull' : '$addToSet';
+exports.readingList = async (req, res) => {
+    const readingList = req.user.readingList.map(obj => obj.toString());
+    const operator = readingList.includes(req.params.id) ? '$pull' : '$addToSet';
     const user = await User.findByIdAndUpdate(
         req.user._id,
-        { [operator]: { likes: req.params.id } },
+        { [operator]: { readingList: req.params.id } },
         { new: true }
     );
     res.json(user);

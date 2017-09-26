@@ -97,6 +97,6 @@ router.get('/admin/:id/delete', userMiddleware.checkIfCurrentUser, catchErrors(a
 
 // API
 router.get('/api/search', catchErrors(ideaController.searchIdeas))
-router.post('/api/ideas/:id/like', catchErrors(ideaController.likeIdea))
+router.post('/api/ideas/:id/readinglist', catchErrors(ideaController.readingList))
 
 module.exports = router;

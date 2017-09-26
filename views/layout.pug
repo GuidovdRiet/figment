@@ -13,9 +13,9 @@ html
                 .search_results                
 
 
-        .reading_list
-            p 4
-            img(src="/images/icons/readinglist.svg", alt="Reading list").readinglist_icon
+            .reading_list
+                p.reading_list_counter= user.readingList.length
+                img(src="/images/icons/readinglist.svg", alt="Reading list").readinglist_icon
 
         .wrapper
             if user     

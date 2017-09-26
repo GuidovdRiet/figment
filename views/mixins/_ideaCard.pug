@@ -12,6 +12,6 @@ mixin ideaCard(idea)
                     h1= idea.title
                 p= idea.body
             .icon_container
-                form(action=`/api/ideas/${idea._id}/like` method="POST")
-                    button(type="submit" name="like")
-                        != helpers.icon('add_idea')
+                form(action=`/api/ideas/${idea._id}/readinglist` class="readinglist_form" method="POST")
+                    button(type="submit" name="addToReadingList")
+                        .add_to_reading_list.add_to_reading_list_active

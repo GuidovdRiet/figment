@@ -1,5 +1,6 @@
 const axios = require('axios');
 const dompurify = require('dompurify');
+
 const searchIcon = document.querySelector('.search_icon');
 
 const closeSearch = (search) => {

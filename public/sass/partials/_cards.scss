@@ -93,8 +93,26 @@
         justify-content: flex-end;
         height: 3.8em;
         margin: 0 -2em -.8em 0;
-        svg {
+        button {
+            background: transparent;
+            border: none;
+            &:active, 
+            &:focus {
+                outline: 0;
+                box-shadow: 0;
+            }
+        }
+        .add_to_reading_list {
             width: 4em;
+            height: 4em;
+            border-radius: 100%;
+            background-color: $brand;
+        }
+        .add_to_reading_list_active {
+            background-image: url('/images/icons/add_idea_plus.svg');
+        }
+        .add_to_reading_list_remove {
+            background-image: url('/images/icons/remove_idea.svg');
         }
     }
 }
