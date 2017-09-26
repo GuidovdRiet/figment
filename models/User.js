@@ -26,6 +26,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: 'Please tell something about yourself'
     },
+    likes: [
+        { type: mongoose.Schema.ObjectId, ref: 'Idea' }
+    ],
     photo: String
 });
 

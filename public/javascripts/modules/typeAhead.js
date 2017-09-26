@@ -1,4 +1,5 @@
 const axios = require('axios');
+const dompurify = require('dompurify');
 const searchIcon = document.querySelector('.search_icon');
 
 const closeSearch = (search) => {
@@ -12,6 +13,9 @@ const closeSearch = (search) => {
             paramSearch.style.display = 'none';
         }
     });
+    paramSearch.addEventListener('click', function () {
+        this.style.display = 'none';
+    })
 };
 
 searchIcon.addEventListener('click', () => {
@@ -52,8 +56,10 @@ function typeAhead(search) {
             .get(`/api/search?q=${this.value}`)
             .then((res) => {
                 if (res.data.length) {
-                    searchResults.innerHTML = searchResultsHtml(res.data);
+                    searchResults.innerHTML = dompurify.sanitize(searchResultsHtml(res.data));
+                    return;
                 }
+                searchResults.innerHTML = dompurify.sanitize(`<p>No search results for ${this.value} found</p>`);
             })
             .catch((err) => {
                 console.log(err);

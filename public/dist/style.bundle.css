@@ -736,3 +736,25 @@ table {
     .search .search_results p {
       font-size: 1em;
       margin-top: 1em; }
+
+.reading_list {
+  position: fixed;
+  right: 0em;
+  bottom: 0em;
+  width: 4%;
+  height: 4.3em;
+  background: #FC5C5E;
+  padding: 1em;
+  border-top-left-radius: 1.7em; }
+  .reading_list p {
+    color: #FC5C5E;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: white;
+    margin: -1.2em -1em 0 -1.4em;
+    border: 2px solid #FC5C5E;
+    text-align: center;
+    width: 1.6em;
+    height: 1.6em;
+    padding-top: .1em;
+    border-radius: 100%; }

@@ -12,4 +12,6 @@ mixin ideaCard(idea)
                     h1= idea.title
                 p= idea.body
             .icon_container
-                != helpers.icon('add_idea')
+                form(action=`/api/ideas/${idea._id}/like` method="POST")
+                    button(type="submit" name="like")
+                        != helpers.icon('add_idea')

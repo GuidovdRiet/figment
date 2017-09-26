@@ -1,0 +1,23 @@
+.reading_list {
+    position: fixed;
+    right: 0em;
+    bottom: 0em;
+    width: 4%;
+    height: 4.3em;
+    background: $brand;
+    padding: 1em;
+    border-top-left-radius: 1.7em;
+    p {
+        color: $brand;
+        font-size: 1.2em;
+        font-weight: bold;
+        background: white;
+        margin: -1.2em -1em 0 -1.4em;
+        border: 2px solid $brand;
+        text-align: center;
+        width: 1.6em;
+        height: 1.6em;
+        padding-top: .1em;
+        border-radius: 100%;
+    }
+}

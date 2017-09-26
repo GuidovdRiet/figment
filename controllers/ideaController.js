@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Idea = mongoose.model('Idea');
+const User = mongoose.model('User');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
@@ -107,4 +108,15 @@ exports.searchIdeas = async (req, res) => {
         // Limit to 5 search results
         .limit(5);
     res.json(ideas);
+};
+
+exports.likeIdea = async (req, res) => {
+    const likes = req.user.likes.map(obj => obj.toString());
+    const operator = likes.includes(req.params.id) ? '$pull' : '$addToSet';
+    const user = await User.findByIdAndUpdate(
+        req.user._id,
+        { [operator]: { likes: req.params.id } },
+        { new: true }
+    );
+    res.json(user);
 };
