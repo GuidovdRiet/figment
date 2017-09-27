@@ -120,3 +120,10 @@ exports.readingList = async (req, res) => {
     );
     res.json(user);
 };
+
+exports.getReadingList = async (req, res) => {
+    const ideas = await Idea.find({
+        _id: { $in: req.user.readingList }
+    });
+    res.render('readingList', { title: 'Reading List', ideas });
+}

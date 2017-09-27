@@ -16,7 +16,16 @@ function readingList(e) {
 
 // Toggle icon from add to remove
 function changeImage() {
-    this.classList.toggle('add_to_reading_list_remove');
+    if (this.classList.contains('add_to_reading_list_remove')) {
+        this.classList.remove('add_to_reading_list_remove');
+        this.classList.add('add_to_reading_list_active');
+        return;
+    }
+    if (this.classList.contains('add_to_reading_list_active')) {
+        this.classList.remove('add_to_reading_list_active');
+        this.classList.add('add_to_reading_list_remove');
+        return;
+    }
 }
 
 const addToReadingListIcons = [

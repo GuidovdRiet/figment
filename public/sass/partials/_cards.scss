@@ -107,6 +107,7 @@
             height: 4em;
             border-radius: 100%;
             background-color: $brand;
+            cursor: pointer;
         }
         .add_to_reading_list_active {
             background-image: url('/images/icons/add_idea_plus.svg');

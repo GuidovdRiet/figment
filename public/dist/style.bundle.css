@@ -608,7 +608,8 @@ body {
       width: 4em;
       height: 4em;
       border-radius: 100%;
-      background-color: #FC5C5E; }
+      background-color: #FC5C5E;
+      cursor: pointer; }
     .idea_card .icon_container .add_to_reading_list_active {
       background-image: url("/images/icons/add_idea_plus.svg"); }
     .idea_card .icon_container .add_to_reading_list_remove {

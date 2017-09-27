@@ -13,5 +13,7 @@ mixin ideaCard(idea)
                 p= idea.body
             .icon_container
                 form(action=`/api/ideas/${idea._id}/readinglist` class="readinglist_form" method="POST")
+                    - const readingListStrings = user.readingList.map(obj => obj.toString());
+                    - const readingListClass = readingListStrings.includes(idea._id.toString()) ? 'add_to_reading_list_remove' : 'add_to_reading_list_active';
                     button(type="submit" name="addToReadingList")
-                        .add_to_reading_list.add_to_reading_list_active
+                        .add_to_reading_list(class=readingListClass)
