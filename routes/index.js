@@ -113,5 +113,6 @@ router.post(
     '/api/ideas/:id/readinglist',
     catchErrors(ideaController.readingList)
 );
+router.post('/api/ideas/:id/hearts', catchErrors(ideaController.heartIdea));
 
 module.exports = router;

@@ -89,6 +89,8 @@ exports.deleteIdea = async (req, res) => {
     res.redirect('/');
 };
 
+// API
+
 exports.searchIdeas = async (req, res) => {
     // First find ideas that match te query params
     const ideas = await Idea.find(
@@ -127,3 +129,15 @@ exports.getReadingList = async (req, res) => {
     });
     res.render('readingList', { title: 'Reading List', ideas });
 }
+
+exports.heartIdea = async (req, res) => {
+    const idea = await Idea.findOne({ _id: req.params.id });
+    const hearts = idea.hearts.map(obj => obj.toString());
+    const operator = hearts.includes(req.user._id.toString()) ? '$pull' : '$addToSet';
+    const findIdea = await Idea.findByIdAndUpdate(
+        idea._id,
+        { [operator]: { hearts: req.user._id } },
+        { new: true }
+    );
+    res.json(findIdea);
+};

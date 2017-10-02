@@ -28,10 +28,10 @@ app.use(cookieParser());
 
 // Express Session Middleware
 app.use(session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false
-}));
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: false
+    }));
 
 // // Passport JS is what we use to handle our logins
 app.use(passport.initialize());

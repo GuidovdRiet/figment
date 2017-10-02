@@ -26,18 +26,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: 'Please tell something about yourself'
     },
-    readingList: [
-        { type: mongoose.Schema.ObjectId, ref: 'Idea' }
-    ],
+    readingList: [{ type: mongoose.Schema.ObjectId, ref: 'Idea' }],
     photo: String
 });
 
-// Passport-Local Mongoose will add a username, hash and salt field to store 
+// Passport-Local Mongoose will add a username, hash and salt field to store
 // the username, the hashed password and the salt value.
-// usernameField = Email to login 
+// usernameField = Email to login
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
-// Make errors pretty when value is not unique 
+// Make errors pretty when value is not unique
 userSchema.plugin(mongodbErrorHandler);
 
 module.exports = mongoose.model('User', userSchema);

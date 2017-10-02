@@ -24,7 +24,6 @@ function changeImage() {
     if (this.classList.contains('add_to_reading_list_active')) {
         this.classList.remove('add_to_reading_list_active');
         this.classList.add('add_to_reading_list_remove');
-        return;
     }
 }
 
