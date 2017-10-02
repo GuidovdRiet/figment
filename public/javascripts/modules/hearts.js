@@ -9,6 +9,7 @@ function hearts(e) {
         .post(this.action)
         .then((res) => {
             heartCount.innerHTML = res.data.hearts.length;
+            this.heart.classList.toggle('heart_active')
         })
         .catch((err) => {
             console.log(err);

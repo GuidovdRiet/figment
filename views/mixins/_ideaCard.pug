@@ -13,7 +13,9 @@ mixin ideaCard(idea)
                 p= idea.body
             .icon_container
                 form(action=`/api/ideas/${idea._id}/hearts` class="heartlist_form" method="POST").heart_form
-                    button(type="submit" name="hearts").heart_idea
+                    - const heartStrings = idea.hearts.map(obj => obj.toString());
+                    - const heartClass = heartStrings.includes(user._id.toString()) ? 'heart_active' : '';
+                    button(type="submit" name="heart" class=`heart_idea ${heartClass}`).heart_idea
                         != helpers.icon('favorite')
                     p #{idea.hearts.length}
                 form(action=`/api/ideas/${idea._id}/readinglist` class="readinglist_form" method="POST")

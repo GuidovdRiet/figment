@@ -622,6 +622,10 @@ body {
       .idea_card .icon_container .heart_form .heart_idea {
         width: 2.3em;
         height: 2.3em; }
+        .idea_card .icon_container .heart_form .heart_idea svg {
+          fill: #C6C7C9; }
+      .idea_card .icon_container .heart_form .heart_active svg {
+        fill: #FC5C5E; }
       .idea_card .icon_container .heart_form p {
         margin: .4em 0 0 .4em; }
 

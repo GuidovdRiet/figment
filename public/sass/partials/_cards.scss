@@ -123,6 +123,14 @@
             .heart_idea {
                 width: 2.3em;
                 height: 2.3em;
+                svg {
+                    fill: $secondary_grey;
+                }
+            }
+            .heart_active {
+                svg {
+                    fill: $brand;
+                }
             }
             p {
                 margin: .4em 0 0 .4em;
