@@ -595,7 +595,7 @@ body {
   .idea_card .icon_container {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     height: 3.8em;
     margin: 0 -2em -.8em 0; }
     .idea_card .icon_container button {
@@ -614,6 +614,16 @@ body {
       background-image: url("/images/icons/add_idea_plus.svg"); }
     .idea_card .icon_container .add_to_reading_list_remove {
       background-image: url("/images/icons/remove_idea.svg"); }
+    .idea_card .icon_container .heart_form {
+      display: flex;
+      flex-direction: row;
+      margin: -1.8em 0 0 3.8em;
+      width: 5em; }
+      .idea_card .icon_container .heart_form .heart_idea {
+        width: 2.3em;
+        height: 2.3em; }
+      .idea_card .icon_container .heart_form p {
+        margin: .4em 0 0 .4em; }
 
 .login_card {
   height: 35em;

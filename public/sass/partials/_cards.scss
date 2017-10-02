@@ -90,7 +90,7 @@
     .icon_container {
         width: 100%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         height: 3.8em;
         margin: 0 -2em -.8em 0;
         button {
@@ -114,6 +114,19 @@
         }
         .add_to_reading_list_remove {
             background-image: url('/images/icons/remove_idea.svg');
+        }
+        .heart_form {
+            display: flex;
+            flex-direction: row;
+            margin: -1.8em 0 0 3.8em;
+            width: 5em;
+            .heart_idea {
+                width: 2.3em;
+                height: 2.3em;
+            }
+            p {
+                margin: .4em 0 0 .4em;
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 import typeAhead from './modules/typeAhead';
 import readingList from './modules/readingList';
+import hearts from './modules/hearts';
 
+// import scss for webpack compiling
 require('../sass/app.scss');
 
 // Search Type ahead
@@ -14,3 +16,8 @@ const addToReadingListButtons = [
 
 addToReadingListButtons.map(addToReadingListButton =>
     addToReadingListButton.addEventListener('submit', readingList));
+
+// Heart ideas
+const heartsButtons = [...document.querySelectorAll('.heartlist_form')];
+heartsButtons.map(heartButton =>
+    heartButton.addEventListener('submit', hearts));
