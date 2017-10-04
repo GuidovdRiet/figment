@@ -6,21 +6,25 @@ const jimp = require('jimp');
 const uuid = require('uuid');
 const multerOptions = {
     storage: multer.memoryStorage(),
-    fileFilter(req, file, cb) { // fileFilter: function(req, file, next) {}
+    fileFilter(req, file, cb) {
+    // fileFilter: function(req, file, next) {}
         const isPhoto = file.mimetype.startsWith('image/'); // check if it is an image coming in
-        if(isPhoto) {
+        if (isPhoto) {
             cb(null, true); // continue file uploading without errors
         } else {
-            cb({ message: 'That filetype isn\'t allowed' }, false); // don't continue the process 
+            cb({ message: "That filetype isn't allowed" }, false); // don't continue the process
         }
     }
-}
+};
 
 exports.loginForm = (req, res) => {
     if (req.user) {
         res.redirect('/');
     }
-    res.render('login', { title: 'Login' });
+    res.render('login', {
+        title: 'Login',
+        authContainer: true
+    });
 };
 
 exports.registerForm = (req, res) => {
@@ -31,22 +35,31 @@ exports.validateRegister = (req, res, next) => {
     req.sanitizeBody('name'); // Remove script tags and special characters
     req.checkBody('name', 'You must supply a name').notEmpty();
     req.checkBody('email', 'That Email is not valid').isEmail();
-    req.sanitizeBody('email').normalizeEmail({ // Set how to convert the users emailadress
+    req.sanitizeBody('email').normalizeEmail({
+    // Set how to convert the users emailadress
         remove_dots: false,
         remove_extension: false,
         gmail_remove_subaddress: false
     });
     req.checkBody('password', 'Password Cannot be blank').notEmpty();
-    req.checkBody('password-confirm', 'Confirm Password cannot be blank!').notEmpty();
-    req.checkBody('password-confirm', 'Your passwords do not match').equals(req.body.password);
-    
+    req
+        .checkBody('password-confirm', 'Confirm Password cannot be blank!')
+        .notEmpty();
+    req
+        .checkBody('password-confirm', 'Your passwords do not match')
+        .equals(req.body.password);
+
     const errors = req.validationErrors();
 
-    if(errors) {
+    if (errors) {
         req.flash('error', errors.map(err => err.msg));
-        res.render('register', { title: 'Register', body: req.body, messages: req.flash() });
+        res.render('register', {
+            title: 'Register',
+            body: req.body,
+            messages: req.flash()
+        });
         return;
-    } 
+    }
     next();
 };
 
@@ -57,7 +70,7 @@ exports.resize = async (req, res, next) => {
         next();
         return;
     }
-    // Take the filename and give a unique identifier 
+    // Take the filename and give a unique identifier
     const fileType = req.file.mimetype.split('/')[1];
     req.body.photo = `${uuid.v4()}.${fileType}`;
     // Resize photo
@@ -66,18 +79,18 @@ exports.resize = async (req, res, next) => {
     // Save photo to folder
     await photo.write(`./public/uploads/${req.body.photo}`);
     next();
-}
+};
 
 exports.register = async (req, res, next) => {
-    const user = new User({ 
-        email: req.body.email, 
-        name: req.body.name, 
-        photo: req.body.photo, 
-        about: req.body.about 
+    const user = new User({
+        email: req.body.email,
+        name: req.body.name,
+        photo: req.body.photo,
+        about: req.body.about
     });
-    // .register comes from the model module passportLocalMongoos, 
+    // .register comes from the model module passportLocalMongoos,
     // .register is the method that hashes the password in the db
-    const registerWithPromise = promisify(User.register, User); 
+    const registerWithPromise = promisify(User.register, User);
     await registerWithPromise(user, req.body.password);
     next(); // pass to authController.login
 };
@@ -105,4 +118,3 @@ exports.updateAccount = async (req, res) => {
     req.flash('success', 'Updated account');
     res.redirect('back');
 };
-

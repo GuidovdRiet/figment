@@ -10,7 +10,8 @@ mixin ideaCard(idea)
             .text_container
                 a(href=`/ideas/${idea._id}`)
                     h1= idea.title
-                p= idea.body
+                p= idea.body.split(' ').slice(0, 150).join(' ')
+                    a(href=`ideas/${idea._id}`).continue_reading continue reading..
             .icon_container
                 form(action=`/api/ideas/${idea._id}/hearts` class="heartlist_form" method="POST").heart_form
                     - const heartStrings = idea.hearts.map(obj => obj.toString());

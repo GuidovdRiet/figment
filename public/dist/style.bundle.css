@@ -592,6 +592,9 @@ body {
       column-count: 2;
       column-gap: 3em;
       text-align: justify; }
+    .idea_card .text_container .continue_reading {
+      padding-left: .4em;
+      color: #4a4a4c; }
   .idea_card .icon_container {
     width: 100%;
     display: flex;
@@ -680,6 +683,10 @@ form {
   form label {
     margin-top: 1em; }
 
+.auth_container {
+  background: url(/images/pattern.svg), linear-gradient(#FC5C5E, #FC5C5E);
+  background-size: 60%; }
+
 .login_container {
   width: 100%;
   height: 100vh;
@@ -764,6 +771,9 @@ table {
     .search .search_results p {
       font-size: 1em;
       margin-top: 1em; }
+
+.reading {
+  margin-top: 6em; }
 
 .reading_list {
   position: fixed;

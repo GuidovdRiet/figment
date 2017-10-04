@@ -109,6 +109,7 @@ router.get(
 
 // API
 router.get('/api/search', catchErrors(ideaController.searchIdeas));
+router.get('/api/filter', catchErrors(ideaController.filterIdeas));
 router.post(
     '/api/ideas/:id/readinglist',
     catchErrors(ideaController.readingList)

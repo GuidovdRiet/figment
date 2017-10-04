@@ -2,7 +2,12 @@ extends layout
 
 include mixins/_ideaCard
 
-block content 
-    each idea in ideas 
-        +ideaCard(idea)
+block content
+    .reading
+        if ideas.length <= 0
+            a(href='/')
+                h1 add ideas to reading list.. 
+
+        each idea in ideas 
+            +ideaCard(idea)
         

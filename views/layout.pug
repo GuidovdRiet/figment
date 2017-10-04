@@ -5,12 +5,16 @@ html
         link(rel="stylesheet", href="/dist/style.bundle.css")
         link(href='https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:300,300i,700', rel='stylesheet')
 
-    body
+    body(class=authContainer ? 'auth_container' : null)
         if user
             .search
                 img(src="/images/icons/cross.svg", alt="exit").exit_icon
                 input(type="text" name="search" placeholder="Search Figment..")
-                .search_results                
+                input(type='checkbox' name='filter' value='Sports') 
+                label(for='sports') sports
+                input(type='checkbox' name='filter' value='Culture') 
+                label(for='culture') culture
+                .search_results
 
             a(href="/readinglist")
                 .reading_list

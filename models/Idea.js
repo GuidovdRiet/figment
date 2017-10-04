@@ -15,6 +15,7 @@ const ideaSchema = new mongoose.Schema(
             type: String,
             required: 'You have to enter an idea'
         },
+        tags: [String],
         hearts: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
         photo: String
     },
