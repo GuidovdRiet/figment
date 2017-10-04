@@ -55,6 +55,9 @@ router.get(
     catchErrors(ideaController.deleteIdea)
 );
 
+// -- popular --
+router.get('/popular', catchErrors(ideaController.popular));
+
 // READINGLIST
 // -- read --
 router.get(

@@ -458,6 +458,10 @@ h3 {
 * {
   box-sizing: border-box; }
 
+html {
+  min-height: 100%;
+  position: relative; }
+
 body {
   background: #DAE7F0; }
 
@@ -523,6 +527,9 @@ body {
   background-color: #fff;
   border-radius: 1.7em;
   box-shadow: 0px 6px 25px -10px rgba(0, 0, 0, 0.1); }
+
+.full_width_card {
+  margin-top: 6em; }
 
 .user_card {
   flex-direction: column;
@@ -718,7 +725,7 @@ table {
 
 .exit_icon {
   width: 3em;
-  position: absolute;
+  position: fixed;
   top: 2em;
   right: 2em;
   transition: all .1s ease-in-out; }
@@ -733,24 +740,27 @@ table {
   background-size: 160%; }
 
 .search {
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 100%;
   display: none;
   background: rgba(255, 255, 255, 0.95);
   z-index: 2;
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   align-items: center;
-  justify-content: center;
   flex-direction: column; }
   .search input[type="text"] {
     border: none;
-    padding: 2em 0;
+    padding: 2em 0 .8em 0;
     line-height: 2px;
     font-size: 5em;
-    color: #757575;
+    color: transparent;
     background-color: transparent;
+    text-shadow: 0 0 0 gray;
+    text-align: center;
     border-bottom: #C6C7C9;
     font-family: 'Source Sans Pro', sans-serif; }
     .search input[type="text"]:focus {
@@ -771,9 +781,6 @@ table {
     .search .search_results p {
       font-size: 1em;
       margin-top: 1em; }
-
-.reading {
-  margin-top: 6em; }
 
 .reading_list {
   position: fixed;

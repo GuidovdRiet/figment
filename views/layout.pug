@@ -9,12 +9,12 @@ html
         if user
             .search
                 img(src="/images/icons/cross.svg", alt="exit").exit_icon
-                input(type="text" name="search" placeholder="Search Figment..")
+                input(type="text" name="search" placeholder="Start typing to search..")
+                .search_results
                 input(type='checkbox' name='filter' value='Sports') 
                 label(for='sports') sports
                 input(type='checkbox' name='filter' value='Culture') 
                 label(for='culture') culture
-                .search_results
 
             a(href="/readinglist")
                 .reading_list

@@ -89,6 +89,12 @@ exports.deleteIdea = async (req, res) => {
     res.redirect('/');
 };
 
+exports.popular = async (req, res) => {
+    const ideas = await Idea.find();
+    ideas.sort((a, b) => b.hearts.length - a.hearts.length);
+    res.render('popular', { title: 'Most popular ideas', ideas })
+};
+
 // API
 
 exports.searchIdeas = async (req, res) => {
@@ -128,12 +134,14 @@ exports.getReadingList = async (req, res) => {
         _id: { $in: req.user.readingList }
     });
     res.render('readingList', { title: 'Reading List', ideas });
-}
+};
 
 exports.heartIdea = async (req, res) => {
     const idea = await Idea.findOne({ _id: req.params.id });
     const hearts = idea.hearts.map(obj => obj.toString());
-    const operator = hearts.includes(req.user._id.toString()) ? '$pull' : '$addToSet';
+    const operator = hearts.includes(req.user._id.toString())
+        ? '$pull'
+        : '$addToSet';
     const findIdea = await Idea.findByIdAndUpdate(
         idea._id,
         { [operator]: { hearts: req.user._id } },

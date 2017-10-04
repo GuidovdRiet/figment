@@ -8,9 +8,10 @@ mixin ideaForm(idea = {})
                 img(src=`/uploads/${idea.photo}`, alt=idea.name width=300)
         label(for="body") Idea
         textarea(name="body")= idea.body
-        - const tags = ['Art', 'Culture', 'Film', 'Food', 'Humor', 'Music', 'Photography', 'Social media', 'Sports', 'Business', 'Data science', 'Digital design', 'Programming', 'Health', 'Travel']
+        - const options = ['Art', 'Culture', 'Film', 'Food', 'Humor', 'Music', 'Photography', 'Social media', 'Sports', 'Business', 'Data science', 'Digital design', 'Programming', 'Health', 'Travel']
+        - const tags = idea.tags || []
         .tags
-            each tag in tags
-                input(type='checkbox' name='tags' class='tag' value=tag) 
-                label(for=tag) #{tag}
+            each option in options
+                input(type='checkbox' name='tags' class='tag' value=option checked=(tags.includes(option))) 
+                label(for=option) #{option}
         input(type="submit" value="Save")

@@ -68,7 +68,7 @@ function typeAhead(search) {
                 if (res.data.length) {
                     const results = res.data.filter(result =>
                         result.tags.includes(checkboxValues));
-                    searchResults.innerHTML = dompurify.sanitize(searchResultsHtml(checkboxValues ? results : res.data));   
+                    searchResults.innerHTML = dompurify.sanitize(searchResultsHtml(checkboxValues ? results : res.data));
                     return;
                 }
                 searchResults.innerHTML = dompurify.sanitize(`<p>No search results for ${this.value} found</p>`);
