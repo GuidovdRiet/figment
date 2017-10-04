@@ -1,6 +1,7 @@
 const axios = require('axios');
 const dompurify = require('dompurify');
 const searchIcon = document.querySelector('.search_icon');
+const checkboxes = document.querySelectorAll('input[name=filter]');
 
 const closeSearch = (search) => {
     const paramSearch = search;
@@ -13,9 +14,6 @@ const closeSearch = (search) => {
             paramSearch.style.display = 'none';
         }
     });
-    // paramSearch.addEventListener('click', function () {
-    //     this.style.display = 'none';
-    // })
 };
 
 if (searchIcon) {
@@ -41,11 +39,6 @@ const searchResultsHtml = ideas =>
         `)
         .join('');
 
-function filterSearchResults(results) {
-    const filtered = results.filter(result => result.tags.includes(filter));
-    return filtered;
-}
-
 function typeAhead(search) {
     if (!search) return;
 
@@ -59,14 +52,11 @@ function typeAhead(search) {
             return;
         }
 
-        let filter = '';
-        const filterInputs = [...document.querySelectorAll('input[name="filter"]')];
-        filterInputs.map((filterInput) => {
-            filterInput.addEventListener('change', function () {
-                if (this.checked) {
-                    filter = this.value;
-                }
-            });
+        let checkboxValues = null;
+        checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                checkboxValues = checkbox.value;
+            }
         });
 
         // show the search results
@@ -76,9 +66,9 @@ function typeAhead(search) {
             .get(`/api/search?q=${this.value}`)
             .then((res) => {
                 if (res.data.length) {
-                    const matchingResults = filterSearchResults(res.data);
-                    searchResults.innerHTML = dompurify.sanitize(searchResultsHtml(matchingResults));
-                    
+                    const results = res.data.filter(result =>
+                        result.tags.includes(checkboxValues));
+                    searchResults.innerHTML = dompurify.sanitize(searchResultsHtml(checkboxValues ? results : res.data));   
                     return;
                 }
                 searchResults.innerHTML = dompurify.sanitize(`<p>No search results for ${this.value} found</p>`);
