@@ -30,7 +30,10 @@ exports.homePage = async (req, res) => {
 };
 
 exports.addIdea = (req, res) => {
-    res.render('add_idea', { title: 'add idea' });
+    res.render('add_idea', { 
+        title: 'add idea',  
+        addIdeaContainer: true
+    });
 };
 
 exports.getIdea = async (req, res) => {
@@ -69,7 +72,7 @@ exports.createIdea = async (req, res) => {
 
 exports.editIdea = async (req, res) => {
     const idea = await Idea.findOne({ _id: req.params.id });
-    res.render('edit_idea', { title: `Edit ${idea.title}`, idea });
+    res.render('edit_idea', { title: `Edit ${idea.title}`, addIdeaContainer: true, idea });
 };
 
 exports.updateIdea = async (req, res) => {

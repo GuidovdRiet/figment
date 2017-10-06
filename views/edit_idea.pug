@@ -3,4 +3,7 @@ extends layout
 include mixins/_ideaForm
 
 block content 
-    +ideaForm(idea)
+    .content
+        img(src="/images/figment-icon.svg", alt="Figment")
+        h1 Update your idea!
+        +ideaForm(idea)

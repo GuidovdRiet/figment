@@ -671,13 +671,15 @@ form {
   form label {
     color: #BBBBBD;
     margin-bottom: .4em; }
-  form input[type="email"], form input[type="text"], form input[type="password"] {
+  form input[type="email"], form input[type="text"], form input[type="password"], form textarea {
     border: 1px solid #EEEEEE;
     border-radius: .6em;
     font-family: 'Source Sans Pro', sans-serif;
     color: #BBBBBD;
     margin-top: .4em;
     padding: .8em 2em; }
+  form input[type="email"]:focus, form input[type="text"]:focus, form input[type="password"]:focus, form textarea:focus {
+    outline: none; }
   form input[type="password"] {
     margin-bottom: 1.2em; }
   form input[type="submit"] {
@@ -689,6 +691,20 @@ form {
     color: white; }
   form label {
     margin-top: 1em; }
+  form .btn_upload {
+    display: flex;
+    align-items: center;
+    width: 12em;
+    height: 2em;
+    border: 1px solid white;
+    padding: 1.6em 1.7em 1.5em 1.7em;
+    border-radius: .7em;
+    margin: 0em 0 2em 0; }
+    form .btn_upload svg {
+      width: 1.4em;
+      fill: white; }
+    form .btn_upload p {
+      padding-left: 1em; }
 
 .auth_container {
   background: url(/images/pattern.svg), linear-gradient(#FC5C5E, #FC5C5E);
@@ -741,7 +757,7 @@ table {
 
 .search {
   width: 100vw;
-  height: 100%;
+  min-height: 120%;
   display: none;
   background: rgba(255, 255, 255, 0.95);
   z-index: 2;
@@ -766,6 +782,7 @@ table {
     .search input[type="text"]:focus {
       outline-width: 0; }
   .search .search_results {
+    display: flex;
     flex-direction: column;
     width: 40em; }
     .search .search_results a {
@@ -804,3 +821,61 @@ table {
     height: 1.6em;
     padding-top: .1em;
     border-radius: 100%; }
+
+.add_idea_container {
+  background: url(/images/topography.svg), linear-gradient(#FC5C5E, #FC5C5E); }
+  .add_idea_container .nav_up {
+    background-color: rgba(252, 92, 95, 0.2); }
+  .add_idea_container .reading_list {
+    display: none; }
+  .add_idea_container .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5em; }
+    .add_idea_container .content h1 {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: white;
+      font-size: 4em;
+      margin: .4em 0; }
+    .add_idea_container .content img {
+      width: 7%; }
+    .add_idea_container .content form {
+      width: 60%; }
+      .add_idea_container .content form label {
+        color: white; }
+      .add_idea_container .content form input[type="text"], .add_idea_container .content form textarea {
+        background: none;
+        color: white; }
+      .add_idea_container .content form input[type="file"] {
+        display: none; }
+      .add_idea_container .content form input[type="submit"] {
+        margin-top: 0; }
+      .add_idea_container .content form textarea {
+        height: 8em; }
+      .add_idea_container .content form .tags {
+        display: flex;
+        flex-wrap: wrap;
+        height: 12em;
+        margin-top: 3em; }
+        .add_idea_container .content form .tags .tag {
+          height: 0em;
+          margin-right: 1em; }
+          .add_idea_container .content form .tags .tag input[type="checkbox"] {
+            display: none; }
+          .add_idea_container .content form .tags .tag + label {
+            border: 1px solid white;
+            border-radius: .7em;
+            padding: 1rem 1rem 1rem 1rem; }
+          .add_idea_container .content form .tags .tag:checked + label {
+            background: rgba(105, 79, 79, 0.77); }
+      .add_idea_container .content form .upload_container {
+        display: flex; }
+        .add_idea_container .content form .upload_container img {
+          width: 70%;
+          margin: 0 0 1em 1em;
+          border-radius: .7em; }
+      .add_idea_container .content form input[type="submit"] {
+        background: white;
+        color: #FC5C5E; }

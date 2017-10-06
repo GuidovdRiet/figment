@@ -2,16 +2,20 @@ mixin ideaForm(idea = {})
     form(action=`/ideas/add/${idea._id || ''}` method="POST" enctype="multipart/form-data")
         label(for="title") Title
         input(type="text" name="title" value=idea.title)
-        label(for="photo") Photo
-            input(type="file" name="photo" accept="image/gif, image/png, image/jpeg")
-            if idea.photo
-                img(src=`/uploads/${idea.photo}`, alt=idea.name width=300)
         label(for="body") Idea
         textarea(name="body")= idea.body
-        - const options = ['Art', 'Culture', 'Film', 'Food', 'Humor', 'Music', 'Photography', 'Social media', 'Sports', 'Business', 'Data science', 'Digital design', 'Programming', 'Health', 'Travel']
+        - const options = ['Art', 'Culture', 'Film', 'Food', 'Humor', 'Music', 'Photography', 'Social media', 'Sports', 'Business', 'Data science', 'Digital design', 'Programming', 'Health', 'Travel', 'Food']
         - const tags = idea.tags || []
         .tags
             each option in options
-                input(type='checkbox' name='tags' class='tag' value=option checked=(tags.includes(option))) 
-                label(for=option) #{option}
+                .tag
+                    input(type='checkbox' name='tags' class='tag' id=option value=option checked=(tags.includes(option))) 
+                    label(for=option) &#8594 #{option}
+        .upload_container
+            label(for="photo" class="btn_upload") 
+                != helpers.icon('upload') 
+                p Upload photo
+                input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+            if idea.photo
+                img(src=`/uploads/${idea.photo}`, alt=idea.name width=700)
         input(type="submit" value="Save")

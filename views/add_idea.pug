@@ -2,10 +2,9 @@ extends layout
 
 include mixins/_ideaForm
 
-block content 
-    .login_container
-        .card
-            .login_card    
-                h1 Add an idea
-                +ideaForm(idea)
+block content
+    .content
+        img(src="/images/figment-icon.svg", alt="Figment")
+        h1 Add an idea &amp; inspire the world
+        +ideaForm(idea)
         

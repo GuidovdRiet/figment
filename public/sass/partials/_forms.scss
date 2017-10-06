@@ -5,13 +5,16 @@ form {
         color: #BBBBBD;
         margin-bottom: .4em;
     }
-    input[type="email"], input[type="text"], input[type="password"] {
+    input[type="email"], input[type="text"], input[type="password"], textarea {
         border: 1px solid #EEEEEE;
         border-radius: .6em;
         font-family: 'Source Sans Pro', sans-serif;
         color: #BBBBBD;
         margin-top: .4em;
         padding: .8em 2em;
+    }
+    input[type="email"]:focus, input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+        outline: none;
     }
     input[type="password"] {
         margin-bottom: 1.2em;
@@ -26,5 +29,23 @@ form {
     }
     label {
         margin-top: 1em;
+    }
+    .btn_upload {
+        display: flex;
+        align-items: center;
+        width: 12em;
+        height: 2em;
+        // background: rgba(225, 85, 92, 0.6);
+        border: 1px solid white;
+        padding: 1.6em 1.7em 1.5em 1.7em;
+        border-radius: .7em;
+        margin: 0em 0 2em 0;
+        svg {
+            width: 1.4em;
+            fill: white;
+        }
+        p {
+            padding-left: 1em;
+        }
     }
 }
