@@ -463,7 +463,7 @@ html {
   position: relative; }
 
 body {
-  background: #DAE7F0; }
+  background: url(/images/diagonal-lines.svg), linear-gradient(#FEBDAE, #FEBDAE); }
 
 .wrapper {
   width: 1120px;
@@ -485,7 +485,7 @@ body {
 .nav .nav_up {
   background: #FC5C5E;
   margin-top: 2em;
-  padding: .7em 2em;
+  padding: 0.7em 2em;
   border-top-left-radius: 1.7em;
   border-top-right-radius: 1.7em;
   display: flex;
@@ -519,14 +519,60 @@ body {
     justify-content: space-between; }
     .nav .nav_low .nav_container a {
       color: #C6C7C9;
-      letter-spacing: .1px; }
+      letter-spacing: 0.1px; }
       .nav .nav_low .nav_container a:active {
         color: #FC5C5E; }
+
+@keyframes scale {
+  0% {
+    transform: scale(0); }
+  75% {
+    transform: scale(1.2); }
+  100% {
+    transform: scale(1); } }
+
+.lower_nav {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end; }
+  .lower_nav .reading_list {
+    width: 3.7em;
+    height: 3.7em;
+    background: #FC5C5E;
+    padding: 1em;
+    border-top-left-radius: 1.7em;
+    border-bottom-left-radius: 0.2em; }
+    .lower_nav .reading_list p {
+      color: #FC5C5E;
+      font-size: 1.2em;
+      font-weight: bold;
+      background: white;
+      margin: -1.2em 0em 0 -1.2em;
+      border: 2px solid #FC5C5E;
+      text-align: center;
+      width: 1.6em;
+      height: 1.6em;
+      padding-top: 0.1em;
+      border-radius: 100%; }
+
+.scale_animate {
+  animation: scale;
+  animation-duration: .2s; }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 .user_card, .idea_card, .login_card {
   background-color: #fff;
   border-radius: 1.7em;
-  box-shadow: 0px 6px 25px -10px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0px 6px 25px -10px rgba(0, 0, 0, 0.1);
+  animation: fade-in;
+  animation-duration: 2s; }
 
 .full_width_card {
   margin-top: 6em; }
@@ -665,6 +711,40 @@ body {
         .login_card .login_content_container .login_info a:last-child {
           margin-left: 2em; }
 
+.single_idea_card {
+  margin: 4em 0;
+  background-color: #fff;
+  border-radius: 1.7em;
+  box-shadow: 0px 6px 25px -10px rgba(0, 0, 0, 0.1);
+  padding: 4em; }
+  .single_idea_card svg {
+    fill: #FC5C5E;
+    width: 2em; }
+  .single_idea_card h1 {
+    width: 18em;
+    font-size: 2.5em;
+    margin: 1.5em 0; }
+  .single_idea_card p {
+    text-align: justify;
+    column-count: 3;
+    column-gap: 2.2em; }
+  .single_idea_card ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em 0 3.3em 0; }
+    .single_idea_card ul li {
+      list-style: none;
+      margin-right: 1em;
+      background-color: #F3F3F3;
+      border-radius: .4em;
+      padding: .5em 2em; }
+  .single_idea_card .buttons_container {
+    display: flex;
+    justify-content: flex-end; }
+    .single_idea_card .buttons_container .btn_remove {
+      margin-left: 1em; }
+
 form {
   flex-direction: column;
   display: flex; }
@@ -755,9 +835,15 @@ table {
   border-radius: 50%;
   background-size: 160%; }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
 .search {
   width: 100vw;
-  min-height: 120%;
+  height: 100%;
   display: none;
   background: rgba(255, 255, 255, 0.95);
   z-index: 2;
@@ -766,6 +852,8 @@ table {
   left: 0;
   bottom: 0;
   right: 0;
+  animation: fade-in;
+  animation-duration: .3s;
   align-items: center;
   flex-direction: column; }
   .search input[type="text"] {
@@ -799,29 +887,6 @@ table {
       font-size: 1em;
       margin-top: 1em; }
 
-.reading_list {
-  position: fixed;
-  right: 0em;
-  bottom: 0;
-  width: 3.7em;
-  height: 3.7em;
-  background: #FC5C5E;
-  padding: 1em;
-  border-top-left-radius: 1.7em;
-  border-bottom-left-radius: .2em; }
-  .reading_list p {
-    color: #FC5C5E;
-    font-size: 1.2em;
-    font-weight: bold;
-    background: white;
-    margin: -1.2em 0em 0 -1.2em;
-    border: 2px solid #FC5C5E;
-    text-align: center;
-    width: 1.6em;
-    height: 1.6em;
-    padding-top: .1em;
-    border-radius: 100%; }
-
 .add_idea_container {
   background: url(/images/topography.svg), linear-gradient(#FC5C5E, #FC5C5E); }
   .add_idea_container .nav_up {
@@ -852,6 +917,8 @@ table {
         display: none; }
       .add_idea_container .content form input[type="submit"] {
         margin-top: 0; }
+        .add_idea_container .content form input[type="submit"]:hover {
+          cursor: pointer; }
       .add_idea_container .content form textarea {
         height: 8em; }
       .add_idea_container .content form .tags {
@@ -870,12 +937,64 @@ table {
             padding: 1rem 1rem 1rem 1rem; }
           .add_idea_container .content form .tags .tag:checked + label {
             background: rgba(105, 79, 79, 0.77); }
+        .add_idea_container .content form .tags label:hover {
+          cursor: pointer; }
       .add_idea_container .content form .upload_container {
         display: flex; }
+        .add_idea_container .content form .upload_container .btn_upload {
+          cursor: pointer; }
         .add_idea_container .content form .upload_container img {
-          width: 70%;
+          width: 60%;
           margin: 0 0 1em 1em;
           border-radius: .7em; }
       .add_idea_container .content form input[type="submit"] {
         background: white;
         color: #FC5C5E; }
+
+.add_idea {
+  width: 2em;
+  height: 2em;
+  background: #C6C7C9;
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.btn {
+  text-decoration: none;
+  padding: 1em 2em;
+  border-radius: .2em;
+  color: white; }
+
+.btn_remove {
+  background: #FC5C5E; }
+
+.btn_edit {
+  background: #C6C7C9; }
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg); }
+  25% {
+    transform: rotate(1deg); }
+  50% {
+    transform: rotate(-1deg); }
+  100% {
+    transform: rotate(0deg); } }
+
+.flash {
+  display: flex;
+  margin-top: 1em;
+  padding: 1em 2em;
+  border-radius: .7em;
+  border: 1px solid white;
+  color: white;
+  animation: shake;
+  animation-duration: .2s;
+  justify-content: space-between; }
+  .flash button {
+    background: none;
+    border: none;
+    color: white; }
+
+.flash_success {
+  background: rgba(164, 221, 135, 0.9); }

@@ -8,6 +8,11 @@ function readingList(e) {
         .post(this.action)
         .then((res) => {
             readingListCounter.innerHTML = res.data.readingList.length;
+            // Add scale animation when the reading list counter changes
+            readingListCounter.classList.toggle('scale_animate');
+            readingListCounter.addEventListener('animationend', () => {
+                readingListCounter.classList.remove('scale_animate');
+            })
         })
         .catch((err) => {
             console.log(err);

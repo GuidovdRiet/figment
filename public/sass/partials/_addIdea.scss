@@ -35,6 +35,9 @@
             }
             input[type="submit"] {
                 margin-top: 0;
+                &:hover {
+                    cursor: pointer;
+                }
             }
             textarea {
                 height: 8em;
@@ -59,11 +62,19 @@
                         background: rgba(105, 79, 79, 0.77);
                     }
                 }
+                label {
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
             }
             .upload_container {
                 display: flex;
+                .btn_upload {
+                    cursor: pointer;
+                }
                 img {
-                    width: 70%;
+                    width: 60%;
                     margin: 0 0 1em 1em;
                     border-radius: .7em;
                 }
@@ -74,4 +85,13 @@
             }
         }
     }
+}
+
+.add_idea {
+    width: 2em;
+    height: 2em;
+    background: $secondary_grey;
+    position: absolute;
+    top: 0;
+    right: 0;
 }

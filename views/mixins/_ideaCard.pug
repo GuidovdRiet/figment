@@ -5,7 +5,8 @@ mixin ideaCard(idea)
                 .user_info            
                     .avatar(style=`background-image: url('/uploads/${idea.author.photo}')`)
                     .user_info_text_container
-                        h2= idea.author.name
+                        a(href=`/users/${idea.author.id}`)
+                            h2= idea.author.name
                         p.subtitle= idea.author.about
             .text_container
                 a(href=`/ideas/${idea._id}`)

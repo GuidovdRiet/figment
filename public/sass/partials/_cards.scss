@@ -1,7 +1,18 @@
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .user_card, .idea_card, .login_card {
     background-color: #fff;
     border-radius: 1.7em;
     box-shadow: $shadow;
+    animation: fade-in;
+    animation-duration: 2s;
 }
 
 .full_width_card {
@@ -174,6 +185,48 @@
                     margin-left: 2em;
                 }
             }
+        }
+    }
+}
+
+.single_idea_card {
+    margin: 4em 0;
+    background-color: #fff;
+    border-radius: 1.7em;
+    box-shadow: $shadow;
+    padding: 4em;
+    svg {
+        fill: $brand;
+        width: 2em;
+    }
+    h1 {
+        width: 18em;
+        font-size: 2.5em;
+        margin: 1.5em 0;
+    }
+    p {
+        text-align: justify;
+        column-count: 3;
+        column-gap: 2.2em;
+    }
+    ul {
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 2em 0 3.3em 0;
+        li {
+            list-style: none;
+            margin-right: 1em;
+            background-color: #F3F3F3;
+            border-radius: .4em;
+            padding: .5em 2em;
+        }
+    }
+    .buttons_container {
+        display: flex;
+        justify-content: flex-end;
+        .btn_remove {
+            margin-left: 1em;
         }
     }
 }

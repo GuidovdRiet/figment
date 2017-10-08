@@ -8,7 +8,8 @@ html {
 }
 
 body {
-    background: $blue;
+    // background: #FEBDAE;
+    background: url(/images/diagonal-lines.svg), linear-gradient(#FEBDAE,#FEBDAE);
 }
 
 .wrapper {

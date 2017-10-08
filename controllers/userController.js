@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User'); // this is possible cause I import the model at start.js
+const Idea = mongoose.model('Idea'); // this is possible cause I import the model at start.js
 const promisify = require('es6-promisify');
 const multer = require('multer');
 const jimp = require('jimp');
@@ -96,11 +97,7 @@ exports.register = async (req, res, next) => {
 };
 
 exports.account = (req, res) => {
-    res.render('account', { title: 'Edit Your Accont ' });
-};
-
-exports.account = (req, res) => {
-    res.render('account', { title: 'Edit Account' });
+    res.render('account', { title: 'Profile' });
 };
 
 exports.updateAccount = async (req, res) => {
@@ -117,4 +114,12 @@ exports.updateAccount = async (req, res) => {
 
     req.flash('success', 'Updated account');
     res.redirect('back');
+};
+
+exports.getUser = async (req, res) => {
+    const user = await User.findOne({ _id: req.params.id });
+    const ideas = await Idea.find();
+    // Get ideas who belong to the specific user 
+    const userIdeas = ideas.filter(idea => idea.author.equals(req.params.id));
+    res.render('user_profile', { title: `${user.name} profile`, user, userIdeas })
 };

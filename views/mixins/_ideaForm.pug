@@ -4,7 +4,7 @@ mixin ideaForm(idea = {})
         input(type="text" name="title" value=idea.title)
         label(for="body") Idea
         textarea(name="body")= idea.body
-        - const options = ['Art', 'Culture', 'Film', 'Food', 'Humor', 'Music', 'Photography', 'Social media', 'Sports', 'Business', 'Data science', 'Digital design', 'Programming', 'Health', 'Travel', 'Food']
+        - const options = ['Art', 'Culture', 'Film', 'Food', 'Humor', 'Music', 'Photography', 'Social media', 'Sports', 'Business', 'Data science', 'Digital design', 'Programming', 'Health', 'Travel']
         - const tags = idea.tags || []
         .tags
             each option in options

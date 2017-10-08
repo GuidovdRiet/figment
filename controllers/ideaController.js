@@ -30,8 +30,8 @@ exports.homePage = async (req, res) => {
 };
 
 exports.addIdea = (req, res) => {
-    res.render('add_idea', { 
-        title: 'add idea',  
+    res.render('add_idea', {
+        title: 'add idea',
         addIdeaContainer: true
     });
 };
@@ -65,14 +65,18 @@ exports.resize = async (req, res, next) => {
 exports.createIdea = async (req, res) => {
     req.body.author = req.user._id;
     await new Idea(req.body).save();
-    req.flash('success', 'Article Created!');
+    req.flash('success', '✅ Success, idea successfully created');
     res.redirect('/');
     return true;
 };
 
 exports.editIdea = async (req, res) => {
     const idea = await Idea.findOne({ _id: req.params.id });
-    res.render('edit_idea', { title: `Edit ${idea.title}`, addIdeaContainer: true, idea });
+    res.render('edit_idea', {
+        title: `Edit ${idea.title}`,
+        addIdeaContainer: true,
+        idea
+    });
 };
 
 exports.updateIdea = async (req, res) => {
@@ -81,21 +85,21 @@ exports.updateIdea = async (req, res) => {
         runValidator: true
     }).exec(); // exec forces to run the query
 
-    req.flash('success', 'Idea Updated');
+    req.flash('success', '✅ Success, your idea has been updated');
     res.redirect(`/idea/${idea._id}/edit`);
 };
 
 exports.deleteIdea = async (req, res) => {
     await Idea.findOne({ _id: req.params.id });
     await Idea.findOneAndRemove({ _id: req.params.id });
-    req.flash('success', 'Idea deleted');
+    req.flash('success', 'Idea deleted 🚫');
     res.redirect('/');
 };
 
 exports.popular = async (req, res) => {
     const ideas = await Idea.find();
     ideas.sort((a, b) => b.hearts.length - a.hearts.length);
-    res.render('popular', { title: 'Most popular ideas', ideas })
+    res.render('popular', { title: 'Most popular ideas', ideas });
 };
 
 // API

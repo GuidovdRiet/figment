@@ -16,10 +16,12 @@ html
                 input(type='checkbox' name='filter' value='Culture') 
                 label(for='culture') culture
 
-            a(href="/readinglist")
-                .reading_list
-                    p.reading_list_counter= user.readingList.length
-                    img(src="/images/icons/readinglist.svg", alt="Reading list").readinglist_icon
+            .lower_nav
+                a(href="/readinglist")
+                    .reading_list
+                        p.reading_list_counter= user.readingList.length
+                        img(src="/images/icons/readinglist.svg", alt="Reading list").readinglist_icon
+
 
         .wrapper
             if user     
@@ -34,16 +36,19 @@ html
                     .nav_low
                         .nav_container
                             a(href="/") Home
-                            a(href="/") Ideas
-                            a(href="/") Artical
-                            a(href="/inspiration") Inspiration
+                            a(href="/popular") Most popular
+                            a(href="/readinglist") Readinglist
+                            a(href="/ideas/add") Add Idea
                 
             .messages 
                 if locals.messages
-                    each type in Object.keys(messages)
-                        each message in messages[type]
-                            .alert #{message}
-                            
+                    - const categories = Object.keys(messages)
+                    each category in categories 
+                        each type in Object.keys(messages)
+                            each message in messages[type]
+                                .flash(class=`flash_${category}`) 
+                                    p= message
+                                    button(onClick="this.parentElement.remove()") &times;
             block content
 
             block scripts

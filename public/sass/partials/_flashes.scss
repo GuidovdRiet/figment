@@ -1,0 +1,35 @@
+@keyframes shake {
+    0% {
+        transform: rotate(0deg)
+    }
+    25% {
+        transform: rotate(1deg)
+    }
+    50% {
+        transform: rotate(-1deg)
+    }
+    100% {
+        transform: rotate(0deg)
+    }
+}
+
+.flash {
+    display: flex;
+    margin-top: 1em;
+    padding: 1em 2em;
+    border-radius: .7em;
+    border: 1px solid white;
+    color: white;
+    animation: shake;
+    animation-duration: .2s;
+    justify-content: space-between;
+    button {
+        background: none;
+        border: none;
+        color: white;
+    }
+}
+
+.flash_success {
+    background: rgba(164, 221, 135, 0.9);
+}

@@ -1,15 +1,17 @@
 extends layout
 
 block content
-    pre= helpers.dump(idea)
-    h1= idea.title
-    h2= idea.author.name
-    p= idea.body
-    
-    ul 
-        each tag in idea.tags
-            li= tag
+    .single_idea_card
+        != helpers.icon('figment-logo-brand')
+        h1= idea.title
+        //- img(src=`/uploads/${idea.photo}`, alt="idea photo")
+        p= idea.body
+        
+        ul 
+            each tag in idea.tags
+                li= tag
 
-    if user && idea.author._id.equals(user._id)
-        a(href=`/idea/${idea._id}/edit`) Edit
-        a(href=`/idea/${idea._id}/delete/`) Delete
+        .buttons_container
+            if user && idea.author._id.equals(user._id)
+                a(href=`/idea/${idea._id}/edit`).btn.btn_edit Edit
+                a(href=`/idea/${idea._id}/delete/`).btn.btn_remove Delete

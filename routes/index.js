@@ -68,7 +68,6 @@ router.get(
 
 // USER
 router.get('/account', userController.account);
-router.post('/account', catchErrors(userController.updateAccount));
 
 // -- login --
 router.get('/login', userController.loginForm);
@@ -109,6 +108,9 @@ router.get(
     userMiddleware.checkIfCurrentUser,
     catchErrors(adminController.deleteUser)
 );
+
+// USERS
+router.get('/users/:id', catchErrors(userController.getUser));
 
 // API
 router.get('/api/search', catchErrors(ideaController.searchIdeas));

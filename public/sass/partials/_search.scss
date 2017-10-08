@@ -1,6 +1,15 @@
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .search {
     width: 100vw;
-    min-height: 120%;
+    height: 100%;
     display: none;
     background: rgba(255, 255, 255, 0.95);
     z-index: 2;
@@ -9,6 +18,8 @@
     left: 0;
     bottom: 0;
     right: 0;
+    animation: fade-in;
+    animation-duration: .3s; 
     align-items: center;
     flex-direction: column;
     input[type="text"] {

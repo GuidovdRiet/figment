@@ -1,0 +1,14 @@
+.btn {
+    text-decoration: none;
+    padding: 1em 2em;
+    border-radius: .2em;
+    color: white;
+}
+
+.btn_remove {
+    background: $brand;
+}
+
+.btn_edit {
+    background: $secondary_grey;
+}
