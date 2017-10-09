@@ -50,6 +50,23 @@
     }
 }
 
+.user_card_large {
+    margin: 4em 0;
+    padding-top: 7em;
+    .avatar {
+    position: relative;
+        .follow_user {
+            width: 3em;
+            height: 3em;
+            position: absolute;
+            top: 0;
+            right: -2em;
+            border-radius: 100%;
+            background: $brand;
+        }
+    }
+}
+
 .idea_card {
     margin-bottom: 8em;
     display: flex;
@@ -128,10 +145,10 @@
             cursor: pointer;
         }
         .add_to_reading_list_active {
-            background-image: url('/images/icons/add_idea_plus.svg');
+            background-image: url('/images/icons/add.svg');
         }
         .add_to_reading_list_remove {
-            background-image: url('/images/icons/remove_idea.svg');
+            background-image: url('/images/icons/remove.svg');
         }
         .heart_form {
             display: flex;
@@ -230,3 +247,4 @@
         }
     }
 }
+

@@ -602,6 +602,20 @@ body {
   .user_card .subtitle {
     width: 80%; }
 
+.user_card_large {
+  margin: 4em 0;
+  padding-top: 7em; }
+  .user_card_large .avatar {
+    position: relative; }
+    .user_card_large .avatar .follow_user {
+      width: 3em;
+      height: 3em;
+      position: absolute;
+      top: 0;
+      right: -2em;
+      border-radius: 100%;
+      background: #FC5C5E; }
+
 .idea_card {
   margin-bottom: 8em;
   display: flex;
@@ -667,9 +681,9 @@ body {
       background-color: #FC5C5E;
       cursor: pointer; }
     .idea_card .icon_container .add_to_reading_list_active {
-      background-image: url("/images/icons/add_idea_plus.svg"); }
+      background-image: url("/images/icons/add.svg"); }
     .idea_card .icon_container .add_to_reading_list_remove {
-      background-image: url("/images/icons/remove_idea.svg"); }
+      background-image: url("/images/icons/remove.svg"); }
     .idea_card .icon_container .heart_form {
       display: flex;
       flex-direction: row;

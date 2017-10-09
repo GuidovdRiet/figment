@@ -11,6 +11,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 router.get(
     '/',
     authController.checkIfLoggedIn,
+    userMiddleware.isCurrentUser,
     catchErrors(ideaController.homePage)
 );
 
@@ -110,15 +111,30 @@ router.get(
 );
 
 // USERS
-router.get('/users/:id', catchErrors(userController.getUser));
+router.get(
+    '/users/:id',
+    authController.checkIfLoggedIn,
+    catchErrors(userController.getUser)
+);
 
 // API
 router.get('/api/search', catchErrors(ideaController.searchIdeas));
 router.get('/api/filter', catchErrors(ideaController.filterIdeas));
 router.post(
     '/api/ideas/:id/readinglist',
+    authController.checkIfLoggedIn,
     catchErrors(ideaController.readingList)
 );
-router.post('/api/ideas/:id/hearts', catchErrors(ideaController.heartIdea));
+router.post(
+    '/api/ideas/:id/hearts',
+    authController.checkIfLoggedIn,
+    catchErrors(ideaController.heartIdea)
+);
+
+router.post(
+    '/api/:id/followers',
+    authController.checkIfLoggedIn,
+    catchErrors(userController.followers)
+);
 
 module.exports = router;

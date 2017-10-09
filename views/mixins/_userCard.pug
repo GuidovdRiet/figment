@@ -1,15 +1,19 @@
 mixin userCard(user = {})
     if user
         .card
-            .user_card
+            .user_card(class=userCardLarge ? 'user_card_large' : null)
                 .avatar(style=`background-image: url('/uploads/${user.photo}')`)
-                h2= user.name
+                    if !currentUser 
+                        form(action=`/api/${user._id}/followers` method="POST")
+                            button(type="submit" name="follower")
+                a(href=`/users/${user._id}`)
+                    h2= user.name
                 p.subtitle= user.about
 
                 .user_data
                     .thinkers
-                        h3 230
+                        h3= user.followers.length
                         p.subtitle thinkers
                     .ideas
-                        h3= userIdeasTotal
+                        h3= userIdeasTotal || userIdeas.length
                         p.subtitle ideas

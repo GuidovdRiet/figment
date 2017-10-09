@@ -1,7 +1,7 @@
 mixin ideaCard(idea)
     .card
         .idea_card
-            .image(style=`background-image: linear-gradient(rgba(40, 40, 41, 0.85), rgba(40, 40, 41, 0.85)), url('uploads/${idea.photo}')`)
+            .image(style=`background-image: linear-gradient(rgba(40, 40, 41, 0.85), rgba(40, 40, 41, 0.85)), url('/uploads/${idea.photo}')`)
                 .user_info            
                     .avatar(style=`background-image: url('/uploads/${idea.author.photo}')`)
                     .user_info_text_container

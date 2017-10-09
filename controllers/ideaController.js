@@ -24,9 +24,15 @@ exports.homePage = async (req, res) => {
         'photo'
     ]);
     // check how many ideas the user has published
+    const currentUser = req.isCurrentUser;
     const userIdeas = ideas.filter(idea => idea.author.equals(req.user._id));
     const ideaAmount = userIdeas.length;
-    res.render('index', { title: 'Figment', userIdeasTotal: ideaAmount, ideas });
+    res.render('index', {
+        title: 'Figment',
+        userIdeasTotal: ideaAmount,
+        currentUser,
+        ideas
+    });
 };
 
 exports.addIdea = (req, res) => {
@@ -148,7 +154,7 @@ exports.heartIdea = async (req, res) => {
     const hearts = idea.hearts.map(obj => obj.toString());
     const operator = hearts.includes(req.user._id.toString())
         ? '$pull'
-        : '$addToSet';
+        : '$addToSet';        
     const findIdea = await Idea.findByIdAndUpdate(
         idea._id,
         { [operator]: { hearts: req.user._id } },

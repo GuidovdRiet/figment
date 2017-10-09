@@ -105,7 +105,6 @@ exports.updateAccount = async (req, res) => {
         name: req.body.name,
         email: req.body.email
     };
-
     await User.findOneAndUpdate(
         { _id: req.user._id }, // take the _id from the request instead of the user for safety
         { $set: updates },
@@ -119,7 +118,42 @@ exports.updateAccount = async (req, res) => {
 exports.getUser = async (req, res) => {
     const user = await User.findOne({ _id: req.params.id });
     const ideas = await Idea.find();
-    // Get ideas who belong to the specific user 
+    const currentUser = req.user._id.equals(user.id);
+    // Get ideas who belong to the specific user
     const userIdeas = ideas.filter(idea => idea.author.equals(req.params.id));
-    res.render('user_profile', { title: `${user.name} profile`, user, userIdeas })
+    res.render('user_profile', {
+        title: `${user.name} profile`,
+        user,
+        userIdeas,
+        currentUser,
+        userCardLarge: true
+    });
+};
+
+exports.followers = async (req, res) => {
+    const userToFollow = await User.findOne({ _id: req.params.id });
+
+    // following req.user +1
+    const following = req.user.following.map(obj => obj.toString());
+    const operatorOne = following.includes(userToFollow._id.toString())
+        ? '$pull'
+        : '$addToSet';
+    const findUserToFollow = await User.findByIdAndUpdate(
+        req.user._id,
+        { [operatorOne]: { following: userToFollow._id } },
+        { new: true }
+    );
+
+    // followers userToFollow +1
+    const followers = userToFollow.followers.map(obj => obj.toString());
+    const operatorTwo = followers.includes(req.user._id.toString()) 
+        ? '$pull'
+        : '$addToSet';
+    await User.findByIdAndUpdate(
+        userToFollow._id,
+        { [operatorTwo]: { followers: req.user._id } },
+        { new: true }
+    );
+    
+    res.json(findUserToFollow);
 };

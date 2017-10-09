@@ -27,6 +27,8 @@ const userSchema = new mongoose.Schema({
         required: 'Please tell something about yourself'
     },
     readingList: [{ type: mongoose.Schema.ObjectId, ref: 'Idea' }],
+    following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    followers: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
     photo: String
 });
 
