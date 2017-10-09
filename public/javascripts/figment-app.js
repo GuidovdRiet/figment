@@ -1,8 +1,9 @@
 import typeAhead from './modules/typeAhead';
 import readingList from './modules/readingList';
 import hearts from './modules/hearts';
+import followers from './modules/followers'
 
-// import scss for webpack compiling
+// Import scss for webpack compiling
 require('../sass/app.scss');
 
 // Search Type ahead
@@ -22,6 +23,12 @@ const heartsButtons = [...document.querySelectorAll('.heartlist_form')];
 heartsButtons.map(heartButton =>
     heartButton.addEventListener('submit', hearts));
 
-// make input as big as placeholder text
+// Make input as big as placeholder text
 const searchInput = document.querySelector('input[name=search]');
 searchInput.setAttribute('size', searchInput.getAttribute('placeholder').length);
+
+// Follow users
+const followButton = document.querySelector('.followers_form');
+if(followButton) {
+    followButton.addEventListener('submit', followers);
+}

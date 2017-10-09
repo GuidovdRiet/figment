@@ -116,14 +116,14 @@ exports.updateAccount = async (req, res) => {
 };
 
 exports.getUser = async (req, res) => {
-    const user = await User.findOne({ _id: req.params.id });
+    const userProfile = await User.findOne({ _id: req.params.id });
     const ideas = await Idea.find();
-    const currentUser = req.user._id.equals(user.id);
+    const currentUser = req.user._id.equals(userProfile.id);
     // Get ideas who belong to the specific user
     const userIdeas = ideas.filter(idea => idea.author.equals(req.params.id));
     res.render('user_profile', {
-        title: `${user.name} profile`,
-        user,
+        title: `${userProfile.name}`,
+        userProfile,
         userIdeas,
         currentUser,
         userCardLarge: true
@@ -138,7 +138,7 @@ exports.followers = async (req, res) => {
     const operatorOne = following.includes(userToFollow._id.toString())
         ? '$pull'
         : '$addToSet';
-    const findUserToFollow = await User.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
         req.user._id,
         { [operatorOne]: { following: userToFollow._id } },
         { new: true }
@@ -149,11 +149,10 @@ exports.followers = async (req, res) => {
     const operatorTwo = followers.includes(req.user._id.toString()) 
         ? '$pull'
         : '$addToSet';
-    await User.findByIdAndUpdate(
+    const currentViewedUser = await User.findByIdAndUpdate(
         userToFollow._id,
         { [operatorTwo]: { followers: req.user._id } },
         { new: true }
     );
-    
-    res.json(findUserToFollow);
+    res.json(currentViewedUser);
 };

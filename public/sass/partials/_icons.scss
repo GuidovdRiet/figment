@@ -19,3 +19,11 @@
         cursor: pointer;
     }
 }
+
+.active_icon {
+    background-image: url('/images/icons/add.svg');
+}
+
+.remove_icon {
+    background-image: url('/images/icons/remove.svg');
+}

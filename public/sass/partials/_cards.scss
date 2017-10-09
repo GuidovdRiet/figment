@@ -1,250 +1,256 @@
 @keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.user_card, .idea_card, .login_card {
-    background-color: #fff;
-    border-radius: 1.7em;
-    box-shadow: $shadow;
-    animation: fade-in;
-    animation-duration: 2s;
+.user_card,
+.idea_card,
+.login_card {
+  background-color: #fff;
+  border-radius: 1.7em;
+  box-shadow: $shadow;
+  animation: fade-in;
+  animation-duration: 2s;
 }
 
 .full_width_card {
-    margin-top: 6em;
+  margin-top: 6em;
 }
 
 .user_card {
-    flex-direction: column;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  padding-top: 4em;
+  background: linear-gradient($brand, $brand 6%, white 6%, white 51%);
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
+  .user_data {
     display: flex;
-    align-items: center;
-    padding-top: 4em;
-    background: linear-gradient($brand, $brand 6%, white 6%, white 51%);  
-    .avatar {
-        width: 200px;
-        height: 200px;
-    }   
-    .user_data {
-        display: flex;
-        width: 100%;
-        margin-top: 4em;
-        border-top: 1px solid $border;
-        .thinkers, .ideas {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-            padding: 1em;
-        }
-        .thinkers {
-            border-right: 1px solid $border;
-        }
+    width: 100%;
+    margin-top: 4em;
+    border-top: 1px solid $border;
+    .thinkers,
+    .ideas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding: 1em;
     }
-    .subtitle {
-        width: 80%;
+    .thinkers {
+      border-right: 1px solid $border;
     }
+  }
+  .subtitle {
+    width: 80%;
+  }
 }
 
 .user_card_large {
-    margin: 4em 0;
-    padding-top: 7em;
-    .avatar {
+  margin: 4em 0;
+  padding-top: 7em;
+  .avatar {
     position: relative;
-        .follow_user {
-            width: 3em;
-            height: 3em;
-            position: absolute;
-            top: 0;
-            right: -2em;
-            border-radius: 100%;
-            background: $brand;
-        }
+    .follow {
+      width: 3em;
+      height: 3em;
+      position: absolute;
+      top: 0;
+      right: -2em;
+      border-radius: 100%;
+      border: none;
+      transition: all .2s ease-in-out;
+      cursor: pointer;
+      background-color: $brand;
+      &:focus {
+        outline: 0;
+        box-shadow: 0;
+      }
+      &:hover {
+        transform: scale(1.1);
+      }
     }
+  }
 }
 
 .idea_card {
-    margin-bottom: 8em;
+  margin-bottom: 8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 4px solid $brand;
+  .image {
+    width: 100%;
+    height: 14em;
+    border-top-left-radius: 1.5em;
+    border-top-right-radius: 1.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    border-top: 4px solid $brand;
-    .image {
-        width: 100%;
-        height: 14em;
-        border-top-left-radius: 1.5em;
-        border-top-right-radius: 1.5em;
-        background-repeat: no-repeat; 
-        background-position: center;
-        background-size: cover;
+    justify-content: center;
+    .user_info {
+      width: 80%;
+      display: flex;
+      .avatar {
+        width: 100px;
+        height: 100px;
+      }
+      .user_info_text_container {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
-        .user_info {
-            width: 80%;
-            display: flex;
-            .avatar {
-                width: 100px;
-                height: 100px;
-            }
-            .user_info_text_container {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                margin: -.9em 0 0 2em;
-                h2 {
-                    color: white;
-                    font-weight: lighter;
-                    font-size: 1.3em;
-                    margin-bottom: .1em;
-                }
-                p {
-                    text-align: left;
-                }
-            }
+        margin: -0.9em 0 0 2em;
+        h2 {
+          color: white;
+          font-weight: lighter;
+          font-size: 1.3em;
+          margin-bottom: 0.1em;
         }
-    }
-    .text_container {
-        width: 80%;
-        margin-bottom: 3.5em;
         p {
-            margin-top: 2em;
-            column-count: 2;
-            column-gap: 3em;
-            text-align: justify;
+          text-align: left;
         }
-        .continue_reading {
-            padding-left: .4em; 
-            color: $main_grey;
-        }
+      }
     }
-    .icon_container {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        height: 3.8em;
-        margin: 0 -2em -.8em 0;
-        button {
-            background: transparent;
-            border: none;
-            &:active, 
-            &:focus {
-                outline: 0;
-                box-shadow: 0;
-            }
-        }
-        .add_to_reading_list {
-            width: 4em;
-            height: 4em;
-            border-radius: 100%;
-            background-color: $brand;
-            cursor: pointer;
-        }
-        .add_to_reading_list_active {
-            background-image: url('/images/icons/add.svg');
-        }
-        .add_to_reading_list_remove {
-            background-image: url('/images/icons/remove.svg');
-        }
-        .heart_form {
-            display: flex;
-            flex-direction: row;
-            margin: -1.8em 0 0 3.8em;
-            width: 5em;
-            .heart_idea {
-                width: 2.3em;
-                height: 2.3em;
-                svg {
-                    fill: $secondary_grey;
-                }
-            }
-            .heart_active {
-                svg {
-                    fill: $brand;
-                }
-            }
-            p {
-                margin: .4em 0 0 .4em;
-            }
-        }
+  }
+  .text_container {
+    width: 80%;
+    margin-bottom: 3.5em;
+    p {
+      margin-top: 2em;
+      column-count: 2;
+      column-gap: 3em;
+      text-align: justify;
     }
+    .continue_reading {
+      padding-left: 0.4em;
+      color: $main_grey;
+    }
+  }
+  .icon_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 3.8em;
+    margin: 0 -2em -0.8em 0;
+    button {
+      background: transparent;
+      border: none;
+      &:active,
+      &:focus {
+        outline: 0;
+        box-shadow: 0;
+      }
+    }
+    .add_to_reading_list {
+      width: 4em;
+      height: 4em;
+      border-radius: 100%;
+      background-color: $brand;
+      cursor: pointer;
+    }
+    .heart_form {
+      display: flex;
+      flex-direction: row;
+      margin: -1.8em 0 0 3.8em;
+      width: 5em;
+      .heart_idea {
+        width: 2.3em;
+        height: 2.3em;
+        svg {
+          fill: $secondary_grey;
+        }
+      }
+      .heart_active {
+        svg {
+          fill: $brand;
+        }
+      }
+      p {
+        margin: 0.4em 0 0 0.4em;
+      }
+    }
+  }
 }
 
 .login_card {
-    height: 35em;
-    width: 30em;
+  height: 35em;
+  width: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .login_content_container {
+    width: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .login_content_container {
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        h1 {
-            color: $main_grey;
-            font-family: 'Playfair Display', serif;
-            margin: 0 0 1em 0;
-            text-align: center;
-        }
-        .login_info {
-            margin-top: 2em;
-            display: flex;
-            justify-content: center;
-            a {
-                color: $secondary_grey;
-                text-decoration: none;
-                &:last-child {
-                    margin-left: 2em;
-                }
-            }
-        }
+    h1 {
+      color: $main_grey;
+      font-family: "Playfair Display", serif;
+      margin: 0 0 1em 0;
+      text-align: center;
     }
+    .login_info {
+      margin-top: 2em;
+      display: flex;
+      justify-content: center;
+      a {
+        color: $secondary_grey;
+        text-decoration: none;
+        &:last-child {
+          margin-left: 2em;
+        }
+      }
+    }
+  }
 }
 
 .single_idea_card {
-    margin: 4em 0;
-    background-color: #fff;
-    border-radius: 1.7em;
-    box-shadow: $shadow;
-    padding: 4em;
-    svg {
-        fill: $brand;
-        width: 2em;
+  margin: 4em 0;
+  background-color: #fff;
+  border-radius: 1.7em;
+  box-shadow: $shadow;
+  padding: 4em;
+  svg {
+    fill: $brand;
+    width: 2em;
+  }
+  h1 {
+    width: 18em;
+    font-size: 2.5em;
+    margin: 1.5em 0;
+  }
+  p {
+    text-align: justify;
+    column-count: 3;
+    column-gap: 2.2em;
+  }
+  ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em 0 3.3em 0;
+    li {
+      list-style: none;
+      margin-right: 1em;
+      background-color: #f3f3f3;
+      border-radius: 0.4em;
+      padding: 0.5em 2em;
     }
-    h1 {
-        width: 18em;
-        font-size: 2.5em;
-        margin: 1.5em 0;
+  }
+  .buttons_container {
+    display: flex;
+    justify-content: flex-end;
+    .btn_remove {
+      margin-left: 1em;
     }
-    p {
-        text-align: justify;
-        column-count: 3;
-        column-gap: 2.2em;
-    }
-    ul {
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 2em 0 3.3em 0;
-        li {
-            list-style: none;
-            margin-right: 1em;
-            background-color: #F3F3F3;
-            border-radius: .4em;
-            padding: .5em 2em;
-        }
-    }
-    .buttons_container {
-        display: flex;
-        justify-content: flex-end;
-        .btn_remove {
-            margin-left: 1em;
-        }
-    }
+  }
 }
-

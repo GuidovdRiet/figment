@@ -4,7 +4,7 @@ include mixins/_ideaCard
 include mixins/_userCard
 
 block content
-    +userCard(user)
+    +userCard(user, userProfile)
 
     each userIdea in userIdeas
         +ideaCard(userIdea)

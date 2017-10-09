@@ -1,18 +1,23 @@
-mixin userCard(user = {})
+mixin userCard(user = {}, pageProfileUser = {})
+    - const currentUser = pageProfileUser ? pageProfileUser : user;
     if user
         .card
             .user_card(class=userCardLarge ? 'user_card_large' : null)
-                .avatar(style=`background-image: url('/uploads/${user.photo}')`)
-                    if !currentUser 
-                        form(action=`/api/${user._id}/followers` method="POST")
-                            button(type="submit" name="follower")
-                a(href=`/users/${user._id}`)
-                    h2= user.name
-                p.subtitle= user.about
+                .avatar(style=`background-image: url('/uploads/${currentUser.photo}')`)
+                    -const showFollowButton = (user._id.toString() === currentUser._id.toString()) ? true : false;
+                    if !showFollowButton
+                        form(action=`/api/${currentUser._id}/followers` class="followers_form" method="POST")
+                            - const followersStrings = currentUser.followers.map(obj => obj.toString());
+                            - const followButtonClass = followersStrings.includes(user._id.toString()) ? 'remove_icon' : 'active_icon';
+                            button(type="submit" class=`follow ${followButtonClass}` name="follow")
+                                .follow_user
+                a(href=`/users/${currentUser._id}`)
+                    h2= currentUser.name
+                p.subtitle= currentUser.about
 
                 .user_data
                     .thinkers
-                        h3= user.followers.length
+                        h3.thinkers_amount= currentUser.followers.length
                         p.subtitle thinkers
                     .ideas
                         h3= userIdeasTotal || userIdeas.length

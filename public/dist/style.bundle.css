@@ -567,7 +567,9 @@ body {
   100% {
     opacity: 1; } }
 
-.user_card, .idea_card, .login_card {
+.user_card,
+.idea_card,
+.login_card {
   background-color: #fff;
   border-radius: 1.7em;
   box-shadow: 0px 6px 25px -10px rgba(0, 0, 0, 0.1);
@@ -591,7 +593,8 @@ body {
     width: 100%;
     margin-top: 4em;
     border-top: 1px solid #F9F9F9; }
-    .user_card .user_data .thinkers, .user_card .user_data .ideas {
+    .user_card .user_data .thinkers,
+    .user_card .user_data .ideas {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -607,14 +610,22 @@ body {
   padding-top: 7em; }
   .user_card_large .avatar {
     position: relative; }
-    .user_card_large .avatar .follow_user {
+    .user_card_large .avatar .follow {
       width: 3em;
       height: 3em;
       position: absolute;
       top: 0;
       right: -2em;
       border-radius: 100%;
-      background: #FC5C5E; }
+      border: none;
+      transition: all .2s ease-in-out;
+      cursor: pointer;
+      background-color: #FC5C5E; }
+      .user_card_large .avatar .follow:focus {
+        outline: 0;
+        box-shadow: 0; }
+      .user_card_large .avatar .follow:hover {
+        transform: scale(1.1); }
 
 .idea_card {
   margin-bottom: 8em;
@@ -643,12 +654,12 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: -.9em 0 0 2em; }
+        margin: -0.9em 0 0 2em; }
         .idea_card .image .user_info .user_info_text_container h2 {
           color: white;
           font-weight: lighter;
           font-size: 1.3em;
-          margin-bottom: .1em; }
+          margin-bottom: 0.1em; }
         .idea_card .image .user_info .user_info_text_container p {
           text-align: left; }
   .idea_card .text_container {
@@ -660,14 +671,14 @@ body {
       column-gap: 3em;
       text-align: justify; }
     .idea_card .text_container .continue_reading {
-      padding-left: .4em;
+      padding-left: 0.4em;
       color: #4a4a4c; }
   .idea_card .icon_container {
     width: 100%;
     display: flex;
     justify-content: space-between;
     height: 3.8em;
-    margin: 0 -2em -.8em 0; }
+    margin: 0 -2em -0.8em 0; }
     .idea_card .icon_container button {
       background: transparent;
       border: none; }
@@ -680,10 +691,6 @@ body {
       border-radius: 100%;
       background-color: #FC5C5E;
       cursor: pointer; }
-    .idea_card .icon_container .add_to_reading_list_active {
-      background-image: url("/images/icons/add.svg"); }
-    .idea_card .icon_container .add_to_reading_list_remove {
-      background-image: url("/images/icons/remove.svg"); }
     .idea_card .icon_container .heart_form {
       display: flex;
       flex-direction: row;
@@ -697,7 +704,7 @@ body {
       .idea_card .icon_container .heart_form .heart_active svg {
         fill: #FC5C5E; }
       .idea_card .icon_container .heart_form p {
-        margin: .4em 0 0 .4em; }
+        margin: 0.4em 0 0 0.4em; }
 
 .login_card {
   height: 35em;
@@ -712,7 +719,7 @@ body {
     flex-direction: column; }
     .login_card .login_content_container h1 {
       color: #4a4a4c;
-      font-family: 'Playfair Display', serif;
+      font-family: "Playfair Display", serif;
       margin: 0 0 1em 0;
       text-align: center; }
     .login_card .login_content_container .login_info {
@@ -750,9 +757,9 @@ body {
     .single_idea_card ul li {
       list-style: none;
       margin-right: 1em;
-      background-color: #F3F3F3;
-      border-radius: .4em;
-      padding: .5em 2em; }
+      background-color: #f3f3f3;
+      border-radius: 0.4em;
+      padding: 0.5em 2em; }
   .single_idea_card .buttons_container {
     display: flex;
     justify-content: flex-end; }
@@ -842,6 +849,12 @@ table {
   .exit_icon:hover {
     transform: scale(1.05);
     cursor: pointer; }
+
+.active_icon {
+  background-image: url("/images/icons/add.svg"); }
+
+.remove_icon {
+  background-image: url("/images/icons/remove.svg"); }
 
 .avatar {
   background-repeat: no-repeat;

@@ -21,14 +21,14 @@ function readingList(e) {
 
 // Toggle icon from add to remove
 function changeImage() {
-    if (this.classList.contains('add_to_reading_list_remove')) {
-        this.classList.remove('add_to_reading_list_remove');
-        this.classList.add('add_to_reading_list_active');
+    if (this.classList.contains('remove_icon')) {
+        this.classList.remove('remove_icon');
+        this.classList.add('active_icon');
         return;
     }
-    if (this.classList.contains('add_to_reading_list_active')) {
-        this.classList.remove('add_to_reading_list_active');
-        this.classList.add('add_to_reading_list_remove');
+    if (this.classList.contains('active_icon')) {
+        this.classList.remove('active_icon');
+        this.classList.add('remove_icon');
     }
 }
 
