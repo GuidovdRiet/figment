@@ -20,6 +20,14 @@
     }
 }
 
+.edit_user {
+    margin-top: 1em;
+    svg {
+        fill: $secondary_grey;
+        width: 1em;
+    }
+}
+
 .active_icon {
     background-image: url('/images/icons/add.svg');
 }

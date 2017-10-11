@@ -67,9 +67,6 @@ router.get(
     catchErrors(ideaController.getReadingList)
 );
 
-// USER
-router.get('/account', userController.account);
-
 // -- login --
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
@@ -116,6 +113,14 @@ router.get(
     authController.checkIfLoggedIn,
     catchErrors(userController.getUser)
 );
+
+// USER
+router.get(
+    '/user/:id/edit',
+    authController.checkIfLoggedIn,
+    userController.editAccount
+);
+router.post('/user/:id/edit', userController.updateUserAccount);
 
 // API
 router.get('/api/search', catchErrors(ideaController.searchIdeas));

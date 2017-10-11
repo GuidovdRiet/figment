@@ -22,7 +22,7 @@ exports.updateUser = async (req, res) => {
         runValidator: true
     }).exec();
 
-    req.flash('success', 'Succesfuly updated')
+    req.flash('success', 'Succesfully updated')
     res.redirect(`/admin/${user._id}/edit`);
 }
 

@@ -588,6 +588,8 @@ body {
   .user_card .avatar {
     width: 200px;
     height: 200px; }
+  .user_card .btn {
+    padding: .3em 1em; }
   .user_card .user_data {
     display: flex;
     width: 100%;
@@ -849,6 +851,12 @@ table {
   .exit_icon:hover {
     transform: scale(1.05);
     cursor: pointer; }
+
+.edit_user {
+  margin-top: 1em; }
+  .edit_user svg {
+    fill: #C6C7C9;
+    width: 1em; }
 
 .active_icon {
   background-image: url("/images/icons/add.svg"); }

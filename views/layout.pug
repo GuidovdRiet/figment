@@ -31,13 +31,13 @@ html
                             img(src="/images/figment-logov3.svg", alt="Figment")
                         .functions
                             img(src="/images/icons/search.svg", alt="Search").search_icon
-                            a(href="/account").account
+                            a(href=`/users/${user._id}`).account
                                 .avatar.nav_avatar(style=`background-image: url('/uploads/${user.photo}')`)
                     .nav_low
                         .nav_container
                             a(href="/") Home
                             a(href="/popular") Most popular
-                            a(href="/readinglist") Readinglist
+                            a(href="/readinglist") Reading list
                             a(href="/ideas/add") Add Idea
                 
             .messages 

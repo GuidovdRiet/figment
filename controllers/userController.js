@@ -96,11 +96,11 @@ exports.register = async (req, res, next) => {
     next(); // pass to authController.login
 };
 
-exports.account = (req, res) => {
-    res.render('account', { title: 'Profile' });
+exports.editAccount = (req, res) => {
+    res.render('edit_account', { title: 'Profile' });
 };
 
-exports.updateAccount = async (req, res) => {
+exports.updateUserAccount = async (req, res) => {
     const updates = {
         name: req.body.name,
         email: req.body.email

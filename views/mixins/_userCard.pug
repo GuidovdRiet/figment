@@ -4,8 +4,8 @@ mixin userCard(user = {}, pageProfileUser = {})
         .card
             .user_card(class=userCardLarge ? 'user_card_large' : null)
                 .avatar(style=`background-image: url('/uploads/${currentUser.photo}')`)
-                    -const showFollowButton = (user._id.toString() === currentUser._id.toString()) ? true : false;
-                    if !showFollowButton
+                    -const showButton = (user._id.toString() === currentUser._id.toString()) ? true : false;
+                    if !showButton
                         form(action=`/api/${currentUser._id}/followers` class="followers_form" method="POST")
                             - const followersStrings = currentUser.followers.map(obj => obj.toString());
                             - const followButtonClass = followersStrings.includes(user._id.toString()) ? 'remove_icon' : 'active_icon';
@@ -14,6 +14,9 @@ mixin userCard(user = {}, pageProfileUser = {})
                 a(href=`/users/${currentUser._id}`)
                     h2= currentUser.name
                 p.subtitle= currentUser.about
+                if showButton
+                    a(href=`/user/${user._id}/edit` class="edit_user")
+                        !=helpers.icon('edit')
 
                 .user_data
                     .thinkers

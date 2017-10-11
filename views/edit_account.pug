@@ -1,0 +1,10 @@
+extends layout
+
+block content 
+    form(action=`/user/${user._id}/edit` method="POST")
+        label(for="name")
+        input(type="text" name="name" value=`${user.name}`)
+        label(for="email")
+        input(type="email" name="email" value=`${user.email}`)
+        input(type="submit" name="edit")
+        
