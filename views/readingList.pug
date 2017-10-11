@@ -6,8 +6,8 @@ block content
     .full_width_card
         if ideas.length <= 0
             a(href='/')
-                h1 add ideas to reading list.. 
+                h1 Add ideas to reading list.. 
 
         each idea in ideas 
-            +ideaCard(idea)
+            +ideaCard(idea, isReadingList)
         

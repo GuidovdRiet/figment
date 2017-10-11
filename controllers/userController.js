@@ -117,7 +117,11 @@ exports.updateAccount = async (req, res) => {
 
 exports.getUser = async (req, res) => {
     const userProfile = await User.findOne({ _id: req.params.id });
-    const ideas = await Idea.find();
+    const ideas = await Idea.find().populate('author', [
+        'name',
+        'about',
+        'photo'
+    ]);
     const currentUser = req.user._id.equals(userProfile.id);
     // Get ideas who belong to the specific user
     const userIdeas = ideas.filter(idea => idea.author.equals(req.params.id));

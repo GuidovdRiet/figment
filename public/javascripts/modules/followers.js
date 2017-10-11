@@ -29,6 +29,8 @@ function changeImage() {
 }
 
 const followButton = document.querySelector('.follow');
-followButton.addEventListener('click', changeImage);
+if(followButton) {
+    followButton.addEventListener('click', changeImage);
+}
 
 export default followers;

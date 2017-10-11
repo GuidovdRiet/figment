@@ -25,7 +25,9 @@ heartsButtons.map(heartButton =>
 
 // Make input as big as placeholder text
 const searchInput = document.querySelector('input[name=search]');
-searchInput.setAttribute('size', searchInput.getAttribute('placeholder').length);
+if(searchInput) {
+    searchInput.setAttribute('size', searchInput.getAttribute('placeholder').length);
+}
 
 // Follow users
 const followButton = document.querySelector('.followers_form');

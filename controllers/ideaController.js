@@ -71,7 +71,7 @@ exports.resize = async (req, res, next) => {
 exports.createIdea = async (req, res) => {
     req.body.author = req.user._id;
     await new Idea(req.body).save();
-    req.flash('success', '✅ Success, idea successfully created');
+    req.flash('success', 'Success, idea successfully created');
     res.redirect('/');
     return true;
 };
@@ -91,7 +91,7 @@ exports.updateIdea = async (req, res) => {
         runValidator: true
     }).exec(); // exec forces to run the query
 
-    req.flash('success', '✅ Success, your idea has been updated');
+    req.flash('success', 'Success, your idea has been updated');
     res.redirect(`/idea/${idea._id}/edit`);
 };
 
@@ -145,8 +145,12 @@ exports.readingList = async (req, res) => {
 exports.getReadingList = async (req, res) => {
     const ideas = await Idea.find({
         _id: { $in: req.user.readingList }
+    }).populate('author', ['name', 'about', 'photo']);
+    res.render('readingList', { 
+        title: 'Reading List', 
+        ideas,
+        isReadingList: true
     });
-    res.render('readingList', { title: 'Reading List', ideas });
 };
 
 exports.heartIdea = async (req, res) => {
@@ -154,7 +158,7 @@ exports.heartIdea = async (req, res) => {
     const hearts = idea.hearts.map(obj => obj.toString());
     const operator = hearts.includes(req.user._id.toString())
         ? '$pull'
-        : '$addToSet';        
+        : '$addToSet';
     const findIdea = await Idea.findByIdAndUpdate(
         idea._id,
         { [operator]: { hearts: req.user._id } },

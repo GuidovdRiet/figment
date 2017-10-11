@@ -1,5 +1,5 @@
-mixin ideaCard(idea)
-    .card
+mixin ideaCard(idea, isReadingList)
+    .card(class=`idea_${idea._id}`)
         .idea_card
             .image(style=`background-image: linear-gradient(rgba(40, 40, 41, 0.85), rgba(40, 40, 41, 0.85)), url('/uploads/${idea.photo}')`)
                 .user_info            
@@ -14,13 +14,23 @@ mixin ideaCard(idea)
                 p= idea.body.split(' ').slice(0, 150).join(' ')
                     a(href=`ideas/${idea._id}`).continue_reading continue reading..
             .icon_container
-                form(action=`/api/ideas/${idea._id}/hearts` class="heartlist_form" method="POST").heart_form
+                form(
+                    action=`/api/ideas/${idea._id}/hearts` 
+                    class="heartlist_form" 
+                    method="POST"
+                ).heart_form
                     - const heartStrings = idea.hearts.map(obj => obj.toString());
                     - const heartClass = heartStrings.includes(user._id.toString()) ? 'heart_active' : '';
                     button(type="submit" name="heart" class=`heart_idea ${heartClass}`).heart_idea
                         != helpers.icon('favorite')
                     p #{idea.hearts.length}
-                form(action=`/api/ideas/${idea._id}/readinglist` class="readinglist_form" method="POST")
+                form(
+                    action=`/api/ideas/${idea._id}/readinglist` 
+                    class="readinglist_form" 
+                    method="POST"
+                    data-card-id=idea._id
+                    data-reading-list= `${isReadingList}`
+                )
                     - const readingListStrings = user.readingList.map(obj => obj.toString());
                     - const readingListClass = readingListStrings.includes(idea._id.toString()) ? 'remove_icon' : 'active_icon';
                     button(type="submit" name="addToReadingList")

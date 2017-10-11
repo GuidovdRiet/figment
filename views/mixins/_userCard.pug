@@ -20,5 +20,8 @@ mixin userCard(user = {}, pageProfileUser = {})
                         h3.thinkers_amount= currentUser.followers.length
                         p.subtitle thinkers
                     .ideas
-                        h3= userIdeasTotal || userIdeas.length
+                        if userIdeas
+                            h3= userIdeas.length
+                        else 
+                            h3= userIdeasTotal
                         p.subtitle ideas
