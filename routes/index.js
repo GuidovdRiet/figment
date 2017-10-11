@@ -4,6 +4,7 @@ const ideaController = require('../controllers/ideaController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const adminController = require('../controllers/adminController');
+const commentController = require('../controllers/commentController');
 const userMiddleware = require('../middleware/userMiddleware');
 const { catchErrors } = require('../handlers/errorHandlers');
 
@@ -58,6 +59,14 @@ router.get(
 
 // -- popular --
 router.get('/popular', catchErrors(ideaController.popular));
+
+// COMMENTS
+// -- create --
+router.post(
+    '/comments/:id',
+    authController.checkIfLoggedIn,
+    catchErrors(commentController.addComment)
+);
 
 // READINGLIST
 // -- read --

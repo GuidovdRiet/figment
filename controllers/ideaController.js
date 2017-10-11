@@ -45,8 +45,8 @@ exports.addIdea = (req, res) => {
 exports.getIdea = async (req, res) => {
     const idea = await Idea.findOne({ _id: req.params.id }).populate('author', [
         'name',
-        'about'
-    ]);
+        'about',
+    ]).populate('comments');
     res.render('idea', { title: idea.title, idea });
 };
 

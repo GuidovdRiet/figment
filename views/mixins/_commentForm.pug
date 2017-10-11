@@ -1,0 +1,4 @@
+mixin commentForm(idea)
+    form(action=`/comments/${idea._id}` method="POST")
+        textarea(name="text" placeholder="What do you think about this idea?..")
+        input(type="submit" value="Submit")

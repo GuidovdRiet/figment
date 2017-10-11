@@ -1,5 +1,7 @@
 extends layout
 
+include mixins/_commentForm
+
 block content
     .single_idea_card
         != helpers.icon('figment-logo-brand')
@@ -15,3 +17,12 @@ block content
             if user && idea.author._id.equals(user._id)
                 a(href=`/idea/${idea._id}/edit`).btn.btn_edit Edit
                 a(href=`/idea/${idea._id}/delete/`).btn.btn_remove Delete
+    
+
+    +commentForm(idea)
+
+    //- make a mixin for a review
+    if idea.comments 
+        each comment in idea.comments
+            .single_idea_card
+                p= comment.text
