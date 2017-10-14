@@ -6,10 +6,11 @@ mixin registerForm(user = {})
         input(type="email" name="email")
         label(for="about") Describe yourself in a few words
         input(type="text" name="about")
-        label(for="photo") Photo
-            input(type="file" name="photo" accept="image/gif, image/png, image/jpeg")
-            if user.photo
-                img(src=`/uploads/${user.photo}`, alt=user.name width=200)
+        .upload_container
+            label(for="photo" class="btn_upload") 
+                != helpers.icon('upload') 
+                p Upload avatar
+                input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
         label(for="password") Password
         input(type="password" name="password")
         label(for="password-confirm") Confirm Password

@@ -1,12 +1,13 @@
 extends layout
 
 include mixins/_commentForm
+include mixins/_comment
 
 block content
-    .single_idea_card
+    .single_card
         != helpers.icon('figment-logo-brand')
-        h1= idea.title
-        //- img(src=`/uploads/${idea.photo}`, alt="idea photo")
+        .title_container
+            h1= idea.title
         p= idea.body
         
         ul 
@@ -14,7 +15,7 @@ block content
                 li= tag
 
         .buttons_container
-            if user && idea.author._id.equals(user._id)
+            if idea.author._id.equals(user._id)
                 a(href=`/idea/${idea._id}/edit`).btn.btn_edit Edit
                 a(href=`/idea/${idea._id}/delete/`).btn.btn_remove Delete
     
@@ -24,5 +25,4 @@ block content
     //- make a mixin for a review
     if idea.comments 
         each comment in idea.comments
-            .single_idea_card
-                p= comment.text
+            +comment(comment)

@@ -12,7 +12,7 @@ mixin ideaCard(idea, isReadingList)
                 a(href=`/ideas/${idea._id}`)
                     h1= idea.title
                 p= idea.body.split(' ').slice(0, 150).join(' ')
-                    a(href=`ideas/${idea._id}`).continue_reading continue reading..
+                a(href=`ideas/${idea._id}`).continue_reading continue reading..
             .icon_container
                 form(
                     action=`/api/ideas/${idea._id}/hearts` 

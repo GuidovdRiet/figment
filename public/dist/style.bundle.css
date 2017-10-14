@@ -455,6 +455,12 @@ h3 {
   font-weight: 700;
   margin: .2em 0; }
 
+@media all and (max-width: 1050px) {
+  h2 {
+    font-size: 2rem;
+    margin: .8em 0 .35em 0;
+    text-decoration: none; } }
+
 * {
   box-sizing: border-box; }
 
@@ -482,6 +488,14 @@ body {
     flex: 3;
     margin-left: 6em; }
 
+@media all and (max-width: 1000px) {
+  .content {
+    flex-direction: column; }
+    .content .user_container {
+      margin-bottom: 4em; }
+    .content .idea_container {
+      margin-left: 0; } }
+
 .nav .nav_up {
   background: #FC5C5E;
   margin-top: 2em;
@@ -501,7 +515,7 @@ body {
       background-repeat: no-repeat;
       background-position: 50%;
       border-radius: 50%;
-      background-size: 160%;
+      background-size: 170%;
       width: 40px;
       height: 40px;
       border: 2px solid white; }
@@ -573,7 +587,9 @@ body {
 
 .user_card,
 .idea_card,
-.login_card {
+.login_card,
+.edit_user_card,
+.edit_comment_card {
   background-color: #fff;
   border-radius: 1.7em;
   box-shadow: 0px 6px 25px -10px rgba(0, 0, 0, 0.1);
@@ -637,8 +653,7 @@ body {
   margin-bottom: 8em;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-top: 4px solid #FC5C5E; }
+  align-items: center; }
   .idea_card .image {
     width: 100%;
     height: 14em;
@@ -728,49 +743,130 @@ body {
       font-family: "Playfair Display", serif;
       margin: 0 0 1em 0;
       text-align: center; }
-    .login_card .login_content_container .login_info {
+    .login_card .login_content_container .login_info, .login_card .login_content_container .register_info {
       margin-top: 2em;
       display: flex;
       justify-content: center; }
-      .login_card .login_content_container .login_info a {
+      .login_card .login_content_container .login_info a, .login_card .login_content_container .register_info a {
         color: #C6C7C9;
-        text-decoration: none; }
-        .login_card .login_content_container .login_info a:last-child {
+        text-decoration: none;
+        background: #f3f3f3;
+        padding: .4em .8em;
+        border-radius: .4em; }
+        .login_card .login_content_container .login_info a:last-child, .login_card .login_content_container .register_info a:last-child {
           margin-left: 2em; }
+    .login_card .login_content_container .register_info a:last-child {
+      margin-left: 0em; }
 
-.single_idea_card {
+.register {
+  height: 54em; }
+  .register .btn_upload {
+    border: 1px solid #EEEEEE; }
+
+.single_card {
   margin: 4em 0;
   background-color: #fff;
   border-radius: 1.7em;
   box-shadow: 0px 6px 25px -10px rgba(0, 0, 0, 0.1);
   padding: 4em; }
-  .single_idea_card svg {
+  .single_card svg {
     fill: #FC5C5E;
     width: 2em; }
-  .single_idea_card h1 {
-    width: 18em;
+  .single_card h1 {
+    width: 100%;
     font-size: 2.5em;
     margin: 1.5em 0; }
-  .single_idea_card p {
+  .single_card p {
     text-align: justify;
-    column-count: 3;
+    column-count: 2;
     column-gap: 2.2em; }
-  .single_idea_card ul {
+  .single_card ul {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     margin: 2em 0 3.3em 0; }
-    .single_idea_card ul li {
+    .single_card ul li {
       list-style: none;
-      margin-right: 1em;
+      margin: 1em 1em 1em 0;
       background-color: #f3f3f3;
       border-radius: 0.4em;
       padding: 0.5em 2em; }
-  .single_idea_card .buttons_container {
+  .single_card .buttons_container {
     display: flex;
     justify-content: flex-end; }
-    .single_idea_card .buttons_container .btn_remove {
+    .single_card .buttons_container .btn_remove {
       margin-left: 1em; }
+
+.remove_card_animation {
+  opacity: 0;
+  transition: opacity 1s; }
+
+.comment {
+  margin-top: 1em; }
+  .comment .user_info_text_container a {
+    display: flex;
+    margin-bottom: 2em; }
+    .comment .user_info_text_container a .user_info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1.4em; }
+      .comment .user_info_text_container a .user_info h2 {
+        font-size: 1.9rem;
+        margin: .2em 0 0 0; }
+  .comment .user_info_text_container .avatar {
+    width: 50px;
+    height: 50px; }
+  .comment .posted {
+    margin-top: 1.6em; }
+  .comment .btn_edit, .comment .btn_remove {
+    padding: .6em .9em; }
+
+.edit_user_container {
+  display: flex;
+  justify-content: center; }
+  .edit_user_container .edit_user_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+    width: 35%;
+    height: 32em;
+    padding: 3em; }
+    .edit_user_container .edit_user_card .avatar {
+      width: 100px;
+      height: 100px; }
+  .edit_user_container .upload_container .btn_upload {
+    border: 1px solid #EEEEEE;
+    margin-bottom: 0; }
+
+.edit_comment_card {
+  margin-top: 2em;
+  padding: 3em 2em; }
+  .edit_comment_card form textarea {
+    height: 17em; }
+  .edit_comment_card form input[type="submit"] {
+    margin-bottom: 0; }
+
+@media all and (max-width: 1050px) {
+  .user_card .avatar {
+    width: 170px;
+    height: 170px; }
+  .user_card .subtitle {
+    width: 80%; } }
+
+@media all and (max-width: 635px) {
+  .idea_card .text_container p {
+    column-count: 0;
+    column-gap: 0; }
+  .idea_card .text_container .continue_reading {
+    padding-left: 0em; }
+  .idea_card .icon_container .heart_form {
+    margin: -1.8em 0 0 2.6em; }
+  .single_card h1 {
+    font-size: 2em; }
+  .single_card p {
+    column-count: 0;
+    column-gap: 0; } }
 
 form {
   flex-direction: column;
@@ -812,6 +908,29 @@ form {
       fill: white; }
     form .btn_upload p {
       padding-left: 1em; }
+
+input[type="file"] {
+  display: none; }
+
+.upload_container {
+  display: flex; }
+  .upload_container .btn_upload {
+    cursor: pointer;
+    margin: 1.3em 0 .3em 0;
+    width: 100%; }
+    .upload_container .btn_upload svg {
+      fill: #C6C7C9; }
+  .upload_container img {
+    width: 60%;
+    margin: 0 0 1em 1em;
+    border-radius: .7em; }
+
+.create_comment {
+  padding-top: 2em;
+  height: 15em; }
+
+.submit {
+  margin: 2em 0 4em 0; }
 
 .auth_container {
   background: url(/images/pattern.svg), linear-gradient(#FC5C5E, #FC5C5E);
@@ -872,7 +991,7 @@ table {
   background-repeat: no-repeat;
   background-position: 60%;
   border-radius: 50%;
-  background-size: 160%; }
+  background-size: 170%; }
 
 @keyframes fade-in {
   0% {
@@ -952,8 +1071,6 @@ table {
       .add_idea_container .content form input[type="text"], .add_idea_container .content form textarea {
         background: none;
         color: white; }
-      .add_idea_container .content form input[type="file"] {
-        display: none; }
       .add_idea_container .content form input[type="submit"] {
         margin-top: 0; }
         .add_idea_container .content form input[type="submit"]:hover {
@@ -981,10 +1098,17 @@ table {
       .add_idea_container .content form .upload_container {
         display: flex; }
         .add_idea_container .content form .upload_container .btn_upload {
-          cursor: pointer; }
-        .add_idea_container .content form .upload_container img {
-          width: 60%;
-          margin: 0 0 1em 1em;
+          cursor: pointer;
+          width: 12em;
+          margin: .3em 0 2.5em 0; }
+          .add_idea_container .content form .upload_container .btn_upload svg {
+            fill: white; }
+        .add_idea_container .content form .upload_container .imgContainer {
+          background-size: cover;
+          background-position: bottom;
+          width: 20em;
+          height: 12em;
+          margin: 0 0 2em 2em;
           border-radius: .7em; }
       .add_idea_container .content form input[type="submit"] {
         background: white;

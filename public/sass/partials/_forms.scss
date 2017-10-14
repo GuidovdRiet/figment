@@ -49,3 +49,33 @@ form {
         }
     }
 }
+
+input[type="file"] {
+    display: none;
+}
+
+.upload_container {
+    display: flex;
+    .btn_upload {
+        cursor: pointer;
+        margin: 1.3em 0 .3em 0;
+        width: 100%;
+        svg {
+          fill: $secondary_grey;
+        }
+    }
+    img {
+        width: 60%;
+        margin: 0 0 1em 1em;
+        border-radius: .7em;
+    }
+  }
+
+.create_comment {
+    padding-top: 2em;
+    height: 15em;
+}
+
+.submit {
+    margin: 2em 0 4em 0;
+}

@@ -4,7 +4,8 @@ const ideaSchema = new mongoose.Schema(
     {
         title: {
             type: String,
-            required: 'You have to enter a title'
+            required: 'You have to enter a title',
+            maxlength: [200, 'The title of your idea must be {MAXLENGTH} characers or less.']
         },
         author: {
             ref: 'User',
@@ -17,7 +18,10 @@ const ideaSchema = new mongoose.Schema(
         },
         tags: [String],
         hearts: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-        photo: String
+        photo: {
+            type: String,
+            default: 'default-idea-photo.jpeg'
+        }
     },
     {
         timestamps: {

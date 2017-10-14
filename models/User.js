@@ -26,10 +26,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: 'Please tell something about yourself'
     },
+    photo: {
+        type: String,
+        default: 'no-avatar-selected.jpeg'
+    },
     readingList: [{ type: mongoose.Schema.ObjectId, ref: 'Idea' }],
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    followers: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-    photo: String
+    followers: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 });
 
 // Passport-Local Mongoose will add a username, hash and salt field to store

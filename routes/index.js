@@ -41,7 +41,11 @@ router.post(
 );
 
 // -- read --
-router.get('/ideas/:id', catchErrors(ideaController.getIdea));
+router.get(
+    '/ideas/:id',
+    authController.checkIfLoggedIn,
+    catchErrors(ideaController.getIdea)
+);
 
 // -- update --
 router.get(
@@ -58,7 +62,11 @@ router.get(
 );
 
 // -- popular --
-router.get('/popular', catchErrors(ideaController.popular));
+router.get(
+    '/popular',
+    authController.checkIfLoggedIn,
+    catchErrors(ideaController.popular)
+);
 
 // COMMENTS
 // -- create --
@@ -66,6 +74,26 @@ router.post(
     '/comments/:id',
     authController.checkIfLoggedIn,
     catchErrors(commentController.addComment)
+);
+
+// -- update --
+router.get(
+    '/comment/:id/edit',
+    authController.checkIfLoggedIn,
+    catchErrors(commentController.editComment)
+);
+
+router.post(
+    '/comment/:id/edit',
+    authController.checkIfLoggedIn,
+    catchErrors(commentController.updateComment)
+);
+
+// -- delete --
+router.get(
+    '/comment/:id/delete',
+    authController.checkIfLoggedIn,
+    catchErrors(commentController.deleteComment)
 );
 
 // READINGLIST
@@ -129,7 +157,12 @@ router.get(
     authController.checkIfLoggedIn,
     userController.editAccount
 );
-router.post('/user/:id/edit', userController.updateUserAccount);
+router.post(
+    '/user/:id/edit',
+    ideaController.upload,
+    catchErrors(ideaController.resize),
+    catchErrors(userController.updateUserAccount)
+);
 
 // API
 router.get('/api/search', catchErrors(ideaController.searchIdeas));

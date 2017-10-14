@@ -101,9 +101,11 @@ exports.editAccount = (req, res) => {
 };
 
 exports.updateUserAccount = async (req, res) => {
+    console.log(req.body);
     const updates = {
         name: req.body.name,
-        email: req.body.email
+        email: req.body.email,
+        photo: req.body.photo
     };
     await User.findOneAndUpdate(
         { _id: req.user._id }, // take the _id from the request instead of the user for safety

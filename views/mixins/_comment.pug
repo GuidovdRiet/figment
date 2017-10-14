@@ -1,0 +1,14 @@
+mixin comment(comment)
+    .single_card.comment
+        .user_info_text_container
+            a(href=`/users/${comment.author.id}`)
+                .avatar(style=`background-image: url('/uploads/${comment.author.photo}')`)
+                .user_info
+                    h2= comment.author.name
+                    p.subtitle= comment.author.about
+        p= comment.text
+        p.posted= helpers.moment(comment.created).fromNow()
+        .buttons_container
+            comment.author._id.equals(user._id)
+                a(href=`/comment/${comment._id}/edit`).btn.btn_edit Edit
+                a(href=`/comment/${comment._id}/delete`).btn.btn_remove Delete

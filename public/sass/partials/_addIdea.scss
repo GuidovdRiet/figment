@@ -30,9 +30,6 @@
                 background: none;
                 color: white;
             }
-            input[type="file"] {
-                display: none;
-            }
             input[type="submit"] {
                 margin-top: 0;
                 &:hover {
@@ -72,10 +69,18 @@
                 display: flex;
                 .btn_upload {
                     cursor: pointer;
+                    width: 12em;
+                    margin: .3em 0 2.5em 0;
+                    svg {
+                        fill: white;
+                    }
                 }
-                img {
-                    width: 60%;
-                    margin: 0 0 1em 1em;
+                .imgContainer {
+                    background-size: cover;
+                    background-position: bottom;
+                    width: 20em;
+                    height: 12em;
+                    margin: 0 0 2em 2em;
                     border-radius: .7em;
                 }
             }

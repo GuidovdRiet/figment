@@ -12,7 +12,6 @@ const ifNoItemsInReadingListHtml = () =>
 function readingList(e) {
     const readingListCounter = document.querySelector('.reading_list_counter');
     const cardId = e.target.getAttribute('data-card-id');
-    console.log(cardId);
     const isReadingList = e.target.getAttribute('data-reading-list');
     // add idea to reading list
     e.preventDefault();
@@ -27,11 +26,14 @@ function readingList(e) {
                 if (isReadingList === 'true') {
                     const ideaCard = document.querySelector(`.idea_${cardId}`);
                     if(ideaCard) {
-                        ideaCard.remove();
+                        ideaCard.classList.add('remove_card_animation');
+                        ideaCard.addEventListener('transitionend', () => {
+                            ideaCard.remove();
+                            if (res.data.readingList.length <= 0) {
+                                document.querySelector('.full_width_card').innerHTML = ifNoItemsInReadingListHtml();
+                            }
+                        })
                     }
-                }
-                if (res.data.readingList.length <= 0) {
-                    document.querySelector('.full_width_card').innerHTML = ifNoItemsInReadingListHtml();
                 }
             });
         })

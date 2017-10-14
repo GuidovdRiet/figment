@@ -33,3 +33,15 @@ body {
     }
 }
 
+@media all and (max-width: 1000px) {
+    .content {
+    flex-direction: column;
+    .user_container {
+        margin-bottom: 4em;
+    }
+    .idea_container {
+        margin-left: 0;
+    }
+}
+}
+

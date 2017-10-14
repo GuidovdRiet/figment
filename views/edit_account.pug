@@ -1,10 +1,17 @@
 extends layout
 
-block content 
-    form(action=`/user/${user._id}/edit` method="POST")
-        label(for="name")
-        input(type="text" name="name" value=`${user.name}`)
-        label(for="email")
-        input(type="email" name="email" value=`${user.email}`)
-        input(type="submit" name="edit")
-        
+block content
+    .edit_user_container
+        .edit_user_card
+            .avatar(style=`background-image: url('/uploads/${user.photo}')`)
+            form(action=`/user/${user._id}/edit` method="POST" enctype="multipart/form-data")
+                .upload_container
+                    label(for="photo" class="btn_upload") 
+                        != helpers.icon('upload') 
+                        p Edit avatar
+                        input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+                label(for="name")
+                input(type="text" name="name" value=`${user.name}`)
+                label(for="email")
+                input(type="email" name="email" value=`${user.email}`)
+                input(type="submit" value="Edit")

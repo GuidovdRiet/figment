@@ -3,5 +3,13 @@ extends layout
 include mixins/_registerForm
 
 block content
-    +registerForm()
+    .login_container
+            img(src="/images/figment-icon.svg", alt="Figment").logo
+            .card
+                .login_card.register
+                    .login_content_container 
+                        h1= title
+                        +registerForm()
+                        .register_info
+                            a(href="/Login") Login
 

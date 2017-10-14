@@ -103,7 +103,7 @@ exports.deleteIdea = async (req, res) => {
 };
 
 exports.popular = async (req, res) => {
-    const ideas = await Idea.find();
+    const ideas = await Idea.find().populate('author', ['name', 'about', 'photo']);;
     ideas.sort((a, b) => b.hearts.length - a.hearts.length);
     res.render('popular', { title: 'Most popular ideas', ideas });
 };

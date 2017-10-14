@@ -17,5 +17,5 @@ mixin ideaForm(idea = {})
                 p Upload photo
                 input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
             if idea.photo
-                img(src=`/uploads/${idea.photo}`, alt=idea.name width=700)
+                .imgContainer(style=`background-image: url('/uploads/${idea.photo}')`)
         input(type="submit" value="Save")
