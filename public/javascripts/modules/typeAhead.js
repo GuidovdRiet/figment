@@ -5,10 +5,25 @@ const searchWindow = document.querySelector('.search');
 const checkboxes = document.querySelectorAll('input[name=filter]');
 const searchInput = document.querySelector('input[name=search]');
 
-function focusCursorAfterSelect(e) {
-    e.target.checked = true;
+const focusField = () => {
     searchInput.focus();
     searchInput.select();
+};
+
+function focusCursorAfterSelect(e) {
+    // Prevent that the handler runs the function twice
+    e.stopPropagation();
+    e.preventDefault();
+    
+    // Uncheck radio button when selected
+    if (this.querySelector('input[type=radio').checked) {
+        this.querySelector('input[type=radio]').checked = false;
+        focusField();
+        return;
+    }
+    // check checkbox of the current clicked field
+    this.querySelector('input[type=radio]').checked = true;
+    focusField();
 }
 
 const closeSearch = (search) => {
@@ -89,7 +104,7 @@ function typeAhead(search) {
 
 // Select the input field after every click, because the cursor is not visible in the dom
 const tags = [...document.querySelectorAll('.tag')];
-tags.map(tag => tag.addEventListener('click', focusCursorAfterSelect), { once: true });
-searchWindow.addEventListener('click', focusCursorAfterSelect);
+tags.map(tag => tag.addEventListener('click', focusCursorAfterSelect));
+searchWindow.addEventListener('click', focusField);
 
 export default typeAhead;
