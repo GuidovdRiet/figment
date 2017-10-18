@@ -22,9 +22,46 @@
     animation-duration: .3s; 
     align-items: center;
     flex-direction: column;
+    padding-top: 9em;
+    svg {
+        width: 2em;
+        fill: $brand;
+    }
+    .tag_options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 38%;
+        margin-bottom: 3em;
+        .tag {
+            display: flex;
+            flex-direction: column;
+            margin: 1em 1em 0 0;
+            background: rgb(249, 248, 248);
+            border-radius: .7em;
+            input[type="radio"] {
+                display: none;
+                &:checked + label {
+                    border-radius: .7em;
+                    background: $brand;
+                    color: #fff;
+                    transition: all .3s;
+                    border: 1px solid $brand;
+                }
+            }
+            label {
+                padding: 1rem 1rem 1rem 1rem;
+                border-radius: .7em;            
+                border: 1px solid rgb(233, 233, 236);           
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
     input[type="text"] {
         border: none;
-        padding: 2em 0 .8em 0;
+        padding: .3em 0 .8em 0;
         line-height: 2px;
         font-size: 5em;
         color: transparent;

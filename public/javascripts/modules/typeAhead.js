@@ -1,7 +1,15 @@
 const axios = require('axios');
 const dompurify = require('dompurify');
 const searchIcon = document.querySelector('.search_icon');
+const searchWindow = document.querySelector('.search');
 const checkboxes = document.querySelectorAll('input[name=filter]');
+const searchInput = document.querySelector('input[name=search]');
+
+function focusCursorAfterSelect(e) {
+    e.target.checked = true;
+    searchInput.focus();
+    searchInput.select();
+}
 
 const closeSearch = (search) => {
     const paramSearch = search;
@@ -78,5 +86,10 @@ function typeAhead(search) {
             });
     });
 }
+
+// Select the input field after every click, because the cursor is not visible in the dom
+const tags = [...document.querySelectorAll('.tag')];
+tags.map(tag => tag.addEventListener('click', focusCursorAfterSelect), { once: true });
+searchWindow.addEventListener('click', focusCursorAfterSelect);
 
 export default typeAhead;

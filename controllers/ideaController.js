@@ -43,10 +43,9 @@ exports.addIdea = (req, res) => {
 };
 
 exports.getIdea = async (req, res) => {
-    const idea = await Idea.findOne({ _id: req.params.id }).populate('author', [
-        'name',
-        'about',
-    ]).populate('comments');
+    const idea = await Idea.findOne({ _id: req.params.id })
+        .populate('author', ['name', 'about'])
+        .populate('comments');
     res.render('idea', { title: idea.title, idea });
 };
 
@@ -103,7 +102,11 @@ exports.deleteIdea = async (req, res) => {
 };
 
 exports.popular = async (req, res) => {
-    const ideas = await Idea.find().populate('author', ['name', 'about', 'photo']);;
+    const ideas = await Idea.find().populate('author', [
+        'name',
+        'about',
+        'photo'
+    ]);
     ideas.sort((a, b) => b.hearts.length - a.hearts.length);
     res.render('popular', { title: 'Most popular ideas', ideas });
 };
@@ -146,8 +149,8 @@ exports.getReadingList = async (req, res) => {
     const ideas = await Idea.find({
         _id: { $in: req.user.readingList }
     }).populate('author', ['name', 'about', 'photo']);
-    res.render('readingList', { 
-        title: 'Reading List', 
+    res.render('readingList', {
+        title: 'Reading List',
         ideas,
         isReadingList: true
     });

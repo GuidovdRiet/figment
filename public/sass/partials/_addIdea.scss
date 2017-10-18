@@ -54,8 +54,8 @@
                         border: 1px solid white;
                         border-radius: .7em;
                         padding: 1rem 1rem 1rem 1rem;
-                      }
-                      &:checked + label {
+                    }
+                    &:checked + label {
                         background: rgba(105, 79, 79, 0.77);
                     }
                 }

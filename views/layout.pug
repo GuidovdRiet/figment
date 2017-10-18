@@ -9,12 +9,14 @@ html
         if user
             .search
                 img(src="/images/icons/cross.svg", alt="exit").exit_icon
+                != helpers.icon('figment-logo-brand')
                 input(type="text" name="search" placeholder="Start typing to search..")
+                .tag_options
+                    each option in tagOptions
+                        .tag 
+                            input(type="radio" name="filter" id=option value=option) 
+                            label(for=option) #{option}
                 .search_results
-                input(type='checkbox' name='filter' value='Sports') 
-                label(for='sports') sports
-                input(type='checkbox' name='filter' value='Culture') 
-                label(for='culture') culture
 
             .lower_nav
                 a(href="/readinglist")
@@ -32,7 +34,7 @@ html
                         .functions
                             img(src="/images/icons/search.svg", alt="Search").search_icon
                             a(href=`/users/${user._id}`).account
-                                .avatar.nav_avatar(style=`background-image: url('/uploads/${user.photo}')`)
+                                .avatar.nav_avatar(style=`background-image: url("/uploads/${user.photo}")`)
                     .nav_low
                         .nav_container
                             a(href="/") Home
@@ -52,4 +54,4 @@ html
             block content
 
             block scripts
-                script(src='/dist/app.bundle.js')
+                script(src="/dist/app.bundle.js")

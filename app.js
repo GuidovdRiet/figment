@@ -51,6 +51,7 @@ app.use(flash());
 app.use((req, res, next) => {
     res.locals.messages = req.flash();
     res.locals.helpers = require('./helpers');
+    res.locals.tagOptions = ['Art', 'Culture', 'Film', 'Food', 'Humor', 'Music', 'Photography', 'Social media', 'Sports', 'Business', 'Data science', 'Digital design', 'Programming', 'Health', 'Travel'];
     res.locals.user = req.user || null;
     next();
 });

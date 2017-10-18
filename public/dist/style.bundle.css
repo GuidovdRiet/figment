@@ -799,7 +799,8 @@ body {
 
 .remove_card_animation {
   opacity: 0;
-  transition: opacity 1s; }
+  transform: translateY(60px);
+  transition: all .5s; }
 
 .comment {
   margin-top: 1em; }
@@ -1013,10 +1014,40 @@ table {
   animation: fade-in;
   animation-duration: .3s;
   align-items: center;
-  flex-direction: column; }
+  flex-direction: column;
+  padding-top: 9em; }
+  .search svg {
+    width: 2em;
+    fill: #FC5C5E; }
+  .search .tag_options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 38%;
+    margin-bottom: 3em; }
+    .search .tag_options .tag {
+      display: flex;
+      flex-direction: column;
+      margin: 1em 1em 0 0;
+      background: #f9f8f8;
+      border-radius: .7em; }
+      .search .tag_options .tag input[type="radio"] {
+        display: none; }
+        .search .tag_options .tag input[type="radio"]:checked + label {
+          border-radius: .7em;
+          background: #FC5C5E;
+          color: #fff;
+          transition: all .3s;
+          border: 1px solid #FC5C5E; }
+      .search .tag_options .tag label {
+        padding: 1rem 1rem 1rem 1rem;
+        border-radius: .7em;
+        border: 1px solid #e9e9ec; }
+        .search .tag_options .tag label:hover {
+          cursor: pointer; }
   .search input[type="text"] {
     border: none;
-    padding: 2em 0 .8em 0;
+    padding: .3em 0 .8em 0;
     line-height: 2px;
     font-size: 5em;
     color: transparent;
