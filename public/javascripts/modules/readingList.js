@@ -42,9 +42,8 @@ function readingList(e) {
                     if (ideaCard) {
                         ideaCard.classList.add('remove_card_animation');
                         ideaCard.addEventListener('transitionend', () => {
-                            // if (e.propertyName !== 'opacity') return;
-                            moveCardsUp();
                             ideaCard.remove();
+                            moveCardsUp();
                             if (res.data.readingList.length <= 0) {
                                 document.querySelector('.full_width_card').innerHTML = ifNoItemsInReadingListHtml();
                             }

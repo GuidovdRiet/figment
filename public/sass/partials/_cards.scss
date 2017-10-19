@@ -171,7 +171,15 @@
         height: 2.3em;
         svg {
           fill: $secondary_grey;
+          transition: .2s all;
+          &:hover {
+            cursor: pointer;
+            fill: $brand;
+          }
         }
+      }
+      a {
+        color: $secondary_grey;
       }
       .heart_active {
         svg {

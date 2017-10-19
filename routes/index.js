@@ -68,6 +68,13 @@ router.get(
     catchErrors(ideaController.popular)
 );
 
+// -- get users who hearted idea
+router.get(
+    '/idea/:id/hearts',
+    authController.checkIfLoggedIn,
+    catchErrors(ideaController.getHearts)
+);
+
 // COMMENTS
 // -- create --
 router.post(

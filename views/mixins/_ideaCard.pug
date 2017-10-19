@@ -23,7 +23,8 @@ mixin ideaCard(idea, isReadingList)
                     - const heartClass = heartStrings.includes(user._id.toString()) ? 'heart_active' : '';
                     button(type="submit" name="heart" class=`heart_idea ${heartClass}`).heart_idea
                         != helpers.icon('favorite')
-                    p #{idea.hearts.length}
+                    a(href=`/idea/${idea._id}/hearts`)
+                        p #{idea.hearts.length}
                 form(
                     action=`/api/ideas/${idea._id}/readinglist` 
                     class="readinglist_form" 

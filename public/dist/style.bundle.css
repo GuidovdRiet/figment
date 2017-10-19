@@ -721,7 +721,13 @@ body {
         width: 2.3em;
         height: 2.3em; }
         .idea_card .icon_container .heart_form .heart_idea svg {
-          fill: #C6C7C9; }
+          fill: #C6C7C9;
+          transition: .2s all; }
+          .idea_card .icon_container .heart_form .heart_idea svg:hover {
+            cursor: pointer;
+            fill: #FC5C5E; }
+      .idea_card .icon_container .heart_form a {
+        color: #C6C7C9; }
       .idea_card .icon_container .heart_form .heart_active svg {
         fill: #FC5C5E; }
       .idea_card .icon_container .heart_form p {

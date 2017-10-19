@@ -169,3 +169,11 @@ exports.heartIdea = async (req, res) => {
     );
     res.json(findIdea);
 };
+
+exports.getHearts = async (req, res) => {
+    const idea = await Idea.findOne({ _id: req.params.id }).populate('hearts', [
+        'name',
+        'photo'
+    ]);
+    res.render('get_idea_hearts', { title: `❤️ ${idea.title}`, idea });
+}
