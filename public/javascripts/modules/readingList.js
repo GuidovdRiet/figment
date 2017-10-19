@@ -9,6 +9,20 @@ const ifNoItemsInReadingListHtml = () =>
         </div>
     `;
 
+function moveCardsUp() {
+    const cards = [...document.querySelectorAll('.card')];
+    if (cards.length > 0) {
+        cards.map((card) => {
+            const singleCard = card;
+            singleCard.classList.add('move_card_up');
+            singleCard.addEventListener('transitionend', () => {
+                singleCard.classList.remove('move_card_up');
+            })
+            return singleCard;
+        });
+    }
+}
+
 function readingList(e) {
     const readingListCounter = document.querySelector('.reading_list_counter');
     const cardId = e.target.getAttribute('data-card-id');
@@ -25,14 +39,16 @@ function readingList(e) {
                 readingListCounter.classList.remove('scale_animate');
                 if (isReadingList === 'true') {
                     const ideaCard = document.querySelector(`.idea_${cardId}`);
-                    if(ideaCard) {
+                    if (ideaCard) {
                         ideaCard.classList.add('remove_card_animation');
                         ideaCard.addEventListener('transitionend', () => {
+                            // if (e.propertyName !== 'opacity') return;
+                            moveCardsUp();
                             ideaCard.remove();
                             if (res.data.readingList.length <= 0) {
                                 document.querySelector('.full_width_card').innerHTML = ifNoItemsInReadingListHtml();
                             }
-                        })
+                        });
                     }
                 }
             });

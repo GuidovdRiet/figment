@@ -14,7 +14,7 @@ function focusCursorAfterSelect(e) {
     // Prevent that the handler runs the function twice
     e.stopPropagation();
     e.preventDefault();
-    
+
     // Uncheck radio button when selected
     if (this.querySelector('input[type=radio').checked) {
         this.querySelector('input[type=radio]').checked = false;
@@ -26,15 +26,25 @@ function focusCursorAfterSelect(e) {
     focusField();
 }
 
+const removeSearchBoxWithFadeOut = (searchBox) => {
+    const searchScreen = searchBox;
+    searchScreen.classList.add('remove_search');
+    searchScreen.addEventListener('transitionend', (e) => {
+        if (e.propertyName !== 'opacity') return;
+        searchScreen.classList.remove('remove_search');
+        searchScreen.style.display = 'none';
+    });
+};
+
 const closeSearch = (search) => {
     const paramSearch = search;
     const exitIcon = document.querySelector('.exit_icon');
     exitIcon.addEventListener('click', () => {
-        paramSearch.style.display = 'none';
+        removeSearchBoxWithFadeOut(paramSearch);
     });
     window.addEventListener('keydown', (e) => {
         if (e.keyCode === 27) {
-            paramSearch.style.display = 'none';
+            removeSearchBoxWithFadeOut(paramSearch);
         }
     });
 };
@@ -65,7 +75,6 @@ const searchResultsHtml = ideas =>
 function typeAhead(search) {
     if (!search) return;
 
-    const searchInput = document.querySelector('input[name="search"]');
     const searchResults = document.querySelector('.search_results');
 
     searchInput.addEventListener('input', function () {
