@@ -112,7 +112,7 @@ function typeAhead(search) {
 }
 
 // Select the input field after every click, because the cursor is not visible in the dom
-const tags = [...document.querySelectorAll('.tag')];
+const tags = [...document.querySelectorAll('.search_tag')];
 tags.map(tag => tag.addEventListener('click', focusCursorAfterSelect));
 searchWindow.addEventListener('click', focusField);
 

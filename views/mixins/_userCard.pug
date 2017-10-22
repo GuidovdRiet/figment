@@ -2,9 +2,9 @@ mixin userCard(user = {}, pageProfileUser = {})
     - const currentUser = pageProfileUser ? pageProfileUser : user;
     if user
         .card
-            .user_card(class=userCardLarge ? 'user_card_large' : null)
+            .user_card.card(class=userCardLarge ? 'user_card_large' : null)
                 .avatar(style=`background-image: url('/uploads/${currentUser.photo}')`)
-                    -const showButton = (user._id.toString() === currentUser._id.toString()) ? true : false;
+                    - const showButton = (user._id.toString() === currentUser._id.toString()) ? true : false;
                     if !showButton
                         form(action=`/api/${currentUser._id}/followers` class="followers_form" method="POST")
                             - const followersStrings = currentUser.followers.map(obj => obj.toString());
@@ -25,6 +25,6 @@ mixin userCard(user = {}, pageProfileUser = {})
                     .ideas
                         if userIdeas
                             h3= userIdeas.length
-                        else 
+                        else
                             h3= userIdeasTotal
                         p.subtitle ideas

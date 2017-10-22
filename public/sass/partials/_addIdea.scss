@@ -1,102 +1,104 @@
 .add_idea_container {
-    background: url(/images/topography.svg), linear-gradient($brand, $brand);
-    .nav_up {
-        background-color: rgba(252, 92, 95, 0.2);
+  background: url(/images/topography.svg), linear-gradient($brand, $brand);
+  .nav_up {
+    background-color: rgba(252, 92, 95, 0.2);
+  }
+  .reading_list {
+    display: none;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5em;
+    h1 {
+      font-family: "Source Sans Pro", sans-serif;
+      color: white;
+      font-size: 4em;
+      margin: 0.4em 0;
     }
-    .reading_list {
-        display: none;
+    svg {
+      width: 7%;
     }
-    .content {
+    form {
+      width: 60%;
+      label {
+        color: white;
+      }
+      input[type="text"],
+      textarea {
+        background: none;
+        color: white;
+      }
+      input[type="submit"] {
+        margin-top: 0;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      textarea {
+        height: 8em;
+      }
+      .tags {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 5em;
-        h1 {
-            font-family: 'Source Sans Pro', sans-serif;
-            color: white;
-            font-size: 4em;
-            margin: .4em 0;
+        flex-wrap: wrap;
+        height: 12em;
+        margin-top: 3em;
+        .tag {
+          input[type="checkbox"] {
+            display: none;
+          }
+          height: 3em;
+          margin-right: 1em;
+          & + label {
+            border: 1px solid white;
+            border-radius: 0.7em;
+            padding: 1rem 1rem 1rem 1rem;
+          }
+          &:checked + label {
+            background: rgba(105, 79, 79, 0.77);
+          }
         }
-        img {
-            width: 7%;
+        label {
+          &:hover {
+            cursor: pointer;
+          }
         }
-        form {
-            width: 60%;
-            label {
-                color: white; 
-            }
-            input[type="text"], textarea {
-                background: none;
-                color: white;
-            }
-            input[type="submit"] {
-                margin-top: 0;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-            textarea {
-                height: 8em;
-            }
-            .tags {
-                display: flex;
-                flex-wrap: wrap;
-                height: 12em;
-                margin-top: 3em;
-                .tag {
-                    height: 0em;
-                    margin-right: 1em;
-                    input[type="checkbox"] {
-                        display: none;
-                    }
-                    & + label {
-                        border: 1px solid white;
-                        border-radius: .7em;
-                        padding: 1rem 1rem 1rem 1rem;
-                    }
-                    &:checked + label {
-                        background: rgba(105, 79, 79, 0.77);
-                    }
-                }
-                label {
-                    &:hover {
-                        cursor: pointer;
-                    }
-                }
-            }
-            .upload_container {
-                display: flex;
-                .btn_upload {
-                    cursor: pointer;
-                    width: 12em;
-                    margin: .3em 0 2.5em 0;
-                    svg {
-                        fill: white;
-                    }
-                }
-                .imgContainer {
-                    background-size: cover;
-                    background-position: bottom;
-                    width: 20em;
-                    height: 12em;
-                    margin: 0 0 2em 2em;
-                    border-radius: .7em;
-                }
-            }
-            input[type="submit"] {
-                background: white;
-                color: $brand;
-            }
+      }
+      .upload_container {
+        display: flex;
+        .btn_upload {
+          cursor: pointer;
+          width: 12em;
+          margin: 0.3em 0 2.5em 0;
+          svg {
+            fill: white;
+            width: 1.2em;
+          }
         }
+        .imgContainer {
+          background-size: cover;
+          background-position: bottom;
+          width: 20em;
+          height: 12em;
+          margin: 0 0 2em 2em;
+          border-radius: 0.7em;
+        }
+      }
+      input[type="submit"] {
+        background: white;
+        color: $brand;
+      }
     }
+  }
 }
 
 .add_idea {
-    width: 2em;
-    height: 2em;
-    background: $secondary_grey;
-    position: absolute;
-    top: 0;
-    right: 0;
+  width: 2em;
+  height: 2em;
+  background: $secondary_grey;
+  position: absolute;
+  top: 0;
+  right: 0;
 }

@@ -2,7 +2,7 @@ extends layout
 
 block content
     .edit_user_container
-        .edit_user_card
+        .edit_user_card.card
             .avatar(style=`background-image: url('/uploads/${user.photo}')`)
             form(action=`/user/${user._id}/edit` method="POST" enctype="multipart/form-data")
                 .upload_container

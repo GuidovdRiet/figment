@@ -61,6 +61,13 @@ router.get(
     catchErrors(ideaController.deleteIdea)
 );
 
+// -- explore --
+router.get(
+    '/explore',
+    authController.checkIfLoggedIn,
+    catchErrors(ideaController.explore)
+);
+
 // -- popular --
 router.get(
     '/popular',

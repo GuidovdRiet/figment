@@ -5,9 +5,9 @@ include mixins/_forgotPassword
 
 block content
     .login_container
-        img(src="/images/figment-icon.svg", alt="Figment").logo
+        != helpers.icon('figment-icon')
         .card
-            .login_card
+            .login_card.card
                 .login_content_container 
                     h1= title
                     +loginForm()

@@ -12,10 +12,10 @@ html
                 != helpers.icon('figment-logo-brand')
                 input(type="text" name="search" placeholder="Start typing to search..")
                 .tag_options
-                    each option in tagOptions
-                        .tag 
-                            input(type="radio" name="filter" id=option value=option) 
-                            label(for=option) #{option}
+                    each tag in tagOptions
+                        .search_tag 
+                            input(type="radio" name="filter" id=tag value=tag) 
+                            label(for=tag) #{tag}
                 .search_results
 
             .lower_nav
@@ -40,6 +40,7 @@ html
                             a(href="/") Home
                             a(href="/popular") Most popular
                             a(href="/readinglist") Reading list
+                            a(href="/explore") Explore
                             a(href="/ideas/add") Add Idea
                 
             .messages 

@@ -7,11 +7,7 @@
   }
 }
 
-.user_card,
-.idea_card,
-.login_card,
-.edit_user_card,
-.edit_comment_card {
+.card {
   background-color: #fff;
   border-radius: 1.7em;
   box-shadow: $shadow;
@@ -21,6 +17,34 @@
 
 .full_width_card {
   margin-top: 6em;
+}
+
+.small_card {
+  margin-top: 2em;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  width: 20em;
+  p {
+    margin-left: .7em;
+  }
+  svg {
+    fill: $brand;
+    width: 20px;
+    height: 2em;
+  }
+  .avatar {
+    width: 100px;
+    height: 100px;
+    margin-right: 1em;
+  }
+}
+
+.small_card_container {
+  display: flex;
+  justify-content: center;
+  width: 20em;
+  width: 100%;
 }
 
 .user_card {
@@ -237,6 +261,9 @@
 
 .register {
   height: 54em;
+  h1 {
+    margin-bottom: 1em;
+  }
   .btn_upload {
     border: 1px solid #EEEEEE;
   }

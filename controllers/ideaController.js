@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Idea = mongoose.model('Idea');
 const User = mongoose.model('User');
 const multer = require('multer');
+const { ObjectId } = require('mongodb');
 const jimp = require('jimp');
 const uuid = require('uuid');
 const multerOptions = {
@@ -18,10 +19,12 @@ const multerOptions = {
 };
 
 exports.homePage = async (req, res) => {
-    const ideas = await Idea.find().populate('author', [
+    const followingUsers = req.user.following;
+    const objIds = followingUsers.map(followingUser => ObjectId(followingUser));
+    const ideas = await Idea.find({ author: { $in: objIds } }).populate('author', [
         'name',
-        'about',
-        'photo'
+        'photo',
+        'about'
     ]);
     // check how many ideas the user has published
     const currentUser = req.isCurrentUser;
@@ -176,4 +179,22 @@ exports.getHearts = async (req, res) => {
         'photo'
     ]);
     res.render('get_idea_hearts', { title: `❤️ ${idea.title}`, idea });
+};
+
+exports.explore = async (req, res) => {
+    const ideas = await Idea.find().populate('author', [
+        'name',
+        'photo',
+        'about'
+    ]);
+    // check how many ideas the user has published
+    const currentUser = req.isCurrentUser;
+    const userIdeas = ideas.filter(idea => idea.author.equals(req.user._id));
+    const ideaAmount = userIdeas.length;
+    res.render('index', {
+        title: 'Figment',
+        userIdeasTotal: ideaAmount,
+        currentUser,
+        ideas
+    });
 }

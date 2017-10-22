@@ -4,7 +4,7 @@ include mixins/_comment
 
 block content
     .card
-        .edit_comment_card
+        .edit_comment_card.card
             form(action=`/comment/${comment._id}/edit` method="POST")
                 textarea(name="text")= comment.text
                 input(type="submit" class="submit" value="Submit")

@@ -2,5 +2,8 @@ extends layout
 
 block content
     each heart in idea.hearts
-        p= heart.photo
-        p= heart.name
+        .small_card_container 
+            .card.small_card
+                .avatar(style=`background-image: url('/uploads/${heart.photo}')`)
+                != helpers.icon('favorite')
+                p= heart.name

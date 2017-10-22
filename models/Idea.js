@@ -5,7 +5,10 @@ const ideaSchema = new mongoose.Schema(
         title: {
             type: String,
             required: 'You have to enter a title',
-            maxlength: [200, 'The title of your idea must be {MAXLENGTH} characers or less.']
+            maxlength: [
+                200,
+                'The title of your idea must be {MAXLENGTH} characers or less.'
+            ]
         },
         author: {
             ref: 'User',
@@ -31,7 +34,7 @@ const ideaSchema = new mongoose.Schema(
     }
 );
 
-// show the virtual fields in the output on screen
+// show the virtual fields in the JSON output on dump screen
 ideaSchema.set('toObject', {
     virtuals: true
 });

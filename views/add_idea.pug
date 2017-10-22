@@ -4,7 +4,7 @@ include mixins/_ideaForm
 
 block content
     .content
-        img(src="/images/figment-icon.svg", alt="Figment")
+        != helpers.icon('figment-icon')
         h1 Add an idea &amp; inspire the world
         +ideaForm(idea)
         

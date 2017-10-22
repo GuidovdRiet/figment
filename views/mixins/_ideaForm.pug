@@ -8,8 +8,8 @@ mixin ideaForm(idea = {})
         .tags
             each option in tagOptions
                 .tag
-                    input(type='checkbox' name='tags' class='tag' id=option value=option checked=(tags.includes(option))) 
-                    label(for=option) &#8594 #{option}
+                    input(type='checkbox' name='tags' class='tag' id=`${option}_idea_tag` value=option checked=(tags.includes(option))) 
+                    label(for=`${option}_idea_tag`) &#8594 #{option}
         .upload_container
             label(for="photo" class="btn_upload") 
                 != helpers.icon('upload') 
