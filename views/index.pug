@@ -2,6 +2,7 @@ extends layout
 
 include mixins/_userCard
 include mixins/_ideaCard
+include mixins/_pagination
 
 block content
     
@@ -12,4 +13,8 @@ block content
         .idea_container
             each idea in ideas
                 +ideaCard(idea, false)
+            
+            .pagination_container
+                +pagination(currentPage, totalPages, count)
+
             

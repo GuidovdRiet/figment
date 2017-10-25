@@ -19,20 +19,49 @@ const multerOptions = {
 };
 
 exports.homePage = async (req, res) => {
+    // pagination
+    const currentPage = req.params.page || 1;
+    const limit = 4;
+    const skip = (currentPage * limit) - limit;
+    // only show ideas from following users
     const followingUsers = req.user.following;
     const objIds = followingUsers.map(followingUser => ObjectId(followingUser));
-    const ideas = await Idea.find({ author: { $in: objIds } }).populate('author', [
-        'name',
-        'photo',
-        'about'
-    ]);
+    const ideasPromise = Idea.find({ author: { $in: objIds } })
+        .populate('author', ['name', 'photo', 'about'])
+        .skip(skip)
+        .limit(limit);
+
+    const countPromise = Idea.find({ author: { $in: objIds } }).count();
+
+    const [ideas, count] = await Promise.all([ideasPromise, countPromise]);
+
+    const totalPages = Math.ceil(count / limit);
+
+    // // check if requested page exists
+    // if (!ideas.length && skip) {
+    //     req.flash(
+    //         'error',
+    //         `Page ${currentPage} doesn't exists, ${totalPages} is the last page`
+    //     );
+    //     res.redirect(`/pages/${totalPages}`);
+    //     return;
+    // }
+
     // check how many ideas the user has published
+    const currentUserIdeas = await Idea.find();
     const currentUser = req.isCurrentUser;
-    const userIdeas = ideas.filter(idea => idea.author.equals(req.user._id));
+    const userIdeas = currentUserIdeas.filter(idea =>
+        idea.author.equals(req.user._id));
     const ideaAmount = userIdeas.length;
+
     res.render('index', {
         title: 'Figment',
         userIdeasTotal: ideaAmount,
+        // pagination
+        currentPage,
+        totalPages,
+        count,
+        // ---------
         currentUser,
         ideas
     });
@@ -197,4 +226,4 @@ exports.explore = async (req, res) => {
         currentUser,
         ideas
     });
-}
+};

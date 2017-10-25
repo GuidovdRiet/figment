@@ -1,0 +1,29 @@
+.pagination_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5em;
+  height: 3em;
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 0.7em;
+    width: 70%;
+    padding: 1.5em 3em;
+    .pagination_prev {
+      //   background: green;
+    }
+    .pagination_text {
+      margin-top: .1em;
+    }
+    .pagination_next, .pagination_prev {
+        svg {
+            width: 1em;
+            height: 1.2em;
+            margin-top: .3em;
+        }
+    }
+  }
+}

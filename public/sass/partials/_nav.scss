@@ -61,7 +61,6 @@
 }
 
 .lower_nav {
-  width: 100%;
   position: fixed;
   bottom: 1em;
   right: 1em;
@@ -75,8 +74,9 @@
     border-radius: 100%;
     position: relative;
     box-shadow: 2px -1px 54px -7px rgba(0, 0, 0, 0.3);
-    // border-top-left-radius: 1.7em;
-    // border-bottom-left-radius: 0.2em;
+    &:active {
+      transform: scale(.95);
+    }
     p {
       color: $brand;
       font-size: 1.2em;

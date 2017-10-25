@@ -546,7 +546,6 @@ body {
     transform: scale(1); } }
 
 .lower_nav {
-  width: 100%;
   position: fixed;
   bottom: 1em;
   right: 1em;
@@ -560,6 +559,8 @@ body {
     border-radius: 100%;
     position: relative;
     box-shadow: 2px -1px 54px -7px rgba(0, 0, 0, 0.3); }
+    .lower_nav .reading_list:active {
+      transform: scale(0.95); }
     .lower_nav .reading_list p {
       color: #FC5C5E;
       font-size: 1.2em;
@@ -731,6 +732,8 @@ body {
       border-radius: 100%;
       background-color: #FC5C5E;
       cursor: pointer; }
+      .idea_card .icon_container .add_to_reading_list:active {
+        transform: scale(0.95); }
     .idea_card .icon_container .heart_form {
       display: flex;
       flex-direction: row;
@@ -1236,3 +1239,24 @@ table {
 .move_card_up {
   transition: all .3s;
   transform: translate(0, -20px); }
+
+.pagination_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5em;
+  height: 3em; }
+  .pagination_container .pagination {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 0.7em;
+    width: 70%;
+    padding: 1.5em 3em; }
+    .pagination_container .pagination .pagination_text {
+      margin-top: .1em; }
+    .pagination_container .pagination .pagination_next svg, .pagination_container .pagination .pagination_prev svg {
+      width: 1em;
+      height: 1.2em;
+      margin-top: .3em; }

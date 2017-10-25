@@ -1,0 +1,12 @@
+mixin pagination(currentPage, totalPages, count)
+    .pagination
+        .pagination_prev
+            if currentPage > 1
+                a(href=`/pages/${parseFloat(currentPage) - 1}`) 
+                    != helpers.icon('back')
+        .pagination_text
+            p Page #{currentPage} of #{totalPages} - #{count} total results
+        .pagination_next
+            if currentPage < totalPages
+                a(href=`/pages/${parseFloat(currentPage) + 1}`)
+                    != helpers.icon('next')

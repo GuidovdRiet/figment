@@ -16,6 +16,12 @@ router.get(
     catchErrors(ideaController.homePage)
 );
 
+router.get(
+    '/pages/:page',
+    authController.checkIfLoggedIn,
+    catchErrors(ideaController.homePage)
+);
+
 // IDEAS
 // -- create --
 router.get(

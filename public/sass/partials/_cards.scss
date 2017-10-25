@@ -184,6 +184,9 @@
       border-radius: 100%;
       background-color: $brand;
       cursor: pointer;
+      &:active {
+        transform: scale(.95);   
+      }
     }
     .heart_form {
       display: flex;
