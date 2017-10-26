@@ -151,7 +151,11 @@ router.get(
 );
 
 // read
-router.get('/admin/:id', catchErrors(adminController.getUser));
+router.get(
+    '/admin/:id',
+    authController.checkIfLoggedIn,
+    catchErrors(adminController.getUser)
+);
 
 // update
 router.get('/admin/:id/edit', catchErrors(adminController.editUser));
@@ -163,6 +167,14 @@ router.get(
     userMiddleware.checkIfCurrentUser,
     catchErrors(adminController.deleteUser)
 );
+
+// -- admin API --
+
+router.post(
+    '/api/admin/ideas/:id/visibility',
+    authController.checkIfLoggedIn,
+    adminController.ideasVisibility
+)
 
 // USERS
 router.get(

@@ -24,6 +24,10 @@ const ideaSchema = new mongoose.Schema(
         photo: {
             type: String,
             default: 'default-idea-photo.jpeg'
+        },
+        visible: {
+            type: Boolean,
+            default: true
         }
     },
     {

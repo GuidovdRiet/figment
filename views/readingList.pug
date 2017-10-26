@@ -8,6 +8,7 @@ block content
             a(href='/')
                 h1 Add ideas to reading list.. 
 
-        each idea in ideas 
-            +ideaCard(idea, isReadingList)
+        each idea in ideas
+            if idea.visible
+                +ideaCard(idea, isReadingList, false)
         

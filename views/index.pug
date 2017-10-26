@@ -12,9 +12,11 @@ block content
 
         .idea_container
             each idea in ideas
-                +ideaCard(idea, false)
+                if idea.visible
+                    +ideaCard(idea, false, false)
             
             .pagination_container
-                +pagination(currentPage, totalPages, count)
+                if ideas > 0
+                    +pagination(currentPage, totalPages, count)
 
             

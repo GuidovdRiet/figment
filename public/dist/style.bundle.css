@@ -754,6 +754,20 @@ body {
         fill: #FC5C5E; }
       .idea_card .icon_container .heart_form p {
         margin: 0.4em 0 0 0.4em; }
+  .idea_card .visibility_form .toggle_visibility {
+    border: none;
+    background: none;
+    border-radius: .3em;
+    padding: .7em 1.3em;
+    cursor: pointer; }
+  .idea_card .visibility_form .toggle_visibility_active {
+    background-color: #a4dd87; }
+    .idea_card .visibility_form .toggle_visibility_active p {
+      color: white; }
+  .idea_card .visibility_form .toggle_visibility_inactive {
+    background-color: #FC5C5E; }
+    .idea_card .visibility_form .toggle_visibility_inactive p {
+      color: white; }
 
 .login_card {
   height: 35em;
@@ -977,16 +991,6 @@ input[type="file"] {
   .login_container svg {
     width: 4em;
     margin-bottom: 2.5em; }
-
-table {
-  margin-top: 5em; }
-  table td {
-    border: 1px solid #FA6969;
-    text-align: center;
-    padding: 1em; }
-  table a {
-    text-decoration: none;
-    color: #C6C7C9; }
 
 .search_icon {
   width: 59%;
@@ -1236,6 +1240,9 @@ table {
 .flash_success {
   background: rgba(164, 221, 135, 0.9); }
 
+.flash_error {
+  background: #FC5C5E; }
+
 .move_card_up {
   transition: all .3s;
   transform: translate(0, -20px); }
@@ -1260,3 +1267,36 @@ table {
       width: 1em;
       height: 1.2em;
       margin-top: .3em; }
+
+.admin_dashboard_user_container .single_card {
+  display: flex;
+  justify-content: center; }
+
+.admin_dashboard_user_container .info {
+  margin: 2em 0; }
+  .admin_dashboard_user_container .info h1 {
+    margin: .4em 0 .2em 0;
+    font-size: 2em; }
+  .admin_dashboard_user_container .info P {
+    font-style: italic;
+    margin-bottom: 2.5em; }
+  .admin_dashboard_user_container .info .btn_remove {
+    margin-left: 1em; }
+
+.admin_dashboard_user_container .avatar {
+  width: 200px;
+  height: 200px;
+  margin-right: 4em; }
+
+.admin_dashboard_user_container input[type="email"] {
+  margin-bottom: 1em; }
+
+.admin_dashboard_container .single_card table {
+  margin-top: 4em; }
+  .admin_dashboard_container .single_card table td {
+    border-top: 1px solid #FA6969;
+    text-align: center;
+    padding: 1.8em; }
+  .admin_dashboard_container .single_card table a {
+    text-decoration: none;
+    color: #4a4a4c; }

@@ -1,14 +1,16 @@
 extends layout
 
 block content
+    .admin_dashboard_user_container
+        .card
+            .single_card
+                .avatar(style=`background-image: url('/uploads/${user.photo}')`)
+                .info
+                    h1= user.name
+                    if user.level >= 10 
+                        p #{user.email} / admin
+                    else
+                        p #{user.email} / user
 
-    img(src=`/uploads/${user.photo}`, alt='user avatar')
-    h1= user.name
-    p= user.email
-    if user.level >= 10 
-        p admin
-    else
-        p user 
-
-    a(href=`/admin/${user._id}/edit`) Edit
-    a(href=`/admin/${user._id}/delete`) Delete
+                    a(href=`/admin/${user._id}/edit`).btn.btn_edit Edit
+                    a(href=`/admin/${user._id}/delete`).btn.btn_remove Delete

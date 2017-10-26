@@ -5,4 +5,5 @@ include mixins/_ideaCard
 block content 
     .full_width_card
         each idea in ideas 
-            +ideaCard(idea)
+            if idea.visible
+                +ideaCard(idea, false, false)

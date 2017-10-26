@@ -1,7 +1,8 @@
 import typeAhead from './modules/typeAhead';
 import readingList from './modules/readingList';
 import hearts from './modules/hearts';
-import followers from './modules/followers'
+import followers from './modules/followers';
+import toggleVisibility from './modules/toggleVisibilityIdeas';
 
 // Import scss for webpack compiling
 require('../sass/app.scss');
@@ -23,14 +24,23 @@ const heartsButtons = [...document.querySelectorAll('.heartlist_form')];
 heartsButtons.map(heartButton =>
     heartButton.addEventListener('submit', hearts));
 
-// Make input as big as placeholder text
+// Make input as big as placeholder text in search
 const searchInput = document.querySelector('input[name=search]');
-if(searchInput) {
-    searchInput.setAttribute('size', searchInput.getAttribute('placeholder').length);
+if (searchInput) {
+    searchInput.setAttribute(
+        'size',
+        searchInput.getAttribute('placeholder').length
+    );
 }
 
 // Follow users
 const followButton = document.querySelector('.followers_form');
-if(followButton) {
+if (followButton) {
     followButton.addEventListener('submit', followers);
 }
+
+// Toggle visibility ideas in admin panel
+const visibilityForms = [...document.querySelectorAll('.visibility_form')];
+
+visibilityForms.map(visibilityForm =>
+    visibilityForm.addEventListener('submit', toggleVisibility));

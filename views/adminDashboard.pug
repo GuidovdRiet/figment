@@ -1,21 +1,25 @@
 extends layout
 
-block content 
-    h1 Dashboard
-    table
-        thead
-            th name
-            th email
-            th Role
-            th 
-        tbody
-            each user in users 
-                tr
-                    td= user.name
-                    td= user.email
-                    if user.level >= 10 
-                        td admin
-                    else
-                        td user 
-                    td 
-                        a(href=`/admin/${user._id}`) Edit
+block content
+    .admin_dashboard_container
+        .card
+            .single_card
+                .info
+                    h1 Dashboard
+                table
+                    thead
+                        th name
+                        th email
+                        th Role
+                        th 
+                    tbody
+                        each user in users 
+                            tr
+                                td= user.name
+                                td= user.email
+                                if user.level >= 10 
+                                    td admin
+                                else
+                                    td user 
+                                td
+                                    a(href=`/admin/${user._id}`).btn.btn_edit Edit

@@ -218,6 +218,27 @@
       }
     }
   }
+  .visibility_form {
+    .toggle_visibility {
+      border: none;
+      background: none;
+      border-radius: .3em;
+      padding: .7em 1.3em;
+      cursor: pointer;
+    }
+    .toggle_visibility_active {
+      background-color: rgb(164, 221, 135);
+      p {
+        color: white;
+      }
+    }
+    .toggle_visibility_inactive {
+      background-color: $brand;
+      p {
+        color: white;
+      }
+    }
+  }
 }
 
 .login_card {

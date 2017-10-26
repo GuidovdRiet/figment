@@ -1,0 +1,45 @@
+.admin_dashboard_user_container {
+    .single_card {
+        display: flex;
+        justify-content: center;
+    }
+    .info {
+        margin: 2em 0;
+        h1 {
+            margin: .4em 0 .2em 0;
+            font-size: 2em;
+        }
+        P {
+            font-style: italic;
+            margin-bottom: 2.5em;
+        }
+        .btn_remove {
+            margin-left: 1em;
+        }
+    }
+    .avatar {
+        width: 200px;
+        height: 200px;
+        margin-right: 4em;
+    }
+    input[type="email"] {
+        margin-bottom: 1em;
+    }
+}
+
+.admin_dashboard_container {
+    .single_card {
+        table {
+            margin-top: 4em;
+            td {
+                border-top: 1px solid #FA6969;
+                text-align: center;
+                padding: 1.8em;
+            }
+            a {
+                text-decoration: none;
+                color: $main_grey;
+            }
+        }
+    }
+}
