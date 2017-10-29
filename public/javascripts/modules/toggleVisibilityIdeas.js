@@ -7,11 +7,11 @@ const toggleClassButton = (idea, button) => {
     if(idea.visible) {
         toggleButton.classList.remove('toggle_visibility_inactive');
         toggleButton.classList.add('toggle_visibility_active');
-        toggleButton.querySelector('p').innerHTML = 'active';        
+        toggleButton.querySelector('p').innerHTML = 'visible';        
     } else {
         toggleButton.classList.remove('toggle_visibility_active');
         toggleButton.classList.add('toggle_visibility_inactive');
-        toggleButton.querySelector('p').innerHTML = 'inactive';
+        toggleButton.querySelector('p').innerHTML = 'invisible';
     }
 }
 

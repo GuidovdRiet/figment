@@ -8,7 +8,8 @@ const ideaSchema = new mongoose.Schema(
             maxlength: [
                 200,
                 'The title of your idea must be {MAXLENGTH} characers or less.'
-            ]
+            ],
+            trim: true
         },
         author: {
             ref: 'User',
@@ -17,7 +18,8 @@ const ideaSchema = new mongoose.Schema(
         },
         body: {
             type: String,
-            required: 'You have to enter an idea'
+            required: 'You have to enter an idea',
+            trim: true
         },
         tags: [String],
         hearts: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
@@ -37,6 +39,13 @@ const ideaSchema = new mongoose.Schema(
         }
     }
 );
+
+ideaSchema.statics.getTotalUserIdeas = function (currentUser) {
+    return this.aggregate([
+        { $match: { author: currentUser } },
+        { $count: 'ideas_total' }
+    ]);
+};
 
 // show the virtual fields in the JSON output on dump screen
 ideaSchema.set('toObject', {

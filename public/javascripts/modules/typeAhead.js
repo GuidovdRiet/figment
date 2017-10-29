@@ -78,7 +78,7 @@ function typeAhead(search) {
     const searchResults = document.querySelector('.search_results');
 
     searchInput.addEventListener('input', function () {
-    // if there is no value in the input, stop
+        // if there is no value in the input, stop
         if (!this.value) {
             searchResults.style.display = 'none';
             return;

@@ -18,10 +18,10 @@ mixin ideaCard(idea, isReadingList, admin)
             form(action=`/api/admin/ideas/${idea._id}/visibility` method="POST").visibility_form
                 if idea.visible
                     button(type="submit" name="visible").toggle_visibility.toggle_visibility_active
-                        p active
+                        p visible
                 else
                     button(type="submit" name="visible").toggle_visibility.toggle_visibility_inactive
-                        p inactive
+                        p invisible
         .icon_container
             if !admin
                 form(

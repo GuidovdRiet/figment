@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const errorHandlers = require('./handlers/errorHandlers');
 const expressValidator = require('express-validator');
+const helmet = require('helmet');
+
 require('./handlers/passport');
 
 // Init app
@@ -23,6 +25,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Express Validator Middleware
 app.use(expressValidator());
 
+// // OWASP
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts({ maxAge: 7776000000 }));
+app.use(helmet.frameguard('SAMEORIGIN'));
+app.use(helmet.xssFilter({ setOnOldIE: true }));
+app.use(helmet.noSniff());
+
 // populates req.cookies with any cookies that came along with the request
 app.use(cookieParser());
 
@@ -30,7 +39,7 @@ app.use(cookieParser());
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
 }));
 
 // // Passport JS is what we use to handle our logins
@@ -51,7 +60,23 @@ app.use(flash());
 app.use((req, res, next) => {
     res.locals.messages = req.flash();
     res.locals.helpers = require('./helpers');
-    res.locals.tagOptions = ['Art', 'Culture', 'Film', 'Food', 'Humor', 'Music', 'Photography', 'Social media', 'Sports', 'Business', 'Data science', 'Digital design', 'Programming', 'Health', 'Travel'];
+    res.locals.tagOptions = [
+        'Art',
+        'Culture',
+        'Film',
+        'Food',
+        'Humor',
+        'Music',
+        'Photography',
+        'Social media',
+        'Sports',
+        'Business',
+        'Data science',
+        'Digital design',
+        'Programming',
+        'Health',
+        'Travel'
+    ];
     res.locals.user = req.user || null;
     next();
 });

@@ -35,6 +35,25 @@ const userSchema = new mongoose.Schema({
     followers: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 });
 
+userSchema.statics.getTotalUserIdeas = function (currentUser) {
+    return this.aggregate([
+        {
+            $lookup: {
+                from: 'ideas',
+                localField: '_id',
+                foreignField: 'author',
+                as: 'written_ideas'
+            }
+        },
+        {
+            $project: {
+                total_user_ideas: { $size: '$written_ideas' }
+            }
+        },
+        { $match: { _id: currentUser } }
+    ]);
+};
+
 // Passport-Local Mongoose will add a username, hash and salt field to store
 // the username, the hashed password and the salt value.
 // usernameField = Email to login
